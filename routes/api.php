@@ -35,3 +35,9 @@ Route::get('/turnos', 'App\Http\Controllers\TurnoController@index');
 Route::post('/turnos', 'App\Http\Controllers\TurnoController@store');
 Route::put('/turnos/{id}', 'App\Http\Controllers\TurnoController@update');
 Route::delete('/turnos/{id}', 'App\Http\Controllers\TurnoController@destroy');
+
+/** Rutas MetodoPago */
+Route::get('/metodo_pagos', 'App\Http\Controllers\MetodoPagoController@index');
+Route::post('/metodo_pagos', 'App\Http\Controllers\MetodoPagoController@store');
+Route::put('/metodo_pagos/{id}', 'App\Http\Controllers\MetodoPagoController@update');
+Route::delete('/metodo_pagos/{id}', 'App\Http\Controllers\MetodoPagoController@destroy');
