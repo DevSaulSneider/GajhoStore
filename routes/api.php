@@ -19,7 +19,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::get('/departamentos', 'DepartamentoController@index');
-Route::post('/departamentos', 'DepartamentoController@store');
-Route::put('/departamentos/{id}', 'DepartamentoController@update');
-Route::delete('/departamentos/{id}', 'DepartamentoController@destroy');
+Route::get('/departamentos', 'App\Http\Controllers\DepartamentoController@index');
+Route::post('/departamentos', 'App\Http\Controllers\DepartamentoController@store');
+Route::put('/departamentos/{id}', 'App\Http\Controllers\DepartamentoController@update');
+Route::delete('/departamentos/{id}', 'App\Http\Controllers\DepartamentoController@destroy');
+
+
+Route::get('/categorias', 'App\Http\Controllers\CategoriaController@index');
+Route::post('/categorias', 'App\Http\Controllers\CategoriaController@store');
+Route::put('/categorias/{id}', 'App\Http\Controllers\CategoriaController@update');
+Route::delete('/categorias/{id}', 'App\Http\Controllers\CategoriaController@destroy');
