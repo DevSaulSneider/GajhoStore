@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Departamento;
+use App\Models\Turno;
 
-class DepartamentoController extends Controller
+class TurnoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,8 @@ class DepartamentoController extends Controller
      */
     public function index()
     {
-        $departamentos = Departamento::all();
-
-        return $departamentos;
+        $turnos = Turno::all();
+        return $turnos;
     }
 
 
@@ -28,10 +27,10 @@ class DepartamentoController extends Controller
      */
     public function store(Request $request)
     {
-        $departamento = new Departamento();
-        $departamento->name = $request->name;
-        echo $departamento;
-        $departamento->save();
+        $turno = new Turno();
+        $turno->turno = $request->turno;
+        echo $turno;
+        $turno->save();
     }
 
     /**
@@ -53,13 +52,12 @@ class DepartamentoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        $departamento = Departamento::findOrFail($request->id);
-        $departamento->name = $request->name;
-        $departamento->save();
-
-        return $departamento;
+        $turno = Turno::findOrFail($request->id);
+        $turno->turno = $request->turno;
+        $turno_>save();
+        return $turno;
     }
 
     /**
@@ -68,10 +66,9 @@ class DepartamentoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        $departamento = Derpartamento::destroy($request->id);
-
-        return $departamento;
+        $turno = Turno::destroy($request->id);
+        return $turno;
     }
 }
