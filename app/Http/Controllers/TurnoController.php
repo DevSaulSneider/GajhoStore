@@ -56,7 +56,7 @@ class TurnoController extends Controller
     {
         $turno = Turno::findOrFail($request->id);
         $turno->turno = $request->turno;
-        $turno_>save();
+        $turno->save();
         return $turno;
     }
 
@@ -66,7 +66,7 @@ class TurnoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
         $turno = Turno::destroy($request->id);
         return $turno;
