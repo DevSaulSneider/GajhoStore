@@ -29,7 +29,7 @@ class DepartamentoController extends Controller
     public function store(Request $request)
     {
         $departamento = new Departamento();
-        $departamento->name = $request->name;
+        $departamento->nombre = $request->nombre;
         echo $departamento;
         $departamento->save();
     }
@@ -56,7 +56,7 @@ class DepartamentoController extends Controller
     public function update(Request $request)
     {
         $departamento = Departamento::findOrFail($request->id);
-        $departamento->name = $request->name;
+        $departamento->nombre = $request->nombre;
         $departamento->save();
 
         return $departamento;
@@ -70,7 +70,7 @@ class DepartamentoController extends Controller
      */
     public function destroy(Request $request)
     {
-        $departamento = Derpartamento::destroy($request->id);
+        $departamento = Departamento::destroy($request->id);
 
         return $departamento;
     }

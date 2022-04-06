@@ -28,7 +28,7 @@ class MetodoPagoController extends Controller
     public function store(Request $request)
     {
         $metodoPago = new MetodoPago();
-        $metodoPago->name = $request->name;
+        $metodoPago->nombre = $request->nombre;
         $metodoPago->save();
     }
 
@@ -53,7 +53,7 @@ class MetodoPagoController extends Controller
     public function update(Request $request, $id)
     {
         $metodoPago = MetodoPago::findOrFail($request->id);
-        $metodoPago->name = $request->name;
+        $metodoPago->nombre = $request->nombre;
         $metodoPago->save();
         return $metodoPago;
     }
@@ -64,7 +64,7 @@ class MetodoPagoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
         $metodoPago = MetodoPago::destroy($request->id);
         return $metodoPago;
