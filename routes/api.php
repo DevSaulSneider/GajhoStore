@@ -41,3 +41,10 @@ Route::get('/metodo_pagos', 'App\Http\Controllers\MetodoPagoController@index');
 Route::post('/metodo_pagos', 'App\Http\Controllers\MetodoPagoController@store');
 Route::put('/metodo_pagos/{id}', 'App\Http\Controllers\MetodoPagoController@update');
 Route::delete('/metodo_pagos/{id}', 'App\Http\Controllers\MetodoPagoController@destroy');
+
+
+/** Rutas provincias */
+Route::get('/provincias', 'App\Http\Controllers\ProvinciaController@index');
+Route::post('/provincias', 'App\Http\Controllers\ProvinciaController@store');
+Route::put('/provincias/{id}', 'App\Http\Controllers\ProvinciaController@update');
+Route::delete('/provincias/{id}', 'App\Http\Controllers\ProvinciaController@destroy');
