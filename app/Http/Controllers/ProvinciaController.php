@@ -29,7 +29,7 @@ class ProvinciaController extends Controller
     {
         $provincia = new Provincia();
         $provincia->nombre = $request->nombre;
-        echo $provincia;
+        $provincia->id_departamento = $request->id_departamento;
         $provincia->save();
     }
 

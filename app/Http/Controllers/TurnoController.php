@@ -52,7 +52,7 @@ class TurnoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         $turno = Turno::findOrFail($request->id);
         $turno->turno = $request->turno;

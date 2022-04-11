@@ -16,12 +16,8 @@ return new class extends Migration
         Schema::create('provincias', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->foreignId('idDepartamento')
-                  ->nullable()
-                  ->constrained('departamentos')
-                  ->cascadeOnUpdate()
-                  ->nullOnDelete();
-            $table->timestamps();
+            $table->foreignId('id_departamento')
+                  ->constrained('departamentos');
         });
     }
 
