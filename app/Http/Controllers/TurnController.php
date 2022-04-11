@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Provincia;
+use App\Models\Turn;
 
-class ProvinciaController extends Controller
+class TurnController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class ProvinciaController extends Controller
      */
     public function index()
     {
-        $provincia = Provincia::all();
-        return $provincia;
+        $turn = Turn::all();
+        return $turn;
     }
 
 
@@ -27,10 +27,10 @@ class ProvinciaController extends Controller
      */
     public function store(Request $request)
     {
-        $provincia = new Provincia();
-        $provincia->nombre = $request->nombre;
-        $provincia->id_departamento = $request->id_departamento;
-        $provincia->save();
+        $turn = new Turn();
+        $turn->turn = $request->turn;
+        echo $turn;
+        $turn->save();
     }
 
     /**
@@ -44,6 +44,7 @@ class ProvinciaController extends Controller
         //
     }
 
+
     /**
      * Update the specified resource in storage.
      *
@@ -53,11 +54,10 @@ class ProvinciaController extends Controller
      */
     public function update(Request $request)
     {
-        $provincia = Provincia::findOrFail($request->id);
-        $provincia->nombre = $request->nombre;
-        $provincia->save();
-
-        return $provincia;
+        $turn = Turn::findOrFail($request->id);
+        $turn->turn = $request->turn;
+        $turn->save();
+        return $turn;
     }
 
     /**
@@ -68,8 +68,7 @@ class ProvinciaController extends Controller
      */
     public function destroy(Request $request)
     {
-        $provincia = Provincia::destroy($request->id);
-
-        return $provincia;
+        $turn = Turn::destroy($request->id);
+        return $turn;
     }
 }

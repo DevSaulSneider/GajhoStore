@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Turno;
+use App\Models\Province;
 
-class TurnoController extends Controller
+class provinceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class TurnoController extends Controller
      */
     public function index()
     {
-        $turnos = Turno::all();
-        return $turnos;
+        $province = Province::all();
+        return $province;
     }
 
 
@@ -27,10 +27,10 @@ class TurnoController extends Controller
      */
     public function store(Request $request)
     {
-        $turno = new Turno();
-        $turno->turno = $request->turno;
-        echo $turno;
-        $turno->save();
+        $province = new Province();
+        $province->name = $request->name;
+        $province->department_id = $request->department_id;
+        $province->save();
     }
 
     /**
@@ -44,7 +44,6 @@ class TurnoController extends Controller
         //
     }
 
-
     /**
      * Update the specified resource in storage.
      *
@@ -54,10 +53,11 @@ class TurnoController extends Controller
      */
     public function update(Request $request)
     {
-        $turno = Turno::findOrFail($request->id);
-        $turno->turno = $request->turno;
-        $turno->save();
-        return $turno;
+        $province = Province::findOrFail($request->id);
+        $province->name = $request->name;
+        $province->save();
+
+        return $province;
     }
 
     /**
@@ -68,7 +68,8 @@ class TurnoController extends Controller
      */
     public function destroy(Request $request)
     {
-        $turno = Turno::destroy($request->id);
-        return $turno;
+        $province = Province::destroy($request->id);
+
+        return $province;
     }
 }

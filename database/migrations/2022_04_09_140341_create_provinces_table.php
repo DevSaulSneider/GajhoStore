@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('distritos', function (Blueprint $table) {
+        Schema::create('provinces', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->foreignId('id_provincia')
-                  ->constrained('provincias');
+            $table->string('name');
+            $table->foreignId('department_id')
+                  ->constrained('departments');
         });
     }
 
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('distritos');
+        Schema::dropIfExists('provinces');
     }
 };

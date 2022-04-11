@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
 
-class DepartamentoSeeder extends Seeder
+class DepartmentSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -94,6 +94,6 @@ class DepartamentoSeeder extends Seeder
             ],
         ];
 
-        DB::table('departamentos')->insert($data);
+        DB::table('departments')->insert($data);
     }
 }

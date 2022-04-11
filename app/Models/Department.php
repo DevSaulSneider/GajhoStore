@@ -5,17 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Departamento extends Model
+class Department extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'nombre',
+        'name',
     ];
 
     public $timestamps = false;
 
-    public function provincias() {
-        return $this->hasMany(Provincia::class, 'id');
+    public function provinces() {
+        return $this->hasMany(Province::class, 'id');
     }
 }

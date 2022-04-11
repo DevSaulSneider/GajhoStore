@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
 
-class DistritoSeeder extends Seeder
+class DistrictSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -7355,6 +7355,6 @@ class DistritoSeeder extends Seeder
             ]
         ];
 
-        DB::table('distritos')->insert($data);
+        DB::table('districts')->insert($data);
     }
 }
