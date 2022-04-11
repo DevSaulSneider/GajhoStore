@@ -18,79 +18,79 @@ class DepartmentSeeder extends Seeder
     {
         $data = [
             [
-                'nombre' => 'AMAZONAS',
+                'name' => 'AMAZONAS',
             ],
             [
-                'nombre' => 'ANCASH',
+                'name' => 'ANCASH',
             ],
             [
-                'nombre' => 'APURIMAC',
+                'name' => 'APURIMAC',
             ],
             [
-                'nombre' => 'AREQUIPA',
+                'name' => 'AREQUIPA',
             ],
             [
-                'nombre' => 'AYACUCHO',
+                'name' => 'AYACUCHO',
             ],
             [
-                'nombre' => 'CAJAMARCA',
+                'name' => 'CAJAMARCA',
             ],
             [
-                'nombre' => 'CUSCO',
+                'name' => 'CUSCO',
             ],
             [
-                'nombre' => 'HUANCAVELICA',
+                'name' => 'HUANCAVELICA',
             ],
             [
-                'nombre' => 'HUANUCO',
+                'name' => 'HUANUCO',
             ],
             [
-                'nombre' => 'ICA',
+                'name' => 'ICA',
             ],
             [
-                'nombre' => 'JUNIN',
+                'name' => 'JUNIN',
             ],
             [
-                'nombre' => 'LA LIBERTAD',
+                'name' => 'LA LIBERTAD',
             ],
             [
-                'nombre' => 'LAMBAYEQUE',
+                'name' => 'LAMBAYEQUE',
             ],
             [
-                'nombre' => 'LIMA',
+                'name' => 'LIMA',
             ],
             [
-                'nombre' => 'LORETO',
+                'name' => 'LORETO',
             ],
             [
-                'nombre' => 'MADRE DE DIOS',
+                'name' => 'MADRE DE DIOS',
             ],
             [
-                'nombre' => 'MOQUEGUA',
+                'name' => 'MOQUEGUA',
             ],
             [
-                'nombre' => 'PASCO',
+                'name' => 'PASCO',
             ],
             [
-                'nombre' => 'PIURA',
+                'name' => 'PIURA',
             ],
             [
-                'nombre' => 'PUNO',
+                'name' => 'PUNO',
             ],
             [
-                'nombre' => 'SAN MARTIN',
+                'name' => 'SAN MARTIN',
             ],
             [
-                'nombre' => 'TACNA',
+                'name' => 'TACNA',
             ],
             [
-                'nombre' => 'TUMBES',
+                'name' => 'TUMBES',
             ],
             [
-                'nombre' => 'PROV. CONST. DEL CALLAO',
+                'name' => 'PROV. CONST. DEL CALLAO',
             ],
             [
-                'nombre' => 'UCAYALI',
+                'name' => 'UCAYALI',
             ],
         ];
 
