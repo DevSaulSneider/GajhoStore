@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\MetodoPago;
+use App\Models\Department;
 
-class MetodoPagoController extends Controller
+class DepartamentoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,9 @@ class MetodoPagoController extends Controller
      */
     public function index()
     {
-        $metodoPago = MetodoPago::all();
-        return $metodoPago;
+        $department = Department::all();
+
+        return $department;
     }
 
 
@@ -27,9 +28,10 @@ class MetodoPagoController extends Controller
      */
     public function store(Request $request)
     {
-        $metodoPago = new MetodoPago();
-        $metodoPago->nombre = $request->nombre;
-        $metodoPago->save();
+        $department = new Department();
+        $department->name = $request->name;
+        echo $department;
+        $department->save();
     }
 
     /**
@@ -43,6 +45,7 @@ class MetodoPagoController extends Controller
         //
     }
 
+
     /**
      * Update the specified resource in storage.
      *
@@ -50,12 +53,13 @@ class MetodoPagoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $metodoPago = MetodoPago::findOrFail($request->id);
-        $metodoPago->nombre = $request->nombre;
-        $metodoPago->save();
-        return $metodoPago;
+        $department = Department::findOrFail($request->id);
+        $department->name = $request->name;
+        $department->save();
+
+        return $department;
     }
 
     /**
@@ -66,7 +70,8 @@ class MetodoPagoController extends Controller
      */
     public function destroy(Request $request)
     {
-        $metodoPago = MetodoPago::destroy($request->id);
-        return $metodoPago;
+        $department = Department::destroy($request->id);
+
+        return $department;
     }
 }

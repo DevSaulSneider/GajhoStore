@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Departamento;
+use App\Models\Category;
 
-class DepartamentoController extends Controller
+class CategoriaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,9 @@ class DepartamentoController extends Controller
      */
     public function index()
     {
-        $departamentos = Departamento::all();
+        $category = Category::all();
 
-        return $departamentos;
+        return $category;
     }
 
 
@@ -28,10 +28,10 @@ class DepartamentoController extends Controller
      */
     public function store(Request $request)
     {
-        $departamento = new Departamento();
-        $departamento->nombre = $request->nombre;
-        echo $departamento;
-        $departamento->save();
+        $category = new Category();
+        $category->name = $request->name;
+        echo $category;
+        $category->save();
     }
 
     /**
@@ -55,11 +55,11 @@ class DepartamentoController extends Controller
      */
     public function update(Request $request)
     {
-        $departamento = Departamento::findOrFail($request->id);
-        $departamento->nombre = $request->nombre;
-        $departamento->save();
+        $category = Category::findOrFail($request->id);
+        $category->name = $request->name;
+        $category->save();
 
-        return $departamento;
+        return $category;
     }
 
     /**
@@ -70,8 +70,8 @@ class DepartamentoController extends Controller
      */
     public function destroy(Request $request)
     {
-        $departamento = Departamento::destroy($request->id);
+        $category = Category::destroy($request->id);
 
-        return $departamento;
+        return $category;
     }
 }

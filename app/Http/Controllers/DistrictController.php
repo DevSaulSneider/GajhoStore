@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Categoria;
+use App\Models\District;
 
-class CategoriaController extends Controller
+class DistrictController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,11 +14,9 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        $categorias = Categoria::all();
-
-        return $categorias;
+        $district = District::all();
+        return $district;
     }
-
 
     /**
      * Store a newly created resource in storage.
@@ -28,10 +26,10 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        $categoria = new Categoria();
-        $categoria->nombre = $request->nombre;
-        echo $categoria;
-        $categoria->save();
+        $district = new District();
+        $district->name = $request->name;
+        $district->province_id = $request->province_id;
+        $district->save();
     }
 
     /**
@@ -53,13 +51,13 @@ class CategoriaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        $categoria = Categoria::findOrFail($request->id);
-        $categoria->nombre = $request->nombre;
-        $categoria->save();
+        $district = District::findOrFail($request->id);
+        $district->name = $request->name;
+        $district->save();
 
-        return $categoria;
+        return $district;
     }
 
     /**
@@ -70,8 +68,7 @@ class CategoriaController extends Controller
      */
     public function destroy(Request $request)
     {
-        $categoria = Categoria::destroy($request->id);
-
-        return $categoria;
+        $district = District::destroy($request->id);
+        return $district;
     }
 }

@@ -5,18 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Distrito extends Model
+class District extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'nombre',
-        'id_provincia'
+        'name',
+        'province_id'
     ];
 
     public $timestamps = false;
 
-    public function provincias() {
-        return $this->belongsTo(Provincia::class, 'id_provincia');
+    public function provinces() {
+        return $this->belongsTo(Province::class, 'province_id');
     }
 }
