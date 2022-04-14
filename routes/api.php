@@ -31,10 +31,10 @@ Route::put('/categories/{id}', 'App\Http\Controllers\CategoryController@update')
 Route::delete('/categories/{id}', 'App\Http\Controllers\CategoryController@destroy');
 
 /** Rutas Turnos */
-Route::get('/turnos', 'App\Http\Controllers\TurnoController@index');
-Route::post('/turnos', 'App\Http\Controllers\TurnoController@store');
-Route::put('/turnos/{id}', 'App\Http\Controllers\TurnoController@update');
-Route::delete('/turnos/{id}', 'App\Http\Controllers\TurnoController@destroy');
+Route::get('/turns', 'App\Http\Controllers\TurnController@index');
+Route::post('/turns', 'App\Http\Controllers\TurnController@store');
+Route::put('/turns/{id}', 'App\Http\Controllers\TurnController@update');
+Route::delete('/turns/{id}', 'App\Http\Controllers\TurnController@destroy');
 
 /** Rutas MetodoPago */
 Route::get('/payment_methods', 'App\Http\Controllers\PaymentMethodController@index');

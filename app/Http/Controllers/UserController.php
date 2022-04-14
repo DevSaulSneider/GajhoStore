@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\PaymentMethod;
 
-class PaymentMethodController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +13,18 @@ class PaymentMethodController extends Controller
      */
     public function index()
     {
-        $paymentMethod = PaymentMethod::all();
-        return $paymentMethod;
+        //
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -27,9 +34,7 @@ class PaymentMethodController extends Controller
      */
     public function store(Request $request)
     {
-        $paymentMethod = new PaymentMethod();
-        $paymentMethod->name = $request->name;
-        $paymentMethod->save();
+        //
     }
 
     /**
@@ -44,6 +49,17 @@ class PaymentMethodController extends Controller
     }
 
     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -52,10 +68,7 @@ class PaymentMethodController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $paymentMethod = PaymentMethod::findOrFail($request->id);
-        $paymentMethod->name = $request->name;
-        $paymentMethod->save();
-        return $paymentMethod;
+        //
     }
 
     /**
@@ -64,9 +77,8 @@ class PaymentMethodController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        $paymentMethod = PaymentMethod::destroy($request->id);
-        return $paymentMethod;
+        //
     }
 }
