@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Department;
 
-class DepartmentController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,11 +13,18 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        $department = Department::all();
-
-        return $department;
+        //
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -28,10 +34,7 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
-        $department = new Department();
-        $department->name = $request->name;
-        echo $department;
-        $department->save();
+        //
     }
 
     /**
@@ -45,6 +48,16 @@ class DepartmentController extends Controller
         //
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
 
     /**
      * Update the specified resource in storage.
@@ -53,13 +66,9 @@ class DepartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        $department = Department::findOrFail($request->id);
-        $department->name = $request->name;
-        $department->save();
-
-        return $department;
+        //
     }
 
     /**
@@ -68,10 +77,8 @@ class DepartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        $department = Department::destroy($request->id);
-
-        return $department;
+        //
     }
 }

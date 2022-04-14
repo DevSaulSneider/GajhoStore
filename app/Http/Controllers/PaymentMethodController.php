@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\PaymentMethod;
 
-class MetodoPagoController extends Controller
+class PaymentMethodController extends Controller
 {
     /**
      * Display a listing of the resource.

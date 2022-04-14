@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
        $this->call([
            DepartmentSeeder::class,
            ProvinceSeeder::class,
-           DistrictSeeder::class
+           DistrictSeeder::class,
+           CategorySeeder::class,
        ]);
     }
 }
