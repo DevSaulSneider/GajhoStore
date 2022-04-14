@@ -14,9 +14,14 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category = Category::all();
+        $data['categories'] = Category::paginate(10);
+        return view('category.index', $data);
 
-        return $category;
+
+
+        // $category = Category::all();
+
+        // return $category;
     }
 
 
@@ -26,12 +31,23 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    public function create()
+    {
+        return view('category.create');
+    }
+
     public function store(Request $request)
     {
-        $category = new Category();
-        $category->name = $request->name;
-        echo $category;
-        $category->save();
+        $categoryData = request()->except('_token');
+        Category::insert($categoryData);
+        return redirect('category');
+
+
+        // $category = new Category();
+        // $category->name = $request->name;
+        // echo $category;
+        // $category->save();
     }
 
     /**
@@ -53,13 +69,17 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function edit($id)
     {
-        $category = Category::findOrFail($request->id);
-        $category->name = $request->name;
-        $category->save();
+        $categoryData = Category::findOrFail($id);
+        return view('category.edit', compact('categoryData'));
+    }
 
-        return $category;
+    public function update(Request $request, $id)
+    {
+        $categoryData = request()->except(['_token', '_method']);
+        Category::where('id', '=', $id)->update($categoryData);
+        return redirect('category');
     }
 
     /**
@@ -68,10 +88,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        $category = Category::destroy($request->id);
-
-        return $category;
+        Category::destroy($id);
+        return redirect('category');
     }
 }
