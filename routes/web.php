@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,4 +19,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/category', CategoryController::class);
+Route::resource('/category', CategoryController::class)->middleware('auth');
+
+Auth::routes(['register' => false, 'reset' => false]);
+
+Route::get('/home', [CategoryController::class, 'index'])->name('home');
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/home', [CategoryController::class, 'index'])->name('home');
+});

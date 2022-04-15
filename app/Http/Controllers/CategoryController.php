@@ -14,7 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $data['categories'] = Category::paginate(10);
+        $data['categories'] = Category::paginate(5);
         return view('category.index', $data);
 
 
@@ -39,9 +39,19 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
+        $rules=[
+            'name'=>'required|max:50',
+        ];
+
+        $messages = [
+            'name.required'=> 'El nombre es requerido',
+        ];
+
+        $this->validate($request,$rules,$messages);
+
         $categoryData = request()->except('_token');
         Category::insert($categoryData);
-        return redirect('category');
+        return redirect('category')->with('message','Categoria creada con exito');
 
 
         // $category = new Category();
@@ -79,7 +89,7 @@ class CategoryController extends Controller
     {
         $categoryData = request()->except(['_token', '_method']);
         Category::where('id', '=', $id)->update($categoryData);
-        return redirect('category');
+        return redirect('category')->with('message','Categoria actualizada con exito');
     }
 
     /**
@@ -91,6 +101,6 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         Category::destroy($id);
-        return redirect('category');
+        return redirect('category')->with('message', 'Categoria borrada con exito');
     }
 }
