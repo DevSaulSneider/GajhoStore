@@ -12,4 +12,8 @@ class Turn extends Model
     protected $fillable = [
         'turn',
     ];
+
+    public function employees() {
+        return $this->hasMany(Employee::class, 'id');
+    }
 }

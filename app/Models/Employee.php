@@ -19,8 +19,6 @@ class Employee extends Model
         'turn_id'
     ];
 
-    public $timestamps = false;
-
     public function turns() {
         return $this->belongsTo(Turn::class, 'turn_id');
     }

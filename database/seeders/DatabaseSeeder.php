@@ -21,7 +21,14 @@ class DatabaseSeeder extends Seeder
            ProvinceSeeder::class,
            DistrictSeeder::class,
            CategorySeeder::class,
+           TurnSeeder::class,
            UserSeeder::class,
+           ProductSeeder::class,
+           PaymentMethodSeeder::class,
+           EmployeeSeeder::class,
+           PurchaseSeeder::class,
+           PurchaseDetailSeeder::class,
+           IncidentSeeder::class,
        ]);
     }
 }

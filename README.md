@@ -1,4 +1,4 @@
-Crear Modelo: php artisan make:model Articulo
+Crear Modelo,Migracion,Seeder y Controlador: php artisan make:model Articulo -mscr
 
 protected $fillable = [
 	'name',
