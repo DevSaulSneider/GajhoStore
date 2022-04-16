@@ -21,7 +21,7 @@ Route::get('/', function () {
 
 Route::resource('/category', CategoryController::class)->middleware('auth');
 
-Auth::routes(['register' => false, 'reset' => false]);
+Auth::routes();
 
 Route::get('/home', [CategoryController::class, 'index'])->name('home');
 
