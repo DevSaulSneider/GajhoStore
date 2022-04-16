@@ -16,3 +16,17 @@ invocar al modelo en el controlador
 Resetear Migracion: php artisan migrate:fresh --seed
 
 Rellenar Datos: php artisan db:seed --class=nombreDelSeed
+
+Crear rama: git checkout -b NAME
+
+Agregar Cambios: git add .
+
+Agregar correo: git config --global user.email "correo@gmail.com"
+
+Agregar username: git config --global user.name "username"
+
+Crear commit: git commit -m 'especificacion'
+
+Subir cambios: git push origin NAMEPROBLEM
+
+Bajar cambios: git pull origin NAMERAMA
