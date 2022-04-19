@@ -14,8 +14,13 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employee = Employee::all();
-        return $employee;
+        $employee ['employees'] = Employee::paginate(5);
+        return view('employee.index', $employee);
+    }
+
+    public function create()
+    {
+        return view('employee.create');
     }
 
     /**
@@ -26,15 +31,40 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        $employee = new Employee();
-        $employee->name = $request->name;
-        $employee->lastName = $request->lastName;
-        $employee->phone = $request->phone;
-        $employee->email = $request->email;
-        $employee->userName = $request->userName;
-        $employee->password = $request->password;
-        $employee->turn_id = $request->turn_id;
-        $employee->save();
+        $rules=[
+            'name'=>'required|max:20',
+            'lastName'=>'required|max:30',
+            'phone'=>'required|max:9',
+            'email'=>'required',
+            'userName'=>'required|max:10',
+            'password'=>'required|min:8',
+            'turn_id'=>'required',
+        ];
+        $messages = [
+            'name.required'=> 'El nombre es requerido',   
+            'lastName.required'=> 'El apellido es requerido',
+            'phone.required'=> 'El telefono es requerido',
+            'email.required'=> 'El correo es requerido',
+            'userName.required'=> 'El usuario es requerido',
+            'password.required'=> 'La contraseña es requerida',
+            'turn_id.required'=> 'El turno_id es requerido',
+        ];
+
+        $this->validate($request,$rules,$messages);
+
+        $employeeData= request()->except('_token');
+        Employee::insert($employeeData);
+        return redirect('employee')->with('message', 'Empleado creado con exito');
+
+        //$employee = new Employee();
+        //$employee->name = $request->name;
+        //$employee->lastName = $request->lastName;
+        //$employee->phone = $request->phone;
+        //$employee->email = $request->email;
+        //$employee->userName = $request->userName;
+        //$employee->password = $request->password;
+        //$employee->turn_id = $request->turn_id;
+        //$employee->save();
     }
 
     /**
@@ -48,6 +78,12 @@ class EmployeeController extends Controller
         //
     }
 
+    public function edit($id)
+    {
+        $employeeData = Employee::findOrFail($id);
+        return view('employee.edit', compact('employeeData'));
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -57,16 +93,9 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $employee = Employee::findOrFail($request->id);
-        $employee->name = $request->name;
-        $employee->lastName = $request->lastName;
-        $employee->phone = $request->phone;
-        $employee->email = $request->email;
-        $employee->userName = $request->userName;
-        $employee->password = $request->password;
-        $employee->save();
-        
-        return $employee;
+        $employeeData = request()->except(['_token', '_method']);
+        Employee::where('id', '=', $id)->update($employeeData);
+        return redirect('employee')->with('message','Empleado actualizada con exito');
     }
 
     /**
@@ -75,10 +104,9 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        $employee = Employee::destroy($request->id);
-
-        return $employee;
+        Employee::destroy($id);
+        return redirect('employee')->with('message', 'Empleado borrada con exito');
     }
 }

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\EmployeeController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -20,8 +21,9 @@ Route::get('/', function () {
 });
 
 Route::resource('/category', CategoryController::class)->middleware('auth');
+Route::resource('/employee', EmployeeController::class)->middleware('auth');
 
-Auth::routes(['register' => false, 'reset' => false]);
+Auth::routes();
 
 Route::get('/home', [CategoryController::class, 'index'])->name('home');
 
