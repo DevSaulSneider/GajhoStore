@@ -38,7 +38,7 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 
-Route::resource('/products', ProductController:: class)->middleware('auth');
+Route::resource('/products', ProductController::class)->middleware('auth');
 
 Route::resource('/category', CategoryController::class)->middleware('auth');
 

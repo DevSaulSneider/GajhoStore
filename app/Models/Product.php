@@ -56,7 +56,7 @@ class Product extends Model
      */
     public function category()
     {
-        return $this->hasOne('App\Models\Category', 'id', 'category_id');
+        return $this->belongsTo(Category::class,'category_id');
     }
     
     /**
@@ -64,7 +64,7 @@ class Product extends Model
      */
     public function purchaseDetails()
     {
-        return $this->hasMany('App\Models\PurchaseDetail', 'product_id', 'id');
+        return $this->hasMany(PurchaseDetail::class,'id');
     }
     
     /**
@@ -72,7 +72,7 @@ class Product extends Model
      */
     public function user()
     {
-        return $this->hasOne('App\Models\User', 'id', 'user_id');
+        return $this->belongsTo(User::class,'user_id');
     }
     
 
