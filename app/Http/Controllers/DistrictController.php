@@ -18,6 +18,14 @@ class DistrictController extends Controller
         return $district;
     }
 
+    public function getDistrictByProvince(Request $request)
+    {
+        if (isset($request->id)) {
+            $districts = District::where('province_id', $request->id)->get();
+            return $districts;
+        }
+    }
+
     /**
      * Store a newly created resource in storage.
      *
