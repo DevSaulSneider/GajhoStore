@@ -43,6 +43,7 @@
         </div>
         <div class="form-group">
         @if(isset($product->image))
+        {{ Form::label('Imagen') }}
     <img class="img-thumbnail img-fluid" src="{{ asset('storage').'/'.$product->image}}" alt="" width="100" height="100">
     @endif
     <input type="file" class="form-control" name="image" value="" id="image">
