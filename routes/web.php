@@ -2,9 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProvinceController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DistrictController;
+
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -21,6 +23,10 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
     return view('welcome2');
 });
+
+
+Route::resource('/category', CategoryController::class)->middleware('auth');
+Route::resource('/employee', EmployeeController::class)->middleware('auth');
 
 Auth::routes();
 

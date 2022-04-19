@@ -21,7 +21,7 @@ class EmployeeSeeder extends Seeder
             'lastName' => 'Perez',
             'phone' => '984843546',
             'email' => 'juan@gmail.com',
-            'username' => 'juan',
+            'userName' => 'juan',
             'password' => 'juan',
             'turn_id' => '1',
             'created_at' => Carbon::now(),
