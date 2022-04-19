@@ -2,35 +2,78 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Product
+ *
+ * @property $id
+ * @property $category_id
+ * @property $user_id
+ * @property $name
+ * @property $description
+ * @property $quantity
+ * @property $state
+ * @property $price
+ * @property $discount_price
+ * @property $image
+ * @property $created_at
+ * @property $updated_at
+ *
+ * @property Category $category
+ * @property PurchaseDetail[] $purchaseDetails
+ * @property User $user
+ * @package App
+ * @mixin \Illuminate\Database\Eloquent\Builder
+ */
 class Product extends Model
 {
-    use HasFactory;
-
-    protected $fillable = [
-        'category_id',
-        'user_id',
-        'name',
-        'description',
-        'quantity',
-        'state',
-        'price',
-        'discountPrice',
-        'image',
+    
+    static $rules = [
+		'category_id' => 'required',
+		'user_id' => 'required',
+		'name' => 'required',
+		'description' => 'required',
+		'quantity' => 'required',
+		'state' => 'required',
+		'price' => 'required',
+		'discount_price' => 'required',
+		'image' => 'required',
     ];
 
-    public function categories() {
-        return $this->belongsTo(Category::class, 'category_id');
-    }
+    protected $perPage = 20;
 
-    public function users() {
-        return $this->belongsTo(User::class, 'user_id');
-    }
+    /**
+     * Attributes that should be mass-assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['category_id','user_id','name','description','quantity','state','price','discount_price','image'];
 
-    public function purchase_details() {
-        return $this->hasMany(PurchaseDetail::class, 'id');
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function category()
+    {
+        return $this->hasOne('App\Models\Category', 'id', 'category_id');
     }
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function purchaseDetails()
+    {
+        return $this->hasMany('App\Models\PurchaseDetail', 'product_id', 'id');
+    }
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function user()
+    {
+        return $this->hasOne('App\Models\User', 'id', 'user_id');
+    }
+    
 
 }

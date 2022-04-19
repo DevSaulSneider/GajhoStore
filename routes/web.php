@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,10 +22,12 @@ Route::get('/', function () {
 
 Route::resource('/category', CategoryController::class)->middleware('auth');
 
-Auth::routes(['register' => false, 'reset' => false]);
+Auth::routes();
 
 Route::get('/home', [CategoryController::class, 'index'])->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', [CategoryController::class, 'index'])->name('home');
 });
+
+Route::resource('products', ProductController:: class)->middleware('auth');
