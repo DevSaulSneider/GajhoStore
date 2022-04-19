@@ -18,6 +18,13 @@ class ProvinceController extends Controller
         return $province;
     }
 
+    public function getProvincesByDepartment(Request $request)
+    {
+        if (isset($request->id)) {
+            $provinces = Province::where('department_id', $request->id)->get();
+            return $provinces;
+        }
+    }
 
     /**
      * Store a newly created resource in storage.
