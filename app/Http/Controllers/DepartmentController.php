@@ -14,9 +14,9 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        $department = Department::all();
+        $departments = Department::all();
 
-        return $department;
+        return $departments;
     }
 
 
