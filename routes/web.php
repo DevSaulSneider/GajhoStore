@@ -8,6 +8,7 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DistrictController;
 
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', [CategoryController::class, 'index'])->name('home');
 });
 
+
+Route::resource('/products', ProductController:: class)->middleware('auth');
+
 Route::resource('/category', CategoryController::class)->middleware('auth');
 
 
@@ -43,3 +47,4 @@ Route::resource('/category', CategoryController::class)->middleware('auth');
 Route::get('/department', [DepartmentController::class, 'index']);
 Route::post('/provinces', [ProvinceController::class, 'getProvincesByDepartment']);
 Route::post('/districts', [DistrictController::class, 'getDistrictByProvince']);
+
