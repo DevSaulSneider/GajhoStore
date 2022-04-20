@@ -27,20 +27,10 @@ Route::get('/', function () {
 
 
 Auth::routes(['reset' => false]);
-Route::get('/home', [ProductController::class, 'index'])->name('home');
-
-Route::group(['middleware' => 'auth'], function () {
-    Route::get('/products', [ProductController::class, 'index'])->name('products');
-});
-
-
-
 
 Route::resource('/category', CategoryController::class)->middleware('auth');
 Route::resource('/employee', EmployeeController::class)->middleware('auth');
 Route::resource('/products', ProductController::class)->middleware('auth');
-
-
 
 /* RUTAS DE UBIGEO */
 Route::get('/department', [DepartmentController::class, 'index']);
