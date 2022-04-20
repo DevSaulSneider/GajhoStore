@@ -39,7 +39,7 @@ class ProductSeeder extends Seeder
                 'state' => 'S',
                 'price' => 1500.0,
                 'discount_price' => 1400.0,
-                'image' => 'upload/D_NQ_NP_786888-MPE44967234904_022021-V.jpg',
+                'image' => 'upload/3Oeisd4iRGZKBdGSmNonWzrEOK9LYG08RrKsFYcp.jpg',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],

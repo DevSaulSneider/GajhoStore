@@ -16,7 +16,7 @@
         <video src="{{URL::asset('/video//mujer-comprando.mp4')}}" muted loop autoplay></video>
         <div class="centralBox">
             <h1 class="title">Bienvenido a EliteStore</h1>
-            <a class="button" href="{{ url('category/create') }}">Ingresar</a>
+            <a class="button" href="{{ url('products') }}">Ingresar</a>
         </div>
     </div>
 </body>

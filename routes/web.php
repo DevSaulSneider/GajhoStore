@@ -26,25 +26,23 @@ Route::get('/', function () {
 });
 
 
-Route::resource('/category', CategoryController::class)->middleware('auth');
-Route::resource('/employee', EmployeeController::class)->middleware('auth');
-
-Auth::routes();
-
-Route::get('/main', [CategoryController::class, 'index'])->name('home');
+Auth::routes(['reset' => false]);
+Route::get('/home', [ProductController::class, 'index'])->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/home', [CategoryController::class, 'index'])->name('home');
+    Route::get('/products', [ProductController::class, 'index'])->name('products');
 });
 
 
-Route::resource('/products', ProductController::class)->middleware('auth');
+
 
 Route::resource('/category', CategoryController::class)->middleware('auth');
+Route::resource('/employee', EmployeeController::class)->middleware('auth');
+Route::resource('/products', ProductController::class)->middleware('auth');
+
 
 
 /* RUTAS DE UBIGEO */
 Route::get('/department', [DepartmentController::class, 'index']);
 Route::post('/provinces', [ProvinceController::class, 'getProvincesByDepartment']);
 Route::post('/districts', [DistrictController::class, 'getDistrictByProvince']);
-
