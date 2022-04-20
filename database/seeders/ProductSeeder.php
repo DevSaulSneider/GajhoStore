@@ -46,7 +46,7 @@ class ProductSeeder extends Seeder
             [
                 'category_id' => '2',
                 'user_id' => '3',
-                'name' => 'Celular',
+                'name' => 'Monitor',
                 'description' => "Monitor Curvo 28'",
                 'quantity' => 1,
                 'state' => 'S',
