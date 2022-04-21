@@ -19,11 +19,13 @@ return new class extends Migration
             $table->string('lastName');
             $table->string('phone');
             $table->string('email')->unique();
-            $table->string('userName')->unique();
+            $table->bigInteger('user_id')->unsigned();
             $table->string('password');
-            $table->foreignId('turn_id')
-                  ->constrained();
+            $table->bigInteger('turn_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete("cascade");
+            $table->foreign('turn_id')->references('id')->on('turns')->onDelete("cascade");
         });
     }
 

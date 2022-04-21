@@ -28,6 +28,7 @@ Route::get('/', function () {
 
 Route::resource('/category', CategoryController::class)->middleware('auth');
 Route::resource('/employee', EmployeeController::class)->middleware('auth');
+Route::resource('payment-methods', App\Http\Controllers\PaymentMethodController::class)->middleware('auth');
 
 Auth::routes();
 
@@ -40,7 +41,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::resource('/products', ProductController::class)->middleware('auth');
 
-Route::resource('/category', CategoryController::class)->middleware('auth');
+
 
 
 /* RUTAS DE UBIGEO */

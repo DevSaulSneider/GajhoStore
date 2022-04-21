@@ -42,8 +42,9 @@
             {!! $errors->first('discount_price', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-        @if(isset($product->image))
         {{ Form::label('Imagen') }}
+        @if(isset($product->image))
+     
     <img class="img-thumbnail img-fluid" src="{{ asset('storage').'/'.$product->image}}" alt="" width="100" height="100">
     @endif
     <input type="file" class="form-control" name="image" value="" id="image">

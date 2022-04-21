@@ -1,17 +1,19 @@
 @extends('layouts.app')
-
+@section('template_title')
+Employee
+@endsection
 @section('content')
 <div class="container">
 
     <a href="{{ url('employee/create') }}" class="btn btn-success">Registrar nuevo empleado</a>
     <br>
     <br>
-    @if (Session::has('message'))
+    @if (Session::has('success'))
     <div class="alert alert-success alert-dismissible fade show" role="alert">
-        {{Session::get('message')}}
-        
+        {{Session::get('success')}}
+
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+            <span aria-hidden="true"></span>
         </button>
     </div>
     @endif
@@ -24,21 +26,22 @@
                 <th>Telefono</th>
                 <th>Correo</th>
                 <th>Usuario</th>
-                <th>Contraseña</th>
-                <th>Id_Turno</th>
+                <th>Turno</th>
             </tr>
         </thead>
         <tbody>
             @foreach($employees as $employee)
             <tr>
+
                 <td>{{$employee->id}}</td>
                 <td>{{$employee->name}}</td>
                 <td>{{$employee->lastName}}</td>
                 <td>{{$employee->phone}}</td>
                 <td>{{$employee->email}}</td>
-                <td>{{$employee->userName}}</td>
-                <td>{{$employee->password}}</td>
-                <td>{{$employee->turn_id}}</td>
+                <td>{{$employee->user_id }}</td>
+                <td>{{$employee->turns->turn}}</td>
+
+
                 <td><a href="{{ url('/employee/'.$employee->id.'/edit') }}" class="btn btn-warning"> Editar</a></td>
                 <td>
                     <form action="{{ url('/employee/'.$employee->id)}}" method="post" class="d-inline">

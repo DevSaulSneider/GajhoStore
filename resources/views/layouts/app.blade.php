@@ -49,6 +49,10 @@
                             <a class="nav-link" href="{{ route('employee.index') }}">{{ __('Empleados') }}</a>
 
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('payment-methods.index') }}">{{ __('Metodo de Pago') }}</a>
+
+                        </li>
                     </ul>
     
 

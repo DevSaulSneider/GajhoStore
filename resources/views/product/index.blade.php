@@ -58,7 +58,6 @@ Product
                                 @foreach ($products as $product)
                                 <tr>
                                     <td>{{ ++$i }}</td>
-
                                     <td>{{ $product->category->name }}</td>
                                     <td>{{ $product->user->name }}</td>
                                     <td>{{ $product->name }}</td>

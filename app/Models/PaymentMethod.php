@@ -2,18 +2,44 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class PaymentMethod
+ *
+ * @property $id
+ * @property $name
+ * @property $created_at
+ * @property $updated_at
+ *
+ * @property Purchase[] $purchases
+ * @package App
+ * @mixin \Illuminate\Database\Eloquent\Builder
+ */
 class PaymentMethod extends Model
 {
-    use HasFactory;
-
-    protected $fillable = [
-        'name',
+    
+    static $rules = [
+		'name' => 'required',
     ];
 
-    public function purchases() {
-        return $this->hasMany(Purchase::class, 'id');
+    protected $perPage = 20;
+
+    /**
+     * Attributes that should be mass-assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['name'];
+
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function purchases()
+    {
+        return $this->hasMany('App\Models\Purchase', 'payment_method_id', 'id');
     }
+    
+
 }

@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\PaymentMethod;
+use Illuminate\Http\Request;
+use App\Models\Turn;
 
+/**
+ * Class PaymentMethodController
+ * @package App\Http\Controllers
+ */
 class PaymentMethodController extends Controller
 {
     /**
@@ -14,59 +19,94 @@ class PaymentMethodController extends Controller
      */
     public function index()
     {
-        $paymentMethod = PaymentMethod::all();
-        return $paymentMethod;
+        $paymentMethods = PaymentMethod::paginate();
+
+        return view('payment-method.index', compact('paymentMethods'))
+            ->with('i', (request()->input('page', 1) - 1) * $paymentMethods->perPage());
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        $paymentMethod = new PaymentMethod();
+        $turns = Turn::pluck('turn', 'id');
+
+        return view('payment-method.create', compact('paymentMethod', 'turns'));
+    }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $paymentMethod = new PaymentMethod();
-        $paymentMethod->name = $request->name;
-        $paymentMethod->save();
+        request()->validate(PaymentMethod::$rules);
+
+        $paymentMethod = PaymentMethod::create($request->all());
+
+        return redirect()->route('payment-methods.index')
+            ->with('success', 'Metodoo creado correctamente');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+        $paymentMethod = PaymentMethod::find($id);
+
+        return view('payment-method.show', compact('paymentMethod'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $paymentMethod = PaymentMethod::find($id);
+
+        return view('payment-method.edit', compact('paymentMethod'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  PaymentMethod $paymentMethod
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, PaymentMethod $paymentMethod)
     {
-        $paymentMethod = PaymentMethod::findOrFail($request->id);
-        $paymentMethod->name = $request->name;
-        $paymentMethod->save();
-        return $paymentMethod;
+        request()->validate(PaymentMethod::$rules);
+
+        $paymentMethod->update($request->all());
+
+        return redirect()->route('payment-methods.index')
+            ->with('success', 'Metodoo actualizado correctamente');
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        $paymentMethod = PaymentMethod::destroy($request->id);
-        return $paymentMethod;
+        $paymentMethod = PaymentMethod::find($id)->delete();
+
+        return redirect()->route('payment-methods.index')
+            ->with('success', 'Metodoo borrado correctamente');
     }
 }
