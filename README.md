@@ -27,6 +27,6 @@ Agregar username: git config --global user.name "username"
 
 Crear commit: git commit -m 'especificacion'
 
-Subir cambios: git push origin NAMEPROBLEM
+Subir cambios: git push origin NAMERAMA
 
 Bajar cambios: git pull origin NAMERAMA
