@@ -13,7 +13,7 @@ Correr Migracion: php artisan migrate
 Crear Controlador: php artisan make:controller ArticuloController --resource
 invocar al modelo en el controlador
 
-Resetear Migracion: php artisan migrate:fresh --seed
+Resetear base de datos: php artisan migrate:fresh --seed
 
 Crear seeder: php artisan db:seed --class=nombreDelSeed
 
