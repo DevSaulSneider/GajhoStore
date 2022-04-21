@@ -13,9 +13,9 @@ Correr Migracion: php artisan migrate
 Crear Controlador: php artisan make:controller ArticuloController --resource
 invocar al modelo en el controlador
 
-Resetear Migracion: php artisan migrate:fresh --seed
+Resetear base de datos: php artisan migrate:fresh --seed
 
-Rellenar Datos: php artisan db:seed --class=nombreDelSeed
+Crear seeder: php artisan db:seed --class=nombreDelSeed
 
 Crear rama: git checkout -b NAME
 
@@ -27,6 +27,6 @@ Agregar username: git config --global user.name "username"
 
 Crear commit: git commit -m 'especificacion'
 
-Subir cambios: git push origin NAMEPROBLEM
+Subir cambios: git push origin NAMERAMA
 
 Bajar cambios: git pull origin NAMERAMA
