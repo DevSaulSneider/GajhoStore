@@ -30,3 +30,5 @@ Crear commit: git commit -m 'especificacion'
 Subir cambios: git push origin NAMERAMA
 
 Bajar cambios: git pull origin NAMERAMA
+
+Linkear imagenes del storage: php artisan storage:link
