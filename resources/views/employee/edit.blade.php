@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
 
-<form action="{{ url('/employee/'.$employeeData->id) }}" method="post">
+<form action="{{ url('/employee/'.$employee->id) }}" method="post">
     @csrf
     @include('employee.form',['mode'=>'Editar'])
     {{ method_field('PATCH') }}
