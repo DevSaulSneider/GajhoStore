@@ -15,7 +15,7 @@ invocar al modelo en el controlador
 
 Resetear Migracion: php artisan migrate:fresh --seed
 
-Rellenar Datos: php artisan db:seed --class=nombreDelSeed
+Crear seeder: php artisan db:seed --class=nombreDelSeed
 
 Crear rama: git checkout -b NAME
 
