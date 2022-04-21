@@ -26,8 +26,11 @@ Route::get('/', function () {
 });
 
 
+Auth::routes(['reset' => false]);
+
 Route::resource('/category', CategoryController::class)->middleware('auth');
 Route::resource('/employee', EmployeeController::class)->middleware('auth');
+
 Route::resource('payment-methods', App\Http\Controllers\PaymentMethodController::class)->middleware('auth');
 
 Auth::routes();
@@ -44,8 +47,11 @@ Route::resource('/products', ProductController::class)->middleware('auth');
 
 
 
+
+Route::resource('/products', ProductController::class)->middleware('auth');
+
+
 /* RUTAS DE UBIGEO */
 Route::get('/department', [DepartmentController::class, 'index']);
 Route::post('/provinces', [ProvinceController::class, 'getProvincesByDepartment']);
 Route::post('/districts', [DistrictController::class, 'getDistrictByProvince']);
-
