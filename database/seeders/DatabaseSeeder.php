@@ -26,9 +26,9 @@ class DatabaseSeeder extends Seeder
            ProductSeeder::class,
            PaymentMethodSeeder::class,
            EmployeeSeeder::class,
-           PurchaseSeeder::class,
-           PurchaseDetailSeeder::class,
-           IncidentSeeder::class,
+        //    PurchaseSeeder::class,
+        //    PurchaseDetailSeeder::class,
+        //    IncidentSeeder::class,
        ]);
     }
 }
