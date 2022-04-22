@@ -18,9 +18,9 @@
                                 <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
 
                                 @error('username')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
                         </div>
@@ -32,13 +32,13 @@
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
                                 @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
                         </div>
-<!-- 
+                        <!-- 
                         <div class="row mb-3">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
@@ -58,9 +58,9 @@
                                 </button>
 
                                 @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        Olvidaste tu contraseña?
-                                    </a>
+                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    Olvidaste tu contraseña?
+                                </a>
                                 @endif
                             </div>
                         </div>
@@ -71,21 +71,25 @@
     </div>
 </div>
 <style>
-    .col-md-8{
+    .col-md-8 {
         position: absolute;
         padding-top: 80px;
         width: 700px;
     }
-    .card{
+
+    .card {
         height: 350px;
     }
-    .nombre{
+
+    .nombre {
         padding-top: 37px;
     }
-    .contraseña{
+
+    .contraseña {
         padding-top: 5px;
     }
-    .botones{
+
+    .botones {
         position: relative;
         bottom: 10px;
         width: 500px;
