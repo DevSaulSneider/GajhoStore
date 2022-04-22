@@ -8,6 +8,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spectral&display=swap" rel="stylesheet">
     <title>Bienvenido</title>
 </head>
 
@@ -55,7 +58,7 @@
 
     .title {
         margin: 0;
-        font-family: Raleway;
+        font-family: 'Spectral', serif;
         color: white;
         font-size: 90px;
         margin-bottom: 40px;
@@ -64,13 +67,17 @@
         background-color: rgb(58, 131, 239);
         border: none;
         color: white;
-        font-size: 18px;
-        font-family: Raleway;
+        font-size: 20px;
+        font-family: 'Spectral', serif;
         text-decoration: none;
         padding: 10px 15px;
         margin: auto;
+        border-radius: 50px;
     }
     .button:hover {
         background-color: rgb(38, 87, 159);
+        font-size: 22px;
+        box-shadow: 0px 15px 20px rgb(58, 131, 239);
+        transition: font-size 0.10s;
     }
 </style>
