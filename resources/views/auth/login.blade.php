@@ -11,8 +11,8 @@
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
-                        <div class="row mb-3">
-                            <label for="username" class="col-md-4 col-form-label text-md-end">Nombre de usuario</label>
+                        <div class="nombre row mb-3">
+                            <label for="username" class="col-md-4 col-form-labels text-md-end">Nombre de usuario</label>
 
                             <div class="col-md-6">
                                 <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
@@ -25,7 +25,7 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
+                        <div class="contraseña row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">Contraseña</label>
 
                             <div class="col-md-6">
@@ -51,7 +51,7 @@
                             </div>
                         </div> -->
 
-                        <div class="row mb-0">
+                        <div class="botones row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Iniciar sesión') }}
@@ -70,4 +70,25 @@
         </div>
     </div>
 </div>
+<style>
+    .col-md-8{
+        position: absolute;
+        padding-top: 80px;
+        width: 700px;
+    }
+    .card{
+        height: 350px;
+    }
+    .nombre{
+        padding-top: 37px;
+    }
+    .contraseña{
+        padding-top: 5px;
+    }
+    .botones{
+        position: relative;
+        bottom: 10px;
+        width: 500px;
+    }
+</style>
 @endsection
