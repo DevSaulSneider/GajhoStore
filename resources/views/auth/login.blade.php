@@ -51,8 +51,8 @@
                             </div>
                         </div> -->
 
-                        <div class="botones row mb-0">
-                            <div class="col-md-8 offset-md-4">
+                        <div class="botones row mb-3">
+                            <div class="mt-4 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Iniciar sesión') }}
                                 </button>
