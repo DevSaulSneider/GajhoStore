@@ -41,7 +41,7 @@ class EmployeeController extends Controller
             'lastName'=>'required|max:30',
             'phone'=>'required|max:9',
             'email'=>'required',
-
+            'username'=>'required',
             'password'=>'required|min:8',
             'turn_id'=>'required',
         ];
@@ -50,7 +50,7 @@ class EmployeeController extends Controller
             'lastName.required'=> 'El apellido es requerido',
             'phone.required'=> 'El telefono es requerido',
             'email.required'=> 'El correo es requerido',
-
+            'username.rquired'=>'El nombre de usuario es requerido',
             'password.required'=> 'La contraseña es requerida',
             'turn_id.required'=> 'El turno_id es requerido',
         ];

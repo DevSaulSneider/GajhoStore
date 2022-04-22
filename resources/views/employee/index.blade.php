@@ -38,7 +38,7 @@ Employee
                 <td>{{$employee->lastName}}</td>
                 <td>{{$employee->phone}}</td>
                 <td>{{$employee->email}}</td>
-                <td>{{$employee->user_id }}</td>
+                <td>{{$employee->username }}</td>
                 <td>{{$employee->turns->turn}}</td>
 
 
