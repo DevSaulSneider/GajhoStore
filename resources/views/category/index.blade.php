@@ -27,7 +27,7 @@
             <tr>
                 <td>{{$category->id}}</td>
                 <td>{{$category->name}}</td>
-                <td><a href="{{ url('/category/'.$category->id.'/edit') }}" class="btn btn-warning"> Editar</a></td>
+                <td><a href="{{ url('/category/'.$category->id.'/edit') }}" class="btn btn-warning rounded-pill"><i class="fa fa-fw fa-edit"></i> Editar</a></td>
                 <td>
                     <form action="{{ url('/category/'.$category->id)}}" method="post" class="d-inline">
                         @csrf

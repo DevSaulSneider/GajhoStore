@@ -8,6 +8,8 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
+  <link rel="icon" type="image/png" href="{{URL::asset('/image/logo-elite.png')}}"></link>
+
   <title>Elite</title>
 
   <!-- Scripts -->
