@@ -5,7 +5,7 @@ Employee
 @section('content')
 <div class="container">
 
-    <a href="{{ url('employee/create') }}" class="btn btn-success">Registrar nuevo empleado</a>
+    <a href="{{ url('employee/create') }}" class="btn btn-success rounded-pill">Registrar nuevo empleado</a>
     <br>
     <br>
     @if (Session::has('success'))
@@ -42,12 +42,12 @@ Employee
                 <td>{{$employee->turns->turn}}</td>
 
 
-                <td><a href="{{ url('/employee/'.$employee->id.'/edit') }}" class="btn btn-warning"> Editar</a></td>
+                <td><a href="{{ url('/employee/'.$employee->id.'/edit') }}" class="btn btn-warning rounded-pill"><i class="fa fa-fw fa-edit"></i> Editar</a></td>
                 <td>
                     <form action="{{ url('/employee/'.$employee->id)}}" method="post" class="d-inline">
                         @csrf
                         {{ method_field('DELETE') }}
-                        <input type="submit" value="Borrar" onclick="return confirm('¿Desea borrar este registro?')" class="btn btn-danger">
+                        <input type="submit" value="Borrar" onclick="return confirm('¿Desea borrar este registro?')" class="btn btn-danger rounded-pill">
                     </form>
                 </td>
             </tr>

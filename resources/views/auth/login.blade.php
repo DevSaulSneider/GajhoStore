@@ -53,12 +53,12 @@
 
                         <div class="botones row mb-3">
                             <div class="mt-4 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="inicio">
                                     {{ __('Iniciar sesión') }}
                                 </button>
 
                                 @if (Route::has('password.request'))
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                <a class="olvidaste btn btn-link" href="{{ route('password.request') }}">
                                     Olvidaste tu contraseña?
                                 </a>
                                 @endif
@@ -79,6 +79,11 @@
 
     .card {
         height: 350px;
+        box-shadow: 0px 0px 80px rgba(0, 0, 0, 0.50);
+    }
+
+    .card-header{
+        background-color: #9562E9;
     }
 
     .nombre {
@@ -93,6 +98,25 @@
         position: relative;
         bottom: 10px;
         width: 500px;
+    }
+
+    .inicio {
+        background-color: rgb(58, 131, 239);
+        border: none;
+        color: white;
+        font-size: 15px;
+        font-family: 'Spectral', serif;
+        text-decoration: none;
+        padding: 10px 15px;
+        margin: auto;
+        border-radius: 50px;
+    }
+
+    .inicio:hover {
+        background-color: rgb(38, 87, 159);
+        font-size: 17px;
+        box-shadow: 0px 0px 20px rgb(58, 131, 239);
+        transition: font-size 0.10s;
     }
 </style>
 @endsection

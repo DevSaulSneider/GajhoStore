@@ -12,12 +12,12 @@ Product
                 <div class="card-header">
                     <div style="display: flex; justify-content: space-between; align-items: center;">
 
-                        <span id="card_title">
+                        <b><span id="card_title" style="color: #ffff;">
                             {{ __('Productos') }}
-                        </span>
+                        </span></b>
 
                         <div class="float-right">
-                            <a href="{{ route('products.create') }}" class="btn btn-primary btn-sm float-right" data-placement="left">
+                            <a id="btncrear" href="{{ route('products.create') }}" class="btn btn-light rounded-pill btn-sm float-right" data-placement="left">
                                 {{ __('Crear Producto') }}
                             </a>
                         </div>
@@ -72,11 +72,11 @@ Product
 
                                     <td>
                                         <form action="{{ route('products.destroy',$product->id) }}" method="POST">
-                                            <a class="btn btn-sm btn-primary " href="{{ route('products.show',$product->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
-                                            <a class="btn btn-sm btn-success" href="{{ route('products.edit',$product->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                            <a class="btn btn-sm btn-primary rounded-pill " href="{{ route('products.show',$product->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
+                                            <a class="btn btn-sm btn-success rounded-pill" href="{{ route('products.edit',$product->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
+                                            <button type="submit" class="btn btn-danger btn-sm rounded-pill"><i class="fa fa-fw fa-trash"></i> Borrar</button>
                                         </form>
                                     </td>
                                 </tr>
@@ -90,4 +90,14 @@ Product
         </div>
     </div>
 </div>
+<style>
+    .card-header{
+        background-color: #7F3EE9;
+    }
+
+    #btncrear:hover {
+        background-color: #DDDDDD;
+        transition: background-color 2s;
+    }
+</style>
 @endsection
