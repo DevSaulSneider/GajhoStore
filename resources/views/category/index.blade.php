@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
 
-    <a href="{{ url('category/create') }}" class="btn btn-success">Registrar nueva categoria</a>
+    <a href="{{ url('category/create') }}" class="btn btn-success rounded-pill">Registrar nueva categoria</a>
     <br>
     <br>
     @if (Session::has('message'))
@@ -32,7 +32,7 @@
                     <form action="{{ url('/category/'.$category->id)}}" method="post" class="d-inline">
                         @csrf
                         {{ method_field('DELETE') }}
-                        <input type="submit" value="Borrar" onclick="return confirm('¿Desea borrar este registro?')" class="btn btn-danger">
+                        <input type="submit" value="Borrar" onclick="return confirm('¿Desea borrar este registro?')" class="btn btn-danger rounded-pill">
                     </form>
                 </td>
             </tr>

@@ -95,10 +95,6 @@ Product
         background-color: #7F3EE9;
     }
 
-    #contproduct{
-        background-color: #9562E9;
-    }
-
     #btncrear:hover {
         background-color: #DDDDDD;
         transition: background-color 2s;

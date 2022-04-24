@@ -86,10 +86,10 @@
     <div class="categories">
       <ul class="container nav">
         <li class="nav-item">
-          <a class="nav-link category" href="{{ route('category.index') }}">{{ __('Productos') }}</a>
+          <a class="nav-link category" href="{{ route('products.index') }}">{{ __('Productos') }}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link category" href="{{ route('products.index') }}">{{ __('Categorias') }}</a>
+          <a class="nav-link category" href="{{ route('category.index') }}">{{ __('Categorias') }}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link category" href="{{ route('employee.index') }}">{{ __('Empleados') }}</a>
