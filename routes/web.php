@@ -25,6 +25,9 @@ Route::get('/', function () {
     return view('welcome2');
 });
 
+Route::get('/index', function () {
+    return view('index');
+})->name('index');
 
 Auth::routes(['reset' => false]);
 
