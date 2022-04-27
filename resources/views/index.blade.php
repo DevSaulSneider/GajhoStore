@@ -112,7 +112,7 @@
 
     </div>
 
-    <div class="boxcarac border border-dark border-3">
+    <div class="boxcarac border border-dark border-3 bg-white my-4">
         <!-- Caracteristicas del servicio  Romano -->
         <div id="contenido">
             <div>
@@ -152,7 +152,7 @@
                 </div>
                 @endforeach
             </div>
-            <button class="btn btn-primary"> Ver todo </button>
+            <button class="btn btn-primary my-4"> Ver todo </button>
         </div>
     </div>
 
@@ -167,7 +167,6 @@
         object-fit: cover;
     }
     .boxcarac {
-        position: absolute;
         margin-top: 20px;
         /* borrar luego*/
         height: 150px;
@@ -175,26 +174,22 @@
     }
 
     #contenido {
-        position: relative;
         display: flex;
         justify-content: space-around;
         margin-top: 40px;
     }
 
     .imag {
-        position: relative;
         display: flex;
         width: 80px;
     }
 
     .imagcaja {
-        position: relative;
         display: flex;
         width: 70px;
     }
 
     .imagtiempo {
-        position: relative;
         display: flex;
         width: 70px;
     }
