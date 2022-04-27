@@ -284,4 +284,4 @@
 }
 
 </style>
-@endsection
+
