@@ -25,9 +25,7 @@ Route::get('/', function () {
     return view('welcome2');
 });
 
-Route::get('/index', function () {
-    return view('index');
-})->name('index');
+Route::get('/index', [ProductController::class, 'getMostSelled'])->name('index');
 
 Auth::routes(['reset' => false]);
 

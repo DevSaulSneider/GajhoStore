@@ -165,6 +165,11 @@ class ProductController extends Controller
             ->with('success', 'Producto actualizado correctamente');
     }
 
+    public function getMostSelled () {
+        $data['mostSelled'] = Product::paginate(5);
+        return view('index', $data);
+    }
+
     /**
      * @param int $id
      * @return \Illuminate\Http\RedirectResponse

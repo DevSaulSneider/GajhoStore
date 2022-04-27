@@ -37,13 +37,6 @@
           </a>
         </div>
 
-        <div class="searchbar parent">
-          <form class="d-flex">
-            <input class="form-control rounded-pill" type="search" placeholder="Buscar" aria-label="Search">
-            <button class="child btn btn-outline-success button-rounded-right button-color" type="submit">Buscar</button>
-          </form>
-        </div>
-
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -106,64 +99,6 @@
     <main class="py-4">
       @yield('content')
     </main>
-    <div class="bg-white p-4">
-      <div class="container">
-        <div class="d-flex justify-content-between my-4">
-          <div>
-            <h3>Ubicacion de la tienda</h3>
-            <p class="mb-4">Av. Tacna #542 Cercado de Lima, Perú</p>
-            <div class="d-flex justify-content-evenly">
-              <a href="#" class="text-dark"><i class="fa-brands fa-facebook-f fa-xl"></i></a>
-              <a href="#" class="text-dark"><i class="fa-brands fa-instagram fa-xl"></i></a>
-              <a href="#" class="text-dark"><i class="fa-brands fa-twitter fa-xl"></i></a>
-              <a href="#" class="text-dark"><i class="fa-brands fa-youtube fa-xl"></i></a>
-            </div>
-          </div>
-          <div>
-            <h3>Tienda</h3>
-            <ul>
-              <li><a href="#">Comprar todo</a></li>
-              <li><a href="#">Computadoras</a></li>
-              <li><a href="#">Tablets</a></li>
-              <li><a href="#">Drones y cámaras</a></li>
-              <li><a href="#">Audio</a></li>
-              <li><a href="#">Móvil</a></li>
-              <li><a href="#">Televisores</a></li>
-              <li><a href="#">Tecnología portátil</a></li>
-              <li><a href="#">Oferta</a></li>
-            </ul>
-          </div>
-          <div>
-            <h3>Atencion al cliente</h3>
-            <ul>
-              <li><a href="#">Contáctenos</a></li>
-              <li><a href="#">Centro de ayuda</a></li>
-              <li><a href="#">Sobre nosotros</a></li>
-            </ul>
-          </div>
-          <div>
-            <h3>Politica</h3>
-            <ul>
-              <li><a href="#">Envio y devoluciones</a></li>
-              <li><a href="#">Términos y condiciones</a></li>
-              <li><a href="#">Métodos de pago</a></li>
-              <li><a href="#">Preguntas más frecuentes</a></li>
-            </ul>
-          </div>
-        </div>
-        <div>
-          <h5 class="text-center">Aceptamos los Siguientes métodos de pago</h5>
-          <div class="d-flex justify-content-center my-4">
-            <img class="mx-3" src="{{URL::asset('/image/payment_methods/yape-logo.png')}}" alt="">
-            <img class="mx-3" src="{{URL::asset('/image/payment_methods/plin-logo.png')}}" alt="">
-            <img class="mx-3" src="{{URL::asset('/image/payment_methods/agora-logo.png')}}" alt="">
-            <img class="mx-3" src="{{URL::asset('/image/payment_methods/visa-logo.png')}}" alt="">
-            <img class="mx-3" src="{{URL::asset('/image/payment_methods/mastercard-logo.png')}}" alt="">
-          </div>
-          <h6 class="text-center my-4">© Derechos reservados por Elite SAC.</h6>
-        </div>
-      </div>
-    </div>
   </div>
 </body>
 
