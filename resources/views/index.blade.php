@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container">
-
+    
     <div>
         <!-- Div imagenes  Piero -->
         <section class="imagen-contacto" style="background-position: center center;

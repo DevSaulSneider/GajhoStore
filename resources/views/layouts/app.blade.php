@@ -28,8 +28,10 @@
     <nav class="navbar navbar-expand-md navbar-light bg-light parent">
       <div class="container">
         <div class="navbar-nav">
-          <img src="{{URL::asset('/image/logo-elite.png')}}" alt="logo" class="me-2">
-          <a class="navbar-brand fs-1" href="{{ url('/') }}">
+          <a href="{{ url('/index') }}">
+            <img src="{{URL::asset('/image/logo-elite.png')}}" alt="logo" class="me-2">
+          </a>
+          <a class="navbar-brand fs-1" href="{{ url('/index') }}">
             Elite
           </a>
         </div>

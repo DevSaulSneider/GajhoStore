@@ -32,3 +32,13 @@ Subir cambios: git push origin NAMERAMA
 Bajar cambios: git pull origin NAMERAMA
 
 Linkear imagenes del storage: php artisan storage:link
+
+
+
+Pasos despues de bajar cambios:
+
+1) npm install
+2) compose install
+3) Refrescar bd (php artisan migrate:fresh --seed)
+
+4) SOLO SI RECIEN SE CLONA EL PROYECTO: php artisan storage:link
