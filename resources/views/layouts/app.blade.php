@@ -108,7 +108,7 @@
     </main>
     <div class="bg-white p-4">
       <div class="container">
-        <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-between my-4">
           <div>
             <h3>Ubicacion de la tienda</h3>
             <p class="mb-4">Av. Tacna #542 Cercado de Lima, Perú</p>
@@ -152,7 +152,15 @@
           </div>
         </div>
         <div>
-          <h5 class="text-center my-4">© Derechos reservados por Elite SAC.</h5>
+          <h5 class="text-center">Aceptamos los Siguientes métodos de pago</h5>
+          <div class="d-flex justify-content-center my-4">
+            <img class="mx-3" src="{{URL::asset('/image/payment_methods/yape-logo.png')}}" alt="">
+            <img class="mx-3" src="{{URL::asset('/image/payment_methods/plin-logo.png')}}" alt="">
+            <img class="mx-3" src="{{URL::asset('/image/payment_methods/agora-logo.png')}}" alt="">
+            <img class="mx-3" src="{{URL::asset('/image/payment_methods/visa-logo.png')}}" alt="">
+            <img class="mx-3" src="{{URL::asset('/image/payment_methods/mastercard-logo.png')}}" alt="">
+          </div>
+          <h6 class="text-center my-4">© Derechos reservados por Elite SAC.</h6>
         </div>
       </div>
     </div>
