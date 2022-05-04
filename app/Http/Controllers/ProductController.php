@@ -20,7 +20,11 @@ class ProductController extends Controller
     public function index()
     {
         $products['products'] = Product::paginate(5);
+
         return view('product.index', $products)->with('i');   
+
+
+
     }
 
     /**
