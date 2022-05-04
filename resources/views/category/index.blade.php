@@ -45,7 +45,7 @@
                     <td>{{$category->name}}</td>
                     <td>
                         <form action="{{ url('/category/'.$category->id)}}" method="post" class="d-inline">
-                            <a href="{{ url('/category/'.$category->id.'/edit') }}" class="btn btn-sm btn-primary rounded-pill"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                            <a href="{{ url('/category/'.$category->id.'/edit') }}" class="btn btn-sm btn-success rounded-pill"><i class="fa fa-fw fa-edit"></i> Editar</a>
                             @csrf
                             {{ method_field('DELETE') }}
                             <button type="submit" class="btn btn-danger btn-sm rounded-pill"><i class="fa fa-fw fa-trash"></i> Borrar</button>
@@ -60,9 +60,10 @@
             </div>
             
         </div>
-        {!!$categories->links()!!}
+      
     </div>
-    
+    <br>
+    {!!$categories->links()!!}
 </div>
 
     

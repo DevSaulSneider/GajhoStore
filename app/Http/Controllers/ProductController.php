@@ -65,8 +65,9 @@ class ProductController extends Controller
             'quactity.required'=>'La cantidad es obligatoria',
             'description.required'=>'La descripcion es obligatoria',
             'name.required'=>'El nombre del producto es obligatorio',
-
-            'category_id.required'=>'La categoria es obligatoria'
+            'category_id.required'=>'La categoria es obligatoria',
+            'image.required'=>'La imagen es requerida',
+            'image.mimes'=>'Solo formato jpg,png y jpeg'
         ];
 
         $this->validate($request, $campos, $mensaje);

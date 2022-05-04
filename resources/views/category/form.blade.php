@@ -13,5 +13,5 @@
     <input type="text" name="name" id="name" value="{{ isset($categoryData->name)?$categoryData->name:old('name') }}" class="form-control">
 </div>
 <br>
-<input class="btn btn-success" type="submit" value="{{ $mode }} datos">
+<input class="btn btn-primary" type="submit" value="{{ $mode }} datos">
 <a class="btn btn-primary" href="{{ url('category') }}">Regresar</a>

@@ -43,12 +43,14 @@
         </div>
         <div class="form-group">
         {{ Form::label('Imagen') }}
+        
         @if(isset($product->image))
-     
-    <img class="img-thumbnail img-fluid" src="{{ asset('storage').'/'.$product->image}}" alt="" width="100" height="100">
-    @endif
-    <input type="file" class="form-control" name="image" value="" id="image">
-            {!! $errors->first('image', '<div class="invalid-feedback">:message</div>') !!}
+        <img class="img-thumbnail img-fluid" src="{{ asset('storage').'/'.$product->image}}" alt="" width="100" height="100">
+        @endif
+        {{ Form::file('image', $product->image = array('class' => 'form-control'.($errors->has('image') ? ' is-invalid' : ''))) }}
+        
+ 
+        {!! $errors->first('image', '<div class="invalid-feedback">:message</div>') !!}  
         </div>
 
     </div><br>

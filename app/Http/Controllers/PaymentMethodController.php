@@ -45,10 +45,21 @@ class PaymentMethodController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(PaymentMethod::$rules);
 
+
+        $validated = [
+            'name'=>'required|alpha|max:30|min:3',
+        ];
+        $message = [
+            'name.required'=>'El nombre es obligatorio',
+            'name.alpha'=>'El nombre solo puede contener letras',
+            'name.max'=>'Limite de caracteres alcanzado',
+            'name.min'=>'El campo debe tener al menos 10 caracteres'
+
+        ];
+
+        $this->validate($request, $validated, $message);
         $paymentMethod = PaymentMethod::create($request->all());
-
         return redirect()->route('payment-methods.index')
             ->with('success', 'Metodoo creado correctamente');
     }
