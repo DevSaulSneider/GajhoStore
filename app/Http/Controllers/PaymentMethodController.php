@@ -19,10 +19,9 @@ class PaymentMethodController extends Controller
      */
     public function index()
     {
-        $paymentMethods = PaymentMethod::paginate();
+        $paymentMethods['paymentMethods'] = PaymentMethod::paginate(5);
+        return view('payment-method.index', $paymentMethods)->with('i');   
 
-        return view('payment-method.index', compact('paymentMethods'))
-            ->with('i', (request()->input('page', 1) - 1) * $paymentMethods->perPage());
     }
 
     /**

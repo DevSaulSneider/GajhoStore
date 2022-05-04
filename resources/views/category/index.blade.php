@@ -56,13 +56,17 @@
             </tbody>
         </table>
     </div>
+    
             </div>
+            
         </div>
+        {!!$categories->links()!!}
     </div>
+    
 </div>
 
     
-    {!!$categories->links()!!}
+    
 
 </div>
 
