@@ -6,103 +6,39 @@
 
     <div>
         <!-- Div imagenes  Piero -->
-        <section class="imagen-contacto" style="background-position: center center;
-    background-size: cover;
-    height: 33rem;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    background-image: url('image/index_ofertas/img_contacto.jpg');
-    font-family: 'Lato', sans-serif;
-    margin-bottom: .5rem;">
-            <div class="contenedor contenido-centrado" style="width: 95%;
-    max-width: 120rem;
-    margin: 0 auto;">
-                <h2 style="font-family: 'Lato', sans-serif; font-size: 2rem;font-weight: black;color: #fff;">Lorem ipsum dolor
+        <section class="imagen-contacto">
+            <div class="contenedor">
+                <h2>Lorem ipsum dolor
                     sit amet</h2>
-                <p style="font-family: 'Lato', sans-serif; font-size: 1rem;color: #fff;">Lorem ipsum dolor sit amet consectetur
+                <p>Lorem ipsum dolor sit amet consectetur
                     adipisicing elit. Laboriosam magnam quis suscipit minima unde aliquid in! Dolores incidunt odio veniam
                     similique ex. Veritatis optio qui nam hic! Nobis, natus expedita.</p>
-                <a href="#" class="boton boton-amarillo" style="color: #fff;
-    font-weight: bold;
-    text-decoration: none;
-    font-size: 1rem;
-    padding: 1rem 3rem;
-    margin-top: 2.5rem;
-    text-align: center;
-    border: none;
-    display: block;
-    flex: 0 0 100%;
-    background-color:rgb(116, 30, 254); ;
-    width: auto;   
-    display: inline-block;">Comprar Ahora</a>
+                <a href="#" class="boton-amarillo">Comprar Ahora</a>
             </div>
         </section>
 
         <div class="row">
             <div class="col">
-                <section class="imagen-contacto" style="background-position: center center;
-    background-size: cover;
-    height: 33rem;
-    display: flex;
-    align-items: center;
-    text-align: left;
-    background-image: url('image/index_ofertas/img_contacto2.jpg');
-    font-family: 'Lato', sans-serif;">
-                    <div class="contenedor contenido-centrado" style="width: 80%;
-    max-width: 120rem;
-    margin: 0 auto;">
-                        <h2 style="font-family: 'Lato', sans-serif; font-size: 2rem;font-weight: black;color: #fff;">Lorem ipsum dolor
+                <section class="imagen-contacto img2 izquierda">
+                    <div class="contenedor contenido-centrado1">
+                        <h2>Lorem ipsum dolor
                             sit amet</h2>
-                        <p style="font-family: 'Lato', sans-serif; font-size: 1rem;color: #fff;">Lorem ipsum dolor sit amet consectetur
+                        <p>Lorem ipsum dolor sit amet consectetur
                             adipisicing elit. Laboriosam magnam quis suscipit minima unde aliquid in! Dolores incidunt odio veniam
                             similique ex. Veritatis optio qui nam hic! Nobis, natus expedita.</p>
-                        <a href="#" class="boton boton-amarillo" style="color: #fff;
-    font-weight: bold;
-    text-decoration: none;
-    font-size: 1rem;
-    padding: 1rem 3rem;
-    margin-top: 2.5rem;
-    text-align: center;
-    border: none;
-    display: block;
-    flex: 0 0 100%;
-    background-color:rgb(116, 30, 254); ;
-    width: auto;   
-    display: inline-block;">Comprar Ahora</a>
+                        <a href="#" class="boton-amarillo" >Comprar Ahora</a>
                     </div>
                 </section>
             </div>
             <div class="col">
-                <section class="imagen-contacto" style="background-position: center center;
-    background-size: cover;
-    height: 33rem;
-    display: flex;
-    align-items: center;
-    text-align: right;
-    background-image: url('image/index_ofertas/img_contacto3.jpg');
-    font-family: 'Lato', sans-serif;">
-                    <div class="contenedor contenido-centrado" style="width: 80%;
-    max-width: 120rem;
-    margin: 0 auto;">
-                        <h2 style="font-family: 'Lato', sans-serif; font-size: 2rem;font-weight: black;color: #fff;">Lorem ipsum dolor
+                <section class="imagen-contacto img3 derecha">
+                    <div class="contenedor contenido-centrado1">
+                        <h2>Lorem ipsum dolor
                             sit amet</h2>
-                        <p style="font-family: 'Lato', sans-serif; font-size: 1rem;color: #fff;">Lorem ipsum dolor sit amet consectetur
+                        <p>Lorem ipsum dolor sit amet consectetur
                             adipisicing elit. Laboriosam magnam quis suscipit minima unde aliquid in! Dolores incidunt odio veniam
                             similique ex. Veritatis optio qui nam hic! Nobis, natus expedita.</p>
-                        <a href="#" class="boton boton-amarillo" style="color: #fff;
-    font-weight: bold;
-    text-decoration: none;
-    font-size: 1rem;
-    padding: 1rem 3rem;
-    margin-top: 2.5rem;
-    text-align: center;
-    border: none;
-    display: block;
-    flex: 0 0 100%;
-    background-color:rgb(116, 30, 254); ;
-    width: auto;   
-    display: inline-block;">Comprar Ahora</a>
+                        <a href="#" class="boton-amarillo">Comprar Ahora</a>
                     </div>
                 </section>
             </div>

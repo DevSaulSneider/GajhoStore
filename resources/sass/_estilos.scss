@@ -1,0 +1,63 @@
+.imagen-contacto {
+    background-image: url('/image/index_ofertas/img_contacto.jpg');
+    background-position: center center;
+    background-size: cover;
+    height: 33rem;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+    margin-bottom: .5rem;
+
+    .contenedor {
+        width: 95%;
+        max-width: 120rem;
+        margin: 0 auto;
+
+        p {
+            font-size: 1rem;
+            color: #fff;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: $black;
+            color: #fff;
+        }
+
+        .boton-amarillo {
+            color: $white;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 1rem 3rem;
+            margin-top: 2.5rem;
+            text-align: center;
+            border: none;
+            display: block;
+            flex: 0 0 100%;
+            background-color: $color-elite;
+            width: auto;
+            display: inline-block;
+        }
+    }
+    .contenido-centrado1{
+        width: 80%;
+    }
+}
+
+.derecha {
+    text-align: right;
+}
+
+.izquierda {
+    text-align: left;
+}
+
+.img2 {
+    background-image: url('/image/index_ofertas/img_contacto2.jpg');
+}
+
+.img3 {
+    background-image: url('/image/index_ofertas/img_contacto3.jpg');
+}
