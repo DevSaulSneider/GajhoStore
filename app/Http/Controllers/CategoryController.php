@@ -39,19 +39,22 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
-        $rules=[
-            'name'=>'required|max:50',
+        $rules = [
+            'name' => 'required|alpha|max:50|min:3',
         ];
 
         $messages = [
-            'name.required'=> 'El nombre es requerido',
+            'name.required' => 'El nombre es requerido',
+            'name.alpha' => 'El nombre solo debe contener letras',
+            'name.max' => 'El nombre debe tener 50 caracteres como máximo',
+            'name.min' => 'El nombre debe tener 3 caracteres como mínimo',
         ];
 
-        $this->validate($request,$rules,$messages);
+        $this->validate($request, $rules, $messages);
 
         $categoryData = request()->except('_token');
         Category::insert($categoryData);
-        return redirect('category')->with('message','Categoria creada con exito');
+        return redirect('category')->with('message', 'Categoria creada con exito');
 
 
         // $category = new Category();
@@ -87,9 +90,22 @@ class CategoryController extends Controller
 
     public function update(Request $request, $id)
     {
+        $rules = [
+            'name' => 'required|alpha|max:50|min:3',
+        ];
+
+        $messages = [
+            'name.required' => 'El nombre es requerido',
+            'name.alpha' => 'El nombre solo debe contener letras',
+            'name.max' => 'El nombre debe tener 50 caracteres como máximo',
+            'name.min' => 'El nombre debe tener 3 caracteres como mínimo',
+        ];
+
+        $this->validate($request, $rules, $messages);
+
         $categoryData = request()->except(['_token', '_method']);
         Category::where('id', '=', $id)->update($categoryData);
-        return redirect('category')->with('message','Categoria actualizada con exito');
+        return redirect('category')->with('message', 'Categoria actualizada con exito');
     }
 
     /**

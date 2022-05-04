@@ -15,9 +15,9 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employees = Employee::paginate();
-        return view('employee.index', compact('employees'))
-        ->with('i', (request()->input('page', 1) - 1) * $employees->perPage());
+        $employees['employees'] = Employee::paginate(5);
+
+        return view('employee.index', $employees)->with('i');  
     }
 
     public function create()
@@ -37,22 +37,33 @@ class EmployeeController extends Controller
     public function store(Request $request)
     {
         $rules=[
-            'name'=>'required|max:20',
-            'lastName'=>'required|max:30',
-            'phone'=>'required|max:9',
-            'email'=>'required',
-            'username'=>'required',
+            'name'=>'required|max:30|min:2|alpha',
+            'lastName'=>'required|max:30|min:2|alpha',
+            'phone'=>'required|digits:9',
+            'email'=>'required|email',
+            'username'=>'required|alpha_num',
             'password'=>'required|min:8',
-            'turn_id'=>'required',
+            'turn_id'=>'required|numeric',
         ];
         $messages = [
-            'name.required'=> 'El nombre es requerido',   
+            'name.required'=> 'El nombre es requerido',
+            'name.max'=> 'El nombre puede tener 30 caracteres como máximo',
+            'name.min'=> 'El nombre puede tener 2 caracteres como mínimo',
+            'name.alpha'=> 'El nombre solo puede contener letras',   
             'lastName.required'=> 'El apellido es requerido',
+            'lastName.max'=> 'El apellido puede tener 30 caracteres como máximo',
+            'lastName.min'=> 'El apellido puede tener 2 caracteres como mínimo',
+            'lastName.alpha'=> 'El apellido solo puede contener letras',   
             'phone.required'=> 'El telefono es requerido',
+            'phone.digits'=> 'El telefono debe tener 9 digitos',
             'email.required'=> 'El correo es requerido',
-            'username.rquired'=>'El nombre de usuario es requerido',
+            'email.email'=> 'El correo debe ser valido',
+            'username.required'=>'El nombre de usuario es requerido',
+            'username.alpha_num'=>'El nombre de usuario solo debe contener caracteres alfanumericos',
             'password.required'=> 'La contraseña es requerida',
-            'turn_id.required'=> 'El turno_id es requerido',
+            'password.min'=> 'La contraseña debe tener 8 caracteres como mínimo ',
+            'turn_id.required'=> 'El turno es requerido',
+            'turn_id.numeric'=> 'El turnoid debe ser numerico',
         ];
 
         $this->validate($request,$rules,$messages);
@@ -61,15 +72,6 @@ class EmployeeController extends Controller
         Employee::insert($employeeData);
         return redirect('employee')->with('message', 'Empleado creado con exito');
 
-        //$employee = new Employee();
-        //$employee->name = $request->name;
-        //$employee->lastName = $request->lastName;
-        //$employee->phone = $request->phone;
-        //$employee->email = $request->email;
-        //$employee->userName = $request->userName;
-        //$employee->password = $request->password;
-        //$employee->turn_id = $request->turn_id;
-        //$employee->save();
     }
 
     /**
@@ -99,26 +101,37 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $campos = [
-            'name'=>'required|string|max:100',
-            'lastName'=>'required|string|max:100',
-            'phone'=>'required|string|max:100',
-            'email'=>'required|string|max:100',
-            'password'=>'required|string|max:100',
-            'turn_id'=>'required|int|max:1000000000|',
-            
+        $rules=[
+            'name'=>'required|max:30|min:2|alpha',
+            'lastName'=>'required|max:30|min:2|alpha',
+            'phone'=>'required|digits:9',
+            'email'=>'required|email',
+            'username'=>'required|alpha_num',
+            'password'=>'required|min:8',
+            'turn_id'=>'required|numeric',
         ];
-        $mensaje = [
-            'name'=>'El nombre es obligatorio',   
-            'lastName.required' => 'El apellido es requerido',
-            'phone.required'=>'El telefono es obligatorio',
-            'email.required'=>'El email es obligatorio',
-            'password.required'=>'La contraseña es obligatoria',
-            'turn_id.required'=>'La turno es obligatoria',
-
+        $messages = [
+            'name.required'=> 'El nombre es requerido',
+            'name.max'=> 'El nombre puede tener 30 caracteres como máximo',
+            'name.min'=> 'El nombre puede tener 2 caracteres como mínimo',
+            'name.alpha'=> 'El nombre solo puede contener letras',   
+            'lastName.required'=> 'El apellido es requerido',
+            'lastName.max'=> 'El apellido puede tener 30 caracteres como máximo',
+            'lastName.min'=> 'El apellido puede tener 2 caracteres como mínimo',
+            'lastName.alpha'=> 'El apellido solo puede contener letras',   
+            'phone.required'=> 'El telefono es requerido',
+            'phone.digits'=> 'El telefono debe tener 9 digitos',
+            'email.required'=> 'El correo es requerido',
+            'email.email'=> 'El correo debe ser valido',
+            'username.required'=>'El nombre de usuario es requerido',
+            'username.alpha_num'=>'El nombre de usuario solo debe contener caracteres alfanumericos',
+            'password.required'=> 'La contraseña es requerida',
+            'password.min'=> 'La contraseña debe tener 8 caracteres como mínimo ',
+            'turn_id.required'=> 'El turno es requerido',
+            'turn_id.numeric'=> 'El turnoid debe ser numerico',
         ];
 
-        $this->validate($request, $campos, $mensaje);
+        $this->validate($request, $rules, $messages);
         $employeeData =  request()->except(['_token', '_method']);
 
         Employee::where('id', '=',$id)->update($employeeData);
