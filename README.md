@@ -42,3 +42,5 @@ Pasos despues de bajar cambios:
 3) Refrescar bd (php artisan migrate:fresh --seed)
 
 4) SOLO SI RECIEN SE CLONA EL PROYECTO: php artisan storage:link
+
+Para que corra el SASS: npm run watch-poll

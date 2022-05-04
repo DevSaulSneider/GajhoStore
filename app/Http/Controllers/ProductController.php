@@ -21,7 +21,10 @@ class ProductController extends Controller
     {
         $products['products'] = Product::paginate(5);
 
-        return view('product.index', $products)->with('i');  
+        return view('product.index', $products)->with('i');   
+
+
+
     }
 
     /**
@@ -66,8 +69,9 @@ class ProductController extends Controller
             'quactity.required'=>'La cantidad es obligatoria',
             'description.required'=>'La descripcion es obligatoria',
             'name.required'=>'El nombre del producto es obligatorio',
-
-            'category_id.required'=>'La categoria es obligatoria'
+            'category_id.required'=>'La categoria es obligatoria',
+            'image.required'=>'La imagen es requerida',
+            'image.mimes'=>'Solo formato jpg,png y jpeg'
         ];
 
         $this->validate($request, $campos, $mensaje);
