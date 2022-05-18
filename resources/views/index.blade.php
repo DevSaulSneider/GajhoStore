@@ -167,7 +167,7 @@
 
 <style>
     .cover {
-        object-fit: cover;
+        object-fit: cover ;
     }
 
     .boxcarac {
