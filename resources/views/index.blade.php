@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container">
+<div class="container-fluid">
 
     <div>
         <!-- Div imagenes  Piero -->
@@ -24,7 +24,7 @@
                         </h1>
                         <h1> 30% de</h1>
                         <h1>descuento</h1>
-                        <p>Marcas de teléfonos inteligentes 
+                        <p>Marcas de teléfonos inteligentes
                         </p>
                         <p>seleccionadas</p>
                         <a href="#" class="boton-amarillo">Comprar Ahora</a>
@@ -49,6 +49,9 @@
         <!-- Div imagenes  Piero -->
 
     </div>
+</div>
+<div class="container">
+
 
     <div class="boxcarac border border-dark border-3 bg-white my-4">
         <!-- Caracteristicas del servicio  Romano -->
@@ -159,6 +162,7 @@
         </div>
     </div>
 </div>
+
 @endsection
 
 <style>
