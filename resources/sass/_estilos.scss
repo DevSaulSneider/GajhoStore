@@ -1,5 +1,5 @@
 .imagen-contacto {
-    background-image: url('/image/index_ofertas/img_contacto.jpg');
+    background-image: url('/image/index_ofertas/img_contacto1.webp');
     background-position: center center;
     background-size: cover;
     height: 33rem;
@@ -17,12 +17,16 @@
         p {
             font-size: 1rem;
             color: #fff;
+            margin: 0;
         }
 
-        h2 {
-            font-size: 2rem;
+        h1 {
+            font-size: 3rem;
             font-weight: $black;
             color: #fff;
+        }
+        .h1black{
+            color: #1C1B1B;
         }
 
         .boton-amarillo {
@@ -47,7 +51,7 @@
 }
 
 .derecha {
-    text-align: right;
+    text-align: left;
 }
 
 .izquierda {
@@ -55,9 +59,9 @@
 }
 
 .img2 {
-    background-image: url('/image/index_ofertas/img_contacto2.jpg');
+    background-image: url('/image/index_ofertas/img_contacto2.webp');
 }
 
 .img3 {
-    background-image: url('/image/index_ofertas/img_contacto3.jpg');
+    background-image: url('/image/index_ofertas/img_contacto3.webp');
 }
