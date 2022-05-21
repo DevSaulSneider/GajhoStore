@@ -166,6 +166,16 @@
 @endsection
 
 <style>
+    body::-webkit-scrollbar{
+        width: 10px;
+    }
+
+    body::-webkit-scrollbar-thumb{
+        border-radius: 50px;
+        border-style: solid;
+        background: #741efe;
+    }
+
     .cover {
         object-fit: cover;
     }
