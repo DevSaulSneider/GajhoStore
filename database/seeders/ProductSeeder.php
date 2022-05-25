@@ -32,7 +32,7 @@ class ProductSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ],
             [
-                'category_id' => '2',
+                'category_id' => '4',
                 'user_id' => '3',
                 'name' => 'Celular',
                 'description' => 'Samsung Galaxy S20',

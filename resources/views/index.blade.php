@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container-fluid">
+<div class="container">
 
     <div>
         <!-- Div imagenes  Piero -->
