@@ -13,8 +13,8 @@ Product
                     <div style="display: flex; justify-content: space-between; align-items: center; ">
 
                         <b><span id="card_title" style="color: #ffff;">
-                            {{ __('Productos') }}
-                        </span></b>
+                                {{ __('Productos') }}
+                            </span></b>
 
                         <div class="float-right">
                             <a id="btncrear" href="{{ route('products.create') }}" class="btn btn-light rounded-pill btn-sm float-right" data-placement="left">
@@ -33,6 +33,17 @@ Product
                     </button>
                 </div>
                 @endif
+
+                <form method="GET" action="{{ route('products.searchByID') }}">
+                @csrf
+                    <div class="form-group mb-2">
+                        <label for="filter" class="col-sm-2 col-form-label">Buscar por Id</label>
+                        <div class="d-flex w-25">
+                            <input type="text" class="form-control" id="filter" name="filter" placeholder="Id del producto">
+                            <button type="submit" class="btn btn-success">Buscar</button>
+                        </div>
+                    </div>
+                </form>
 
                 <div class="card-body">
                     <div class="table-responsive">
@@ -91,7 +102,7 @@ Product
     </div>
 </div>
 <style>
-    .card-header{
+    .card-header {
         background-color: #7F3EE9;
     }
 

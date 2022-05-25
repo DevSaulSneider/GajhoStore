@@ -21563,7 +21563,7 @@ readers do not read off random characters that represent icons */
 }
 
 .imagen-contacto {
-  background-image: url("/image/index_ofertas/img_contacto.jpg");
+  background-image: url("/image/index_ofertas/img_contacto1.webp");
   background-position: center center;
   background-size: cover;
   height: 33rem;
@@ -21581,11 +21581,15 @@ readers do not read off random characters that represent icons */
 .imagen-contacto .contenedor p {
   font-size: 1rem;
   color: #fff;
+  margin: 0;
 }
-.imagen-contacto .contenedor h2, .imagen-contacto .contenedor .h2 {
-  font-size: 2rem;
+.imagen-contacto .contenedor h1, .imagen-contacto .contenedor .h1 {
+  font-size: 3rem;
   font-weight: black;
   color: #fff;
+}
+.imagen-contacto .contenedor .h1black {
+  color: #1C1B1B;
 }
 .imagen-contacto .contenedor .boton-amarillo {
   color: white;
@@ -21607,7 +21611,7 @@ readers do not read off random characters that represent icons */
 }
 
 .derecha {
-  text-align: right;
+  text-align: left;
 }
 
 .izquierda {
@@ -21615,9 +21619,9 @@ readers do not read off random characters that represent icons */
 }
 
 .img2 {
-  background-image: url("/image/index_ofertas/img_contacto2.jpg");
+  background-image: url("/image/index_ofertas/img_contacto2.webp");
 }
 
 .img3 {
-  background-image: url("/image/index_ofertas/img_contacto3.jpg");
+  background-image: url("/image/index_ofertas/img_contacto3.webp");
 }

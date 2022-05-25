@@ -8,11 +8,9 @@
         <!-- Div imagenes  Piero -->
         <section class="imagen-contacto">
             <div class="contenedor">
-                <h2>Lorem ipsum dolor
-                    sit amet</h2>
-                <p>Lorem ipsum dolor sit amet consectetur
-                    adipisicing elit. Laboriosam magnam quis suscipit minima unde aliquid in! Dolores incidunt odio veniam
-                    similique ex. Veritatis optio qui nam hic! Nobis, natus expedita.</p>
+                <h1 class="h1black">Precios increíbles en todos tus artículos favoritos</h1>
+                <p class="h1black">Obtenga más por menos en marcas seleccionadas
+                </p>
                 <a href="#" class="boton-amarillo">Comprar Ahora</a>
             </div>
         </section>
@@ -21,23 +19,27 @@
             <div class="col">
                 <section class="imagen-contacto img2 izquierda">
                     <div class="contenedor contenido-centrado1">
-                        <h2>Lorem ipsum dolor
-                            sit amet</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur
-                            adipisicing elit. Laboriosam magnam quis suscipit minima unde aliquid in! Dolores incidunt odio veniam
-                            similique ex. Veritatis optio qui nam hic! Nobis, natus expedita.</p>
-                        <a href="#" class="boton-amarillo" >Comprar Ahora</a>
+                        <p>Ofertas de vacaciones</p>
+                        <h1>Hasta
+                        </h1>
+                        <h1> 30% de</h1>
+                        <h1>descuento</h1>
+                        <p>Marcas de teléfonos inteligentes
+                        </p>
+                        <p>seleccionadas</p>
+                        <a href="#" class="boton-amarillo">Comprar Ahora</a>
                     </div>
                 </section>
             </div>
             <div class="col">
                 <section class="imagen-contacto img3 derecha">
                     <div class="contenedor contenido-centrado1">
-                        <h2>Lorem ipsum dolor
-                            sit amet</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur
-                            adipisicing elit. Laboriosam magnam quis suscipit minima unde aliquid in! Dolores incidunt odio veniam
-                            similique ex. Veritatis optio qui nam hic! Nobis, natus expedita.</p>
+                        <p>Recien llegado</p>
+                        <h1>Lleva tu</h1>
+                        <h1>sonido</h1>
+                        <h1>a cualquier parte</h1>
+                        <p>Las mejores marcas de auriculares
+                        </p>
                         <a href="#" class="boton-amarillo">Comprar Ahora</a>
                     </div>
                 </section>
@@ -47,6 +49,9 @@
         <!-- Div imagenes  Piero -->
 
     </div>
+</div>
+<div class="container">
+
 
     <div class="boxcarac border border-dark border-3 bg-white my-4">
         <!-- Caracteristicas del servicio  Romano -->
@@ -78,7 +83,8 @@
                 @foreach($mostSelled as $product)
                 <div class="card" style="width: 18rem;">
                     <a href="#">
-                        <img class="card-img-top cover" src="{{ asset('storage').'/'.$product->image }}" alt="Card image cap" height="200px">
+                        <img class="card-img-top cover" src="{{ asset('storage').'/'.$product->image }}"
+                            alt="Card image cap" height="200px">
                     </a>
                     <div class="card-body">
                         <h5 class="card-title">{{$product->name}}</h5>
@@ -96,22 +102,26 @@
         <!-- Comprar por categorias  Gael -->
         <div class="fila">
 
-            <div class="columna"><div class="circular--landscape">
-                <a href="#"><img src="{{URL::asset('image/img-category/laptop.jpg')}}"></a>
+            <div class="columna">
+                <div class="circular--landscape">
+                    <a href="#"><img src="{{URL::asset('image/img-category/laptop.jpg')}}"></a>
+                </div>
             </div>
-        </div>
-            <div class="columna"><div class="circular--landscape">
-                <a href="#"><img src="{{URL::asset('image/img-category/celular.jpg')}}"></a>
+            <div class="columna">
+                <div class="circular--landscape">
+                    <a href="#"><img src="{{URL::asset('image/img-category/celular.jpg')}}"></a>
+                </div>
             </div>
-        </div>
-            <div class="columna"><div class="circular--landscape">
-                <a href="#"><img src="{{URL::asset('image/img-category/drone.jpg')}}"></a>
+            <div class="columna">
+                <div class="circular--landscape">
+                    <a href="#"><img src="{{URL::asset('image/img-category/drone.jpg')}}"></a>
+                </div>
             </div>
-        </div>
-            <div class="columna"><div class="circular--landscape">
-                <a href="#"><img src="{{URL::asset('image/img-category/tablet.jpg')}}"></a>
+            <div class="columna">
+                <div class="circular--landscape">
+                    <a href="#"><img src="{{URL::asset('image/img-category/tablet.jpg')}}"></a>
+                </div>
             </div>
-        </div>
 
         </div>
         <div class="fila">
@@ -122,22 +132,26 @@
         </div> <br><br>
         <div class="fila">
 
-            <div class="columna"><div class="circular--landscape">
-                <a href="#"><img src="{{URL::asset('image/img-category/televisor.jpg')}}"></a>
+            <div class="columna">
+                <div class="circular--landscape">
+                    <a href="#"><img src="{{URL::asset('image/img-category/televisor.jpg')}}"></a>
+                </div>
             </div>
-        </div>
-            <div class="columna"><div class="circular--landscape">
-                <a href="#"><img src="{{URL::asset('image/img-category/reloj.jpg')}}"></a>
+            <div class="columna">
+                <div class="circular--landscape">
+                    <a href="#"><img src="{{URL::asset('image/img-category/reloj.jpg')}}"></a>
+                </div>
             </div>
-        </div>
-            <div class="columna"><div class="circular--landscape">
-                <a href="#"><img src="{{URL::asset('image/img-category/parlante.jpg')}}"></a>
+            <div class="columna">
+                <div class="circular--landscape">
+                    <a href="#"><img src="{{URL::asset('image/img-category/parlante.jpg')}}"></a>
+                </div>
             </div>
-        </div>
-            <div class="columna"><div class="circular--landscape">
-                <a href="#"><img src="{{URL::asset('image/img-category/audifonos.jpg')}}"></a>
+            <div class="columna">
+                <div class="circular--landscape">
+                    <a href="#"><img src="{{URL::asset('image/img-category/audifonos.jpg')}}"></a>
+                </div>
             </div>
-        </div>
 
         </div>
         <div class="fila">
@@ -148,6 +162,7 @@
         </div>
     </div>
 </div>
+
 @endsection
 
 <style>
@@ -211,23 +226,22 @@
         display: table;
     }
 
- .circular--landscape {
-  position: relative;
-  width: 200px;
-  height: 200px;
-  overflow: hidden;
-  border-radius: 50%;
-  background-color: black;
-}
+    .circular--landscape {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        overflow: hidden;
+        border-radius: 50%;
+        background-color: black;
+    }
 
-.circular--landscape img {
-  width: 100%;
-  height: auto;
-}
-.circular--landscape img:hover {
-    background-color: black;
-    transform: scale(1.15);
-}
+    .circular--landscape img {
+        width: 100%;
+        height: auto;
+    }
 
+    .circular--landscape img:hover {
+        background-color: black;
+        transform: scale(1.15);
+    }
 </style>
-
