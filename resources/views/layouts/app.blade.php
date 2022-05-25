@@ -25,9 +25,36 @@
 </head>
 
 <body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+        <div class="navbar-brand"><i class="fa-solid fa-cube"></i> Envío gratis para pedidos superiores a S/1200</div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a href="about.php" class="nav-link">Acerca de</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.php" class="nav-link">Contacto</a>
+                </li>
+                <li class="nav-item">
+                    <a href="center.php" class="nav-link">Centro de ayuda</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" class="nav-link disabled">Llámenos 123-456-7890</a>
+                </li>
+            </ul>
+        <div>
+    </div>
+</nav>
+
  
   <div id="app">
-    <nav class="navbar navbar-expand-md navbar-light bg-light parent">
+    <nav class="navbar navbar-expand-md navbar-light bg-light parent my-4">
       <div class="container">
         <div class="navbar-nav">
           <a href="{{ url('/index') }}">
