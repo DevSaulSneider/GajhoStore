@@ -39,6 +39,17 @@ class EmployeeSeeder extends Seeder
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
+            [
+                'name' => 'Conor',
+                'lastName' => 'Mcgregor',
+                'phone' => '123456789',
+                'email' => 'conor@conor.com',
+                'username' => 'conor',
+                'password' => 'conos123',
+                'turn_id' => 3,        
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
         ];
 
         DB::table('employees')->insert($data);
