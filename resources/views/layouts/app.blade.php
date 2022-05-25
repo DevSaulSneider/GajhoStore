@@ -25,6 +25,7 @@
 </head>
 
 <body>
+ 
   <div id="app">
     <nav class="navbar navbar-expand-md navbar-light bg-light parent">
       <div class="container">
@@ -230,4 +231,48 @@
     text-decoration: none;
     color: black;
   }
+/* 
+  @media screen and (max-width: 768px) {
+    .content {
+      flex-direction: column;
+    }
+    .sidebar {
+      width: 100%;
+    }
+
+    .catalogue {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 10px !important;
+    }
+    .sidebar {
+      width: 250px !important;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    .catalogue {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 10px !important;
+    }
+    .sidebar {
+      width: 250px !important;
+    }
+  }
+
+  @media screen and (min-width: 992px) {
+    .catalogue {
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 10px !important;
+    }
+    .sidebar {
+      width: 250px !important;
+    }
+  }
+
+  @media screen and (min-width: 1400px) {
+    .catalogue {
+      grid-template-columns: repeat(4, 1fr) !important;
+      gap: 20px !important;
+    }
+  } */
 </style>

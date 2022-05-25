@@ -42,17 +42,17 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', [CategoryController::class, 'index'])->name('home');
 });
 
-
 Route::resource('/products', ProductController::class)->middleware('auth');
 
-
-
-
-
-Route::resource('/products', ProductController::class)->middleware('auth');
+Route::get('/searchByID', [ProductController::class, 'searchById'])->name('products.searchByID')->middleware('auth');
 
 
 /* RUTAS DE UBIGEO */
 Route::get('/department', [DepartmentController::class, 'index']);
 Route::post('/provinces', [ProvinceController::class, 'getProvincesByDepartment']);
 Route::post('/districts', [DistrictController::class, 'getDistrictByProvince']);
+
+
+/* RUTAS CATALOGO */
+Route::get('/catalogue', [ProductController::class, 'catalogue']);
+Route::get('/catalogue/{categoryId}',[ProductController::class, 'filterByCategory'])->name('filterByCategory');

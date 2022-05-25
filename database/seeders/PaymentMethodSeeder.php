@@ -23,12 +23,22 @@ class PaymentMethodSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ],
             [
-                'name'=>'PLIN',
+                'name'=>'Plin',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
                 'name'=>'Agora',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'name'=>'Visa',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'name'=>'Mastercard',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],

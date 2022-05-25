@@ -25,6 +25,7 @@ return new class extends Migration
             $table->float('price');
             $table->float('discount_price');
             $table->string('image');
+            $table->integer('amount_sales')->nullable();
             $table->timestamps();
             $table->integer('venta_cantidad')->nullable();
 
