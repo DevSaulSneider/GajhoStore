@@ -80,7 +80,7 @@
         <div class="p-4 bg-white text-center">
             <h1>Lo mas vendido</h1>
             <div class="d-flex justify-content-between">
-                @foreach($mostSelled as $product)
+                @foreach($mostSelled->sortByDesc('venta_cantidad') as $product)
                 <div class="card" style="width: 18rem;">
                     <a href="#">
                         <img class="card-img-top cover" src="{{ asset('storage').'/'.$product->image }}"
@@ -208,7 +208,7 @@
         width: 70px;
     }
 
-    #info {
+    #info { 
         display: inline-flex;
         height: 3em;
         width: 120px;
