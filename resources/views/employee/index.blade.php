@@ -56,7 +56,7 @@ Employee
                                     <td>{{$employee->phone}}</td>
                                     <td>{{$employee->email}}</td>
                                     <td>{{$employee->username }}</td>
-                                    <td>{{$employee->turns->turn}}</td>
+                                    <td>{{$employee->turn_id}}</td>
 
 
                                     <td><a href="{{ url('/employee/'.$employee->id.'/edit') }}" class="btn btn-sm btn-success rounded-pill "><i class="fa fa-fw fa-edit"></i> Editar</a></td>
@@ -69,6 +69,17 @@ Employee
                                     </td>
                                 </tr>
                                 @endforeach
+                                <form action="{{route('employee.index')}}" method="get" >
+                                        <div class="form-group mb-2">
+                                            <label for="filter" class="col-sm-2 col-form-label">Buscar por Id</label>
+                                            <div class="d-flex w-25">
+                                                <input type="text" class="form-control"  name="filter" placeholder="Id del empleado" value="{{$filter}}">
+                                            </div>
+                                            <div>                                             
+                                                <input type="submit" class="btn btn-primary" value="Buscar">
+                                            </div>
+                                        </div>
+                                </form>
                             </tbody>
                         </table>
                     </div>

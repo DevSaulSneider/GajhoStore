@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Employee;
 use App\Models\Turn;
+use Illuminate\Support\Facades\DB;
 
 class EmployeeController extends Controller
 {
@@ -13,10 +14,12 @@ class EmployeeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $employees['employees'] = Employee::paginate(5);
-        return view('employee.index', $employees)->with('i');  
+        $filter = $request->get('filter');
+        $employees = DB::table('employees')->where('id', 'LIKE', '%'.$filter.'%')
+                                           ->paginate(10);
+        return view('employee.index',compact('employees', 'filter'));  
 
     }
 
