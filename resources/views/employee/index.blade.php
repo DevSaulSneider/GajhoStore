@@ -15,7 +15,8 @@ Employee
                             </span></b>
 
                         <div class="float-right">
-                            <a id="btncrear" href="{{ route('employee.create') }}" class="btn btn-light rounded-pill btn-sm float-right" data-placement="left">
+                            <a id="btncrear" href="{{ route('employee.create') }}"
+                                class="btn btn-light rounded-pill btn-sm float-right" data-placement="left">
                                 {{ __('Crear Empleado') }}
                             </a>
                         </div>
@@ -37,7 +38,7 @@ Employee
                         <table class="table table-striped table-hover">
                             <thead class="thead">
                                 <tr>
-                                    <th>Id</th>
+                                    <th>N°</th>
                                     <th>Nombre</th>
                                     <th>Apellido</th>
                                     <th>Telefono</th>
@@ -50,25 +51,44 @@ Employee
                                 @foreach($employees as $employee)
                                 <tr>
 
-                                    <td>{{$employee->id}}</td>
+                                    <td>{{++$i}}</td>
                                     <td>{{$employee->name}}</td>
                                     <td>{{$employee->lastName}}</td>
                                     <td>{{$employee->phone}}</td>
                                     <td>{{$employee->email}}</td>
                                     <td>{{$employee->username }}</td>
-                                    <td>{{$employee->turns->turn}}</td>
+                                    <td>{{$employee->turn_id}}</td>
 
 
-                                    <td><a href="{{ url('/employee/'.$employee->id.'/edit') }}" class="btn btn-sm btn-success rounded-pill "><i class="fa fa-fw fa-edit"></i> Editar</a></td>
+                                    <td><a href="{{ url('/employee/'.$employee->id.'/edit') }}"
+                                            class="btn btn-sm btn-success rounded-pill "><i
+                                                class="fa fa-fw fa-edit"></i> Editar</a></td>
                                     <td>
-                                        <form action="{{ url('/employee/'.$employee->id)}}" method="post" class="d-inline">
+                                        <form action="{{ url('/employee/'.$employee->id)}}" method="post"
+                                            class="d-inline">
                                             @csrf
                                             {{ method_field('DELETE') }}
-                                            <button type="submit" onclick="return confirm('¿Desea borrar este registro?')" class="btn btn-danger btn-sm rounded-pill"><i class="fa fa-fw fa-trash"></i> Borrar </button>
+                                            <button type="submit"
+                                                onclick="return confirm('¿Desea borrar este registro?')"
+                                                class="btn btn-danger btn-sm rounded-pill"><i
+                                                    class="fa fa-fw fa-trash"></i> Borrar </button>
                                         </form>
                                     </td>
                                 </tr>
                                 @endforeach
+
+                                <form action="{{route('employee.index')}}" method="get">
+                                    @csrf
+                                    <div class="form-group mb-2">
+                                        <label for="filter" class="col-sm-2 col-form-label">Buscar</label>
+                                        <div class="d-flex w-25">
+                                            <input type="text" class="form-control" name="filter" value="{{$filter}}">
+                                        </div>
+                                        <div>
+                                            <input type="submit" class="btn btn-primary mt-2" value="Buscar">
+                                        </div>
+                                    </div>
+                                </form>
                             </tbody>
                         </table>
                     </div>

@@ -11,7 +11,7 @@
                 <h1 class="h1black">Precios increíbles en todos tus artículos favoritos</h1>
                 <p class="h1black">Obtenga más por menos en marcas seleccionadas
                 </p>
-                <a href="#" class="boton-amarillo">Comprar Ahora</a>
+                <a href="/catalogue" class="boton-amarillo">Ver Catálogo</a>
             </div>
         </section>
 

@@ -27,7 +27,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-        <div class="navbar-brand"><i class="fa-solid fa-cube"></i> Envío gratis para pedidos superiores a S/1200</div>
+        <div class="navbar-brand"><i class="fa-solid fa-cube"></i> Envío gratis para pedidos superiores a S/. 500</div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

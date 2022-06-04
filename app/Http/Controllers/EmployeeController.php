@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Employee;
 use App\Models\Turn;
+use App\Models\Employee;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EmployeeController extends Controller
 {
@@ -13,16 +14,31 @@ class EmployeeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $employees['employees'] = Employee::paginate(5);
-        return view('employee.index', $employees)->with('i');  
+        $filter = $request->get('filter');
+        $employees = DB::table('employees')->where('name', 'LIKE', '%'.$filter.'%')
+        ->paginate(10);
+
+        return view('employee.index', compact('employees', 'filter'))->with('i'); 
+        // if(isset($data['page'])){ $page = $data['page']; unset($data['page']); }else{$page=1;}
+
+        // $filter = $request->get('filter');
+        // $employees = DB::table('employees')
+        //     ->join('turns', 'turns.id', '=', 'employees.turn_id')
+        //     ->select('employees.id','employees.name', 'employees.lastNmae', 'employees.email', 'employees.username', 'turns.turn')
+        //     ->where('id', 'LIKE', '%'.$filter.'%');             
+        
+        // $employees = $employees->paginate(10, $columns = ['*'], $pageName = 'page', $page);
+
+        // return view('employee.index', compact('employees', 'filter')); 
+        // $employees['employees'] = Employee::paginate(5);
+        // return view('employee.index', $employees)->with('i');  
 
     }
 
     public function create()
     {
-
         $employee = new Employee();
         $turns = Turn::pluck('turn', 'id');
         return view('employee.create', compact('employee', 'turns'));

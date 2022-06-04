@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PaymentMethod;
-use Illuminate\Http\Request;
 use App\Models\Turn;
+use Illuminate\Http\Request;
+use App\Models\PaymentMethod;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class PaymentMethodController
@@ -17,13 +18,16 @@ class PaymentMethodController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $paymentMethods['paymentMethods'] = PaymentMethod::paginate(5);
-        return view('payment-method.index', $paymentMethods)->with('i');   
-
+        $filter = $request->get('filter');
+        $paymentMethods = DB::table('payment_methods')->where('id', 'LIKE', '%'.$filter.'%')
+        ->paginate(10);
+        return view('payment-method.index', compact('paymentMethods', 'filter'))->with('i'); 
+        // $paymentMethods['paymentMethods'] = PaymentMethod::paginate(5);
+        // return view('payment-method.index', $paymentMethods)->with('i');   
     }
-
+        
     /**
      * Show the form for creating a new resource.
      *
