@@ -17,6 +17,7 @@ class EmployeeController extends Controller
     public function index(Request $request)
     {
         $filter = $request->get('filter');
+
         $employees = DB::table('employees')->where('name', 'LIKE', '%'.$filter.'%')
         ->paginate(10);
 

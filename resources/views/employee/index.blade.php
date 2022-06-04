@@ -77,6 +77,7 @@ Employee
                                 </tr>
                                 @endforeach
 
+
                                 <form action="{{route('employee.index')}}" method="get">
                                     @csrf
                                     <div class="form-group mb-2">
@@ -88,6 +89,7 @@ Employee
                                             <input type="submit" class="btn btn-primary mt-2" value="Buscar">
                                         </div>
                                     </div>
+
                                 </form>
                             </tbody>
                         </table>
