@@ -1,4 +1,5 @@
-@extends('layouts.admin')
+@extends('layouts.app')
+
 
 @section('template_title')
 Product
@@ -34,60 +35,82 @@ Product
                 </div>
                 @endif
 
-                <form method="GET" action="{{ route('products.searchByID') }}">
-                @csrf
-                    <div class="form-group mb-2">
-                        <label for="filter" class="col-sm-2 col-form-label">Buscar por Id</label>
-                        <div class="d-flex w-25">
-                            <input type="text" class="form-control" id="filter" name="filter" placeholder="Id del producto">
-                            <button type="submit" class="btn btn-success">Buscar</button>
-                        </div>
+                
+                <div class="d-flex w-100 px-3 mt-4">
+                    <div class="w-50 pe-2">
+                        <form method="GET" action="{{ route('product.consultarProductoPorID') }}">
+                            @csrf
+                            <div class="form-group mb-2">
+                                <label for="consultaID" class="col-form-label">Consultar Producto</label>
+                                <div class="d-flex">
+                                    <input type="text" class="form-control shadow-none" id="consultaID" name="consultaID"  placeholder="Consultar por ID de producto">
+                                    <button type="submit" class="btn btn-primary mx-1">Consultar</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                </form>
+                    <div class="w-50 ps-2">
+                        <form method="GET" action="{{ route('products.index') }}">
+                            @csrf
+                            <div class="form-group mb-2">
+                                <label for="filtrarNombre" class="col-form-label">Filtrar Producto</label>
+                                <div class="d-flex">
+                                    <input type="text" class="form-control shadow-none" id="filtrarNombre" name="filtrarNombre" placeholder="Filtrar por nombre de producto">
+                                    <button type="submit" class="btn btn-primary mx-1">Filtrar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="d-inline px-3">
+                    <a href="{{ route('products.index') }}" class="btn btn-warning ">Listar Productos</a>
+                </div>
 
-                <div class="card-body">
+                <div class="card-body mt-4">
                     <div class="table-responsive">
-                        <table class="table table-striped table-hover">
+                        <table class="table table-striped table-hover text-center">
                             <thead class="thead">
                                 <tr>
-                                    <th>N°</th>
-
-                                    <th>Categoria</th>
+                                    <th>Código</th>
+                                    <th>Categoría</th>
                                     <th>Usuario</th>
                                     <th>Producto</th>
                                     <th>Descripcion</th>
                                     <th>Cantidad</th>
                                     <th>Estado</th>
                                     <th>Precio</th>
-                                    <th>Precio descuento</th>
+                                    <th>Prec. Descuento</th>
                                     <th>Imagen</th>
-
-                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($products as $product)
                                 <tr>
-                                    <td>{{ ++$i }}</td>
-                                    <td>{{ $product->category->name }}</td>
-                                    <td>{{ $product->user->name }}</td>
+                                    <td>{{ $product->id }}</td>
+                                    <td>{{ $product->categoria }}</td>
+                                    <td>{{ $product->user}}</td>
                                     <td>{{ $product->name }}</td>
-                                    <td>{{ $product->description }}</td>
-                                    <td>{{ $product->quantity }}</td>
-                                    <td>{{ $product->state }}</td>
-                                    <td>{{ $product->price }}</td>
-                                    <td>{{ $product->discount_price }}</td>
                                     <td>
-                                        <img class="img-thumbnail" src="{{ asset('storage').'/'.$product->image}}" alt="" width="100" height="100">
+                                        <span class="d-inline-block text-truncate" style="max-width: 150px;">
+                                        {{ $product->description }}
+                                        </span>
+                                    </td>
+                                    <td>{{ $product->quantity }}</td>
+                                    <td>
+                                        {{ ($product->state) == 'R' ? 'Reparado' : 'Segunda mano'}}</td>
+                                    <td>S/{{ $product->price }}</td>
+                                    <td>S/{{ $product->discount_price }}</td>
+                                    <td style="width:60px;height:60px">
+                                        <img class="img-thumbnail img-fluid" src="{{ asset('storage').'/'.$product->image}}" alt="">
                                     </td>
 
                                     <td>
                                         <form action="{{ route('products.destroy',$product->id) }}" method="POST">
-                                            <a class="btn btn-sm btn-primary rounded-pill " href="{{ route('products.show',$product->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
-                                            <a class="btn btn-sm btn-success rounded-pill" href="{{ route('products.edit',$product->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                            <a class="btn btn-sm btn-primary rounded-pill " href="{{ route('products.show',$product->id) }}"><i class="fa fa-fw fa-eye"></i></a>
+                                            <a class="btn btn-sm btn-success rounded-pill" href="{{ route('products.edit',$product->id) }}"><i class="fa fa-fw fa-edit"></i></a>
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm rounded-pill"><i class="fa fa-fw fa-trash"></i> Borrar</button>
+                                            <button type="submit" class="btn btn-danger btn-sm rounded-pill"><i class="fa fa-fw fa-trash"></i></button>
                                         </form>
                                     </td>
                                 </tr>

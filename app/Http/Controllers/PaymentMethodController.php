@@ -20,12 +20,9 @@ class PaymentMethodController extends Controller
      */
     public function index(Request $request)
     {
-        $filter = $request->get('filter');
-        $paymentMethods = DB::table('payment_methods')->where('id', 'LIKE', '%'.$filter.'%')
-        ->paginate(10);
-        return view('payment-method.index', compact('paymentMethods', 'filter'))->with('i'); 
-        // $paymentMethods['paymentMethods'] = PaymentMethod::paginate(5);
-        // return view('payment-method.index', $paymentMethods)->with('i');   
+        $filtrarNombre = $request->get('filtrarNombre');
+        $paymentMethods = DB::table('payment_methods')->where('name', 'LIKE', '%'.$filtrarNombre.'%')->paginate(5);
+        return view('payment-method.index', compact('paymentMethods'));   
     }
         
     /**
@@ -122,5 +119,11 @@ class PaymentMethodController extends Controller
 
         return redirect()->route('payment-methods.index')
             ->with('success', 'Metodoo borrado correctamente');
+    }
+
+    public function consultarMetodoPagoPorID(Request $request){
+        $consultaID = $request->get('consultaID');
+        $paymentMethods = DB::table('payment_methods')->where('id', '=', $consultaID)->paginate();
+        return view('payment-method.index', compact('paymentMethods','consultaID'));
     }
 }

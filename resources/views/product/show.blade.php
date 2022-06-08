@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.app')
 
 @section('template_title')
 {{ $product->name ?? 'Mostrar Producto' }}

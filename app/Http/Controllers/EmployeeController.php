@@ -16,26 +16,13 @@ class EmployeeController extends Controller
      */
     public function index(Request $request)
     {
-        $filter = $request->get('filter');
-
-        $employees = DB::table('employees')->where('name', 'LIKE', '%'.$filter.'%')
-        ->paginate(10);
-
-        return view('employee.index', compact('employees', 'filter'))->with('i'); 
-        // if(isset($data['page'])){ $page = $data['page']; unset($data['page']); }else{$page=1;}
-
-        // $filter = $request->get('filter');
-        // $employees = DB::table('employees')
-        //     ->join('turns', 'turns.id', '=', 'employees.turn_id')
-        //     ->select('employees.id','employees.name', 'employees.lastNmae', 'employees.email', 'employees.username', 'turns.turn')
-        //     ->where('id', 'LIKE', '%'.$filter.'%');             
-        
-        // $employees = $employees->paginate(10, $columns = ['*'], $pageName = 'page', $page);
-
-        // return view('employee.index', compact('employees', 'filter')); 
-        // $employees['employees'] = Employee::paginate(5);
-        // return view('employee.index', $employees)->with('i');  
-
+        $filtrarNombre = $request->get('filtrarNombre');
+        $employees = DB::table('employees')
+        ->join('turns', 'employees.turn_id', '=', 'turns.id')
+        ->select('employees.id as id', 'employees.name', 'employees.lastName', 'employees.phone', 'employees.email', 'employees.username', 'turns.turn as turn')
+        ->where('employees.name', 'LIKE', '%'.$filtrarNombre.'%')
+        ->paginate();
+        return view('employee.index',compact('employees', 'filtrarNombre'));  
     }
 
     public function create()
@@ -167,5 +154,15 @@ class EmployeeController extends Controller
     {
         Employee::destroy($id);
         return redirect('employee')->with('message', 'Empleado borrada con exito');
+    }
+    
+    public function consultarEmpleadoPorID(Request $request){
+        $consultaID = $request->get("consultaID");
+        $employees = DB::table('employees')
+        ->join('turns', 'employees.turn_id', '=', 'turns.id')
+        ->where('employees.id', '=', $consultaID)
+        ->select('employees.id as id', 'employees.name', 'employees.lastName', 'employees.phone', 'employees.email', 'employees.username', 'turns.turn as turn')
+        ->paginate();
+        return view('employee.index',compact('employees', 'consultaID'));  
     }
 }
