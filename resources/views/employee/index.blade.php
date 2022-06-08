@@ -81,7 +81,7 @@ Employee
                             <tbody>
                                 @foreach($employees as $employee)
                                 <tr>
-                                    <td>{{++$i}}</td>
+                                    <td>{{$employee->id}}</td>
                                     <td>{{$employee->name}}</td>
                                     <td>{{$employee->lastName}}</td>
                                     <td>{{$employee->phone}}</td>

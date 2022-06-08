@@ -56,8 +56,7 @@ Route::post('/districts', [DistrictController::class, 'getDistrictByProvince']);
 
 
 /* RUTAS CATALOGO */
-
-Route::get('/catalogue', [ProductController::class, 'catalogue']);
+Route::get('/catalogue', [ProductController::class, 'catalogue'])->name('catalogue');
 Route::get('/catalogue/{categoryId}',[ProductController::class, 'filterByCategory'])->name('filterByCategory');
 
 /* CONSULTAR POR ID */
@@ -69,3 +68,11 @@ Route::get('/consultarProductoPorID', [ProductController::class, 'consultarProdu
 Route::get('/consultarMetodoPagoPorID', [PaymentMethodController::class, 'consultarMetodoPagoPorID'])->name('payment-methods.consultarMetodoPagoPorID')->middleware('auth');
 // Empleado
 Route::get('/consultarEmpleadoPorID', [EmployeeController::class, 'consultarEmpleadoPorID'])->name('employee.consultarEmpleadoPorID')->middleware('auth');
+
+/*RUTAS DETALLE PRODUCTO*/
+Route::get('/productdetail/{productId}',[ProductController::class, 'productById'])->name('productById');
+
+/*RUTAS DETALLE DE COMPRA*/
+Route::get('purchaseDetail',[PurchaseDetailController::class, 'index'])->name('shoppingCart')->middleware('auth');
+Route::post('purchaseDetail',[PurchaseDetailController::class, 'addToCart'])->name('addToCart')->middleware('auth');
+Route::post('deletePurchaseDetail',[PurchaseDetailController::class, 'deleteFromCart'])->name('deleteFromCart')->middleware('auth');

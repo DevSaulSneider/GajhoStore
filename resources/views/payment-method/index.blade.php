@@ -93,7 +93,7 @@
                                         <div class="form-group mb-2">
                                             <label for="filter" class="col-sm-2 col-form-label">Buscar</label>
                                             <div class="d-flex w-25">
-                                                <input type="text" class="form-control" name="filter" value="{{ $filter }}">
+                                                <input type="text" class="form-control" name="filter">
                                             </div>
                                             <input type="submit" class="btn btn-primary mt-2" value="Enviar" name="Enviar">
                                         </div>
