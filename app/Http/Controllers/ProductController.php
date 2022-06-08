@@ -20,14 +20,18 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        if(Auth::user()->role_id == 1){
-        $products['products'] = Product::paginate(5);
-        return view('product.index', $products)->with('i');
-        }else{
-            return  redirect('/index');
-        }
+        $filtrarNombre = $request->get('filtrarNombre');
+        $products = DB::table('products')
+        ->join('categories', 'products.category_id', '=', 'categories.id')
+        ->join('users', 'products.user_id', '=', 'users.id')
+        ->select('products.id as id', 'categories.name as categoria', 'users.name as user', 'products.name', 'products.description', 'products.quantity', 'products.state', 'products.price', 'products.discount_price', 'products.image')
+        ->where('products.name', 'LIKE', '%'.$filtrarNombre.'%')
+        ->orderBy('id')
+        ->paginate(5);
+        
+        return view('product.index', compact('products'))->with('i');
     }
 
     public function searchById(Request $request)
@@ -44,15 +48,6 @@ class ProductController extends Controller
     public function catalogue()
     {
         $products = Product::all();
-        $categories = Category::all();
-        return view('catalogue', compact('products', 'categories'));
-    }
-
-    public function filterByCategory($categoryId)
-    {
-        // $products = Product::where('category_id', '=', $categoryId);
-        $products = DB::table('products')->where('category_id', '=', $categoryId);
-        $products = $products->get();
         $categories = Category::all();
         return view('catalogue', compact('products', 'categories'));
     }
@@ -214,5 +209,16 @@ class ProductController extends Controller
 
         return redirect()->route('products.index')
             ->with('success', 'Producto borrado correctamente');
+    }
+
+    public function consultarProductoPorID(Request $request){
+        $consultaID = $request->get("consultaID");
+        $products = DB::table('products')
+        ->join('categories', 'products.category_id', '=', 'categories.id')
+        ->join('users', 'products.user_id', '=', 'users.id')
+        ->where('products.id', '=', $consultaID)
+        ->select('products.id as id', 'categories.name as categoria', 'users.name as user', 'products.name', 'products.description', 'products.quantity', 'products.state', 'products.price', 'products.discount_price', 'products.image')
+        ->paginate();
+        return view('product.index', compact('products'))->with('i');
     }
 }

@@ -15,13 +15,10 @@ class CategoryController extends Controller
      */
     public function index(Request $request)
     {
+        $filtrarNombre = $request->get('filtrarNombre');
+        $categories = DB::table('categories')->where('name', 'LIKE', '%'.$filtrarNombre.'%')->paginate(5);
         // $data['categories'] = Category::paginate(5);
-        // return view('category.index', $data);
-
-        $filter = $request->get('filter');
-        $categories = DB::table('categories')->where('name', 'LIKE', '%'.$filter.'%')
-        ->paginate(10);
-        return view('category.index', compact('categories', 'filter'))->with('i'); 
+        return view('category.index', compact('categories','filtrarNombre'));
     }
 
 
@@ -118,5 +115,11 @@ class CategoryController extends Controller
     {
         Category::destroy($id);
         return redirect('category')->with('message', 'Categoria borrada con exito');
+    }
+
+    public function consultarCategoriaPorID(Request $request){
+        $consultaID = $request->get("consultaID");
+        $categories = DB::table('categories')->where('id', '=', $consultaID)->paginate();
+        return view('category.index', compact('categories','consultaID'));
     }
 }
