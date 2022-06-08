@@ -25,34 +25,34 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-        <div class="navbar-brand"><i class="fa-solid fa-cube"></i> Envío gratis para pedidos superiores a S/1200</div>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            </ul>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a href="about.php" class="nav-link">Acerca de</a>
-                </li>
-                <li class="nav-item">
-                    <a href="contact.php" class="nav-link">Contacto</a>
-                </li>
-                <li class="nav-item">
-                    <a href="center.php" class="nav-link">Centro de ayuda</a>
-                </li>
-                <li class="nav-item">
-                    <a href="" class="nav-link disabled">Llámenos 123-456-7890</a>
-                </li>
-            </ul>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <div class="navbar-brand"><i class="fa-solid fa-cube"></i> Envío gratis para pedidos superiores a S/1200</div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a href="about.php" class="nav-link">Acerca de</a>
+          </li>
+          <li class="nav-item">
+            <a href="contact.php" class="nav-link">Contacto</a>
+          </li>
+          <li class="nav-item">
+            <a href="center.php" class="nav-link">Centro de ayuda</a>
+          </li>
+          <li class="nav-item">
+            <a href="" class="nav-link disabled">Llámenos 123-456-7890</a>
+          </li>
+        </ul>
         <div>
-    </div>
-</nav>
+        </div>
+  </nav>
 
- 
+
   <div id="app">
     <nav class="navbar navbar-expand-md navbar-light bg-light parent my-4">
       <div class="container">
@@ -94,6 +94,7 @@
             @endif
             @else
             <li class="nav-item dropdown">
+
               <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                 <i class="fa-solid fa-circle-user fa-xl"></i> &nbsp; {{ Auth::user()->name }}
               </a>
@@ -108,6 +109,11 @@
                   @csrf
                 </form>
               </div>
+            </li>
+            <li class="nav-item mt-2 ms-2">
+              <a class="nav-link" href="{{ route('shoppingCart') }}">
+                <i class="fa-solid fa-cart-shopping fa-lg"></i>
+              </a>
             </li>
             @endguest
           </ul>
@@ -127,6 +133,9 @@
         </li>
         <li class="nav-item">
           <a class="nav-link category" href="{{ route('payment-methods.index') }}">{{ __('Metodo de Pago') }}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link category" href="{{ route('catalogue') }}">{{ __('Catálogo') }}</a>
         </li>
       </ul>
     </div>
@@ -258,7 +267,8 @@
     text-decoration: none;
     color: black;
   }
-/* 
+
+  /* 
   @media screen and (max-width: 768px) {
     .content {
       flex-direction: column;

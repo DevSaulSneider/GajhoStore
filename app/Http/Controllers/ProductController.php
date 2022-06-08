@@ -31,6 +31,11 @@ class ProductController extends Controller
         return view('product.index', $products);
     }
 
+    public function productById($productId) {
+        $product['product'] = DB::table('products')->where('id', $productId)->get()->first();
+        return view('productDetail', $product);
+    }
+
     public function catalogue()
     {
         $products = Product::all();
