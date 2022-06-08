@@ -83,7 +83,7 @@
                 @foreach($mostSelled->sortByDesc('amount_sales') as $product)
 
                 <div class="card" style="width: 18rem;">
-                    <a href="#">
+                    <a href="{{route('productById', ['productId' => $product->id])}}">
                         <img class="card-img-top cover" src="{{ asset('storage').'/'.$product->image }}"
                             alt="Card image cap" height="200px">
                     </a>

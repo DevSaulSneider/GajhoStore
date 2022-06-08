@@ -49,10 +49,10 @@
                 </li>
             </ul>
         <div>
-    </div>
-</nav>
+        </div>
+  </nav>
 
- 
+
   <div id="app">
     <nav class="navbar navbar-expand-md navbar-light bg-light parent my-4">
       <div class="container">
@@ -94,6 +94,7 @@
             @endif
             @else
             <li class="nav-item dropdown">
+
               <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                 <i class="fa-solid fa-circle-user fa-xl"></i> &nbsp; {{ Auth::user()->name }}
               </a>
@@ -108,6 +109,11 @@
                   @csrf
                 </form>
               </div>
+            </li>
+            <li class="nav-item mt-2 ms-2">
+              <a class="nav-link" href="{{ route('shoppingCart') }}">
+                <i class="fa-solid fa-cart-shopping fa-lg"></i>
+              </a>
             </li>
             @endguest
           </ul>
@@ -127,6 +133,9 @@
         </li>
         <li class="nav-item">
           <a class="nav-link category" href="{{ route('payment-methods.index') }}">{{ __('Metodo de Pago') }}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link category" href="{{ route('catalogue') }}">{{ __('Catálogo') }}</a>
         </li>
       </ul>
     </div>
@@ -258,7 +267,8 @@
     text-decoration: none;
     color: black;
   }
-/* 
+
+  /* 
   @media screen and (max-width: 768px) {
     .content {
       flex-direction: column;

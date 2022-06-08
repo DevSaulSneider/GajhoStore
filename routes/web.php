@@ -9,6 +9,7 @@ use App\Http\Controllers\DistrictController;
 
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PurchaseDetailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,5 +57,14 @@ Route::post('/districts', [DistrictController::class, 'getDistrictByProvince']);
 
 
 /* RUTAS CATALOGO */
-Route::get('/catalogue', [ProductController::class, 'catalogue']);
+Route::get('/catalogue', [ProductController::class, 'catalogue'])->name('catalogue');
 Route::get('/catalogue/{categoryId}',[ProductController::class, 'filterByCategory'])->name('filterByCategory');
+
+/*RUTAS DETALLE PRODUCTO*/
+Route::get('/productdetail/{productId}',[ProductController::class, 'productById'])->name('productById');
+
+/*RUTAS DETALLE DE COMPRA*/
+Route::get('purchaseDetail',[PurchaseDetailController::class, 'index'])->name('shoppingCart')->middleware('auth');
+Route::post('purchaseDetail',[PurchaseDetailController::class, 'addToCart'])->name('addToCart')->middleware('auth');
+Route::post('deletePurchaseDetail',[PurchaseDetailController::class, 'deleteFromCart'])->name('deleteFromCart')->middleware('auth');
+

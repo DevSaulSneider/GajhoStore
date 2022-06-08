@@ -15,8 +15,11 @@ return new class extends Migration
     {
         Schema::create('purchase_details', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('purchase_id')->constrained();
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('purchase_id')->nullable()->constrained();
             $table->foreignId('product_id')->constrained();
+            $table->string('image');
+            $table->string('name');
             $table->float('price');
             $table->integer('quantity');
             $table->float('discount_price')->nullable();
