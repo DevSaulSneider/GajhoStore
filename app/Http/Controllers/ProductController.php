@@ -77,7 +77,6 @@ class ProductController extends Controller
 
         $campos = [
             'category_id' => 'required|int|max:100',
-
             'name' => 'required|string|max:100',
             'description' => 'required|string|max:100',
             'quantity' => 'required|int|max:100',

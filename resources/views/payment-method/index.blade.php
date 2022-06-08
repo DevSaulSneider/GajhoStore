@@ -59,8 +59,19 @@
                                             </td>
                                         </tr>
                                     @endforeach
+                                    <form action="{{route('payment-methods.index')}}" method="get">
+                                        @csrf
+                                        <div class="form-group mb-2">
+                                            <label for="filter" class="col-sm-2 col-form-label">Buscar</label>
+                                            <div class="d-flex w-25">
+                                                <input type="text" class="form-control" name="filter" value="{{ $filter }}">
+                                            </div>
+                                            <input type="submit" class="btn btn-primary mt-2" value="Enviar" name="Enviar">
+                                        </div>
+                                    </form>
                                 </tbody>
                             </table>
+                            
                         </div>
                     </div>
                 </div>

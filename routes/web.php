@@ -28,7 +28,8 @@ Route::get('/', function () {
 
 Route::get('/index', [ProductController::class, 'getMostSelled'])->name('index');
 
-Auth::routes(['reset' => false]);
+Auth::routes(['reset' => true]);
+Auth::routes([ 'verify' => true ]);
 
 Route::resource('/category', CategoryController::class)->middleware('auth');
 Route::resource('/employee', EmployeeController::class)->middleware('auth');
@@ -52,6 +53,7 @@ Route::get('/searchByID', [ProductController::class, 'searchById'])->name('produ
 Route::get('/department', [DepartmentController::class, 'index']);
 Route::post('/provinces', [ProvinceController::class, 'getProvincesByDepartment']);
 Route::post('/districts', [DistrictController::class, 'getDistrictByProvince']);
+
 
 
 /* RUTAS CATALOGO */

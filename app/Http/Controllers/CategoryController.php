@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -12,15 +13,15 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data['categories'] = Category::paginate(5);
-        return view('category.index', $data);
+        // $data['categories'] = Category::paginate(5);
+        // return view('category.index', $data);
 
-
-        // $category = Category::all();
-
-        // return $category;
+        $filter = $request->get('filter');
+        $categories = DB::table('categories')->where('name', 'LIKE', '%'.$filter.'%')
+        ->paginate(10);
+        return view('category.index', compact('categories', 'filter'))->with('i'); 
     }
 
 
