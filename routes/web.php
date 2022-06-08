@@ -56,7 +56,7 @@ Route::post('/districts', [DistrictController::class, 'getDistrictByProvince']);
 
 
 /* RUTAS CATALOGO */
-Route::get('/catalogue', [ProductController::class, 'catalogue']);
+Route::get('/catalogue', [ProductController::class, 'catalogue'])->name('catalogue');
 Route::get('/catalogue/{categoryId}',[ProductController::class, 'filterByCategory'])->name('filterByCategory');
 
 /* CONSULTAR POR ID */

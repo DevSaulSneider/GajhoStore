@@ -134,9 +134,9 @@
         <li class="nav-item">
           <a class="nav-link category" href="{{ route('payment-methods.index') }}">{{ __('Metodo de Pago') }}</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link category" href="{{ route('catalogue') }}">{{ __('Catálogo') }}</a>
-        </li>
+        </li> -->
       </ul>
     </div>
 

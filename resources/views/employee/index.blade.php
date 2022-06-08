@@ -81,7 +81,7 @@ Employee
                                 @foreach($employees as $employee)
                                 <tr>
 
-                                    <td>{{++$i}}</td>
+                                    <td>{{$employee->id}}</td>
                                     <td>{{$employee->name}}</td>
                                     <td>{{$employee->lastName}}</td>
                                     <td>{{$employee->phone}}</td>
@@ -106,20 +106,6 @@ Employee
                                     </td>
                                 </tr>
                                 @endforeach
-
-                                <form action="{{route('employee.index')}}" method="get">
-                                    @csrf
-                                    <div class="form-group mb-2">
-                                        <label for="filter" class="col-sm-2 col-form-label">Buscar</label>
-                                        <div class="d-flex w-25">
-                                            <input type="text" class="form-control" name="filter" value="{{$filter}}">
-                                        </div>
-                                        <div>
-                                            <input type="submit" class="btn btn-primary mt-2" value="Buscar">
-                                        </div>
-                                    </div>
-
-                                </form>
                             </tbody>
                         </table>
                     </div>
