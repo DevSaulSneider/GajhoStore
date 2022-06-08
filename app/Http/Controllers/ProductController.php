@@ -39,6 +39,11 @@ class ProductController extends Controller
         return view('product.index', $products);
     }
 
+    public function productById($productId) {
+        $product['product'] = DB::table('products')->where('id', $productId)->get()->first();
+        return view('productDetail', $product);
+    }
+
     public function catalogue()
     {
         $products = Product::all();
@@ -71,7 +76,6 @@ class ProductController extends Controller
 
         $campos = [
             'category_id' => 'required|int|max:100',
-
             'name' => 'required|string|max:100',
             'description' => 'required|string|max:100',
             'quantity' => 'required|int|max:100',

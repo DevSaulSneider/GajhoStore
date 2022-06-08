@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\PurchaseDetail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PurchaseDetailController extends Controller
 {
@@ -14,7 +15,32 @@ class PurchaseDetailController extends Controller
      */
     public function index()
     {
-        //
+        $cartProducts = DB::table('purchase_details')->where('user_id', auth()->id())->get();
+        return view('purchaseDetail', compact('cartProducts'));
+    }
+
+    public function addToCart(Request $request) {
+        $product = DB::table('products')->where('id', $request->productId)->get()->first();
+
+        $detail = new PurchaseDetail();
+        $detail->product_id = $product->id;
+        $detail->image = $product->image;
+        $detail->name = $product->name;
+        $detail->user_id = auth()->id();
+        $detail->price = $product->price;
+        $detail->quantity = $request->quantity;
+        $detail->subtotal = $product->price * $request->quantity;
+
+        $detail->save();
+
+        $cartProducts = DB::table('purchase_details')->where('user_id', auth()->id())->get();
+        return view('purchaseDetail', compact('cartProducts'));
+    }
+
+    public function deleteFromCart(Request $request) {
+        DB::table('purchase_details')->where('id', $request->id)->delete();
+        $cartProducts = DB::table('purchase_details')->where('user_id', auth()->id())->get();
+        return redirect()->route('shoppingCart', ['cartProducts' => compact('cartProducts')]);
     }
 
     /**

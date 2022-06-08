@@ -11,7 +11,7 @@
                 <h1 class="h1black">Precios increíbles en todos tus artículos favoritos</h1>
                 <p class="h1black">Obtenga más por menos en marcas seleccionadas
                 </p>
-                <a href="#" class="boton-amarillo">Comprar Ahora</a>
+                <a href="/catalogue" class="boton-amarillo">Ver Catálogo</a>
             </div>
         </section>
 
@@ -83,7 +83,7 @@
                 @foreach($mostSelled->sortByDesc('amount_sales') as $product)
 
                 <div class="card" style="width: 18rem;">
-                    <a href="#">
+                    <a href="{{route('productById', ['productId' => $product->id])}}">
                         <img class="card-img-top cover" src="{{ asset('storage').'/'.$product->image }}"
                             alt="Card image cap" height="200px">
                     </a>
@@ -178,7 +178,7 @@
     }
 
     .cover {
-        object-fit: cover;
+        object-fit: cover ;
     }
 
     .boxcarac {
@@ -209,7 +209,7 @@
         width: 70px;
     }
 
-    #info {
+    #info { 
         display: inline-flex;
         height: 3em;
         width: 120px;

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Employee;
 use App\Models\Turn;
+use App\Models\Employee;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class EmployeeController extends Controller
@@ -23,12 +23,10 @@ class EmployeeController extends Controller
         ->where('employees.name', 'LIKE', '%'.$filtrarNombre.'%')
         ->paginate();
         return view('employee.index',compact('employees', 'filtrarNombre'));  
-
     }
 
     public function create()
     {
-
         $employee = new Employee();
         $turns = Turn::pluck('turn', 'id');
         return view('employee.create', compact('employee', 'turns'));

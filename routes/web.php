@@ -9,6 +9,7 @@ use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\PaymentMethodController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PurchaseDetailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +28,8 @@ Route::get('/', function () {
 
 Route::get('/index', [ProductController::class, 'getMostSelled'])->name('index');
 
-Auth::routes(['reset' => false]);
+Auth::routes(['reset' => true]);
+Auth::routes([ 'verify' => true ]);
 
 Route::resource('/category', CategoryController::class)->middleware('auth');
 Route::resource('/employee', EmployeeController::class)->middleware('auth');
@@ -52,6 +54,7 @@ Route::post('/provinces', [ProvinceController::class, 'getProvincesByDepartment'
 Route::post('/districts', [DistrictController::class, 'getDistrictByProvince']);
 
 
+
 /* RUTAS CATALOGO */
 Route::get('/catalogue', [ProductController::class, 'catalogue']);
 Route::get('/catalogue/{categoryId}',[ProductController::class, 'filterByCategory'])->name('filterByCategory');
@@ -65,3 +68,12 @@ Route::get('/consultarProductoPorID', [ProductController::class, 'consultarProdu
 Route::get('/consultarMetodoPagoPorID', [PaymentMethodController::class, 'consultarMetodoPagoPorID'])->name('payment-methods.consultarMetodoPagoPorID')->middleware('auth');
 // Empleado
 Route::get('/consultarEmpleadoPorID', [EmployeeController::class, 'consultarEmpleadoPorID'])->name('employee.consultarEmpleadoPorID')->middleware('auth');
+
+/*RUTAS DETALLE PRODUCTO*/
+Route::get('/productdetail/{productId}',[ProductController::class, 'productById'])->name('productById');
+
+/*RUTAS DETALLE DE COMPRA*/
+Route::get('purchaseDetail',[PurchaseDetailController::class, 'index'])->name('shoppingCart')->middleware('auth');
+Route::post('purchaseDetail',[PurchaseDetailController::class, 'addToCart'])->name('addToCart')->middleware('auth');
+Route::post('deletePurchaseDetail',[PurchaseDetailController::class, 'deleteFromCart'])->name('deleteFromCart')->middleware('auth');
+

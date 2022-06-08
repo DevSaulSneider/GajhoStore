@@ -21,7 +21,7 @@
         <div style="width: 100%; margin-left: 20px;">
             <div style="display: grid;grid-template-columns: repeat(auto-fill,minmax(230px, 1fr));grid-gap: 1rem;">
                 @foreach($products as $product)
-                <a class="text-decoration-none" href="#">
+                <a class="text-decoration-none" href="{{route('productById', ['productId' => $product->id])}}">
                     <div class="card border border-light" style="width: 14rem;">
                         <img class="card-img-top cover" src="{{ asset('storage').'/'.$product->image }}" alt="Card image cap" height="200px">
                         <div class="card-body">

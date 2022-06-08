@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('image');
             $table->integer('amount_sales')->nullable();
             $table->timestamps();
+            $table->integer('venta_cantidad')->nullable();
 
             $table->foreign('category_id')->references('id')->on('categories')->onDelete("cascade");
             $table->foreign('user_id')->references('id')->on('users')->onDelete("cascade");

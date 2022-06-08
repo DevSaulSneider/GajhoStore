@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PaymentMethod;
-use Illuminate\Http\Request;
 use App\Models\Turn;
+use Illuminate\Http\Request;
+use App\Models\PaymentMethod;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -23,9 +23,8 @@ class PaymentMethodController extends Controller
         $filtrarNombre = $request->get('filtrarNombre');
         $paymentMethods = DB::table('payment_methods')->where('name', 'LIKE', '%'.$filtrarNombre.'%')->paginate(5);
         return view('payment-method.index', compact('paymentMethods'));   
-
     }
-
+        
     /**
      * Show the form for creating a new resource.
      *
