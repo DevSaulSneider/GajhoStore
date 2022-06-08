@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.app')
 
 @section('content')
 <section class="content container">
@@ -24,18 +24,4 @@
             </div>
         </div>
     </section>
-
-
-
-
-<!-- 
-<div class="container">
-
-<form action="{{ url('/employee') }}" method="post">
-    @csrf
-    @include('employee.form', ['mode'=>'Crear'])
-</form>
-
-</div> -->
-
 @endsection

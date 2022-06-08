@@ -1,4 +1,5 @@
-@extends('layouts.admin')
+@extends('layouts.app')
+
 
 @section('template_title')
     Payment Method
@@ -29,26 +30,54 @@
                         </div>
                     @endif
 
+                    <div class="d-flex w-100 px-3 mt-4">
+        <div class="w-50 pe-2">
+            <form method="GET" action="{{ route('payment-methods.consultarMetodoPagoPorID') }}">
+                @csrf
+                <div class="form-group mb-2">
+                    <label for="consultaID" class="col-form-label">Consultar Metodo de pago</label>
+                    <div class="d-flex">
+                        <input type="text" class="form-control shadow-none" id="consultaID" name="consultaID"  placeholder="Consultar por ID de metodo de pago">
+                        <button type="submit" class="btn btn-primary mx-1">Consultar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="w-50 ps-2">
+            <form method="GET" action="{{ route('payment-methods.index') }}">
+                @csrf
+                <div class="form-group mb-2">
+                    <label for="filtrarNombre" class="col-form-label">Filtrar Metodo de pago</label>
+                    <div class="d-flex">
+                        <input type="text" class="form-control shadow-none" id="filtrarNombre" name="filtrarNombre" placeholder="Filtrar por nombre de metodo de pago">
+                        <button type="submit" class="btn btn-primary mx-1">Filtrar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="d-inline px-3">
+        <a href="{{ route('payment-methods.index'); }}" class="btn btn-warning ">Listar Metodos de pago</a>
+    </div>
+
+
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped table-hover">
+                            <table class="table table-striped table-hover text-center">
                                 <thead class="thead">
                                     <tr>
-                                        <th>N°</th>
-                                        
+                                        <th>Código</th>
 										<th>Nombre</th>
-
-                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($paymentMethods as $paymentMethod)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
+                                            <td class="w-25">{{ $paymentMethod->id }}</td>
                                             
-											<td>{{ $paymentMethod->name }}</td>
+											<td class="w-25">{{ $paymentMethod->name }}</td>
 
-                                            <td>
+                                            <td class="w-25">
                                                 <form action="{{ route('payment-methods.destroy',$paymentMethod->id) }}" method="POST">
                                                     
                                                     <a class="btn btn-sm btn-success rounded-pill" href="{{ route('payment-methods.edit',$paymentMethod->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>

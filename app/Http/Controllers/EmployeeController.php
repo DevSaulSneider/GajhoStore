@@ -16,10 +16,13 @@ class EmployeeController extends Controller
      */
     public function index(Request $request)
     {
-        $filter = $request->get('filter');
-        $employees = DB::table('employees')->where('id', 'LIKE', '%'.$filter.'%')
-                                           ->paginate(10);
-        return view('employee.index',compact('employees', 'filter'));  
+        $filtrarNombre = $request->get('filtrarNombre');
+        $employees = DB::table('employees')
+        ->join('turns', 'employees.turn_id', '=', 'turns.id')
+        ->select('employees.id as id', 'employees.name', 'employees.lastName', 'employees.phone', 'employees.email', 'employees.username', 'turns.turn as turn')
+        ->where('employees.name', 'LIKE', '%'.$filtrarNombre.'%')
+        ->paginate();
+        return view('employee.index',compact('employees', 'filtrarNombre'));  
 
     }
 
@@ -153,5 +156,15 @@ class EmployeeController extends Controller
     {
         Employee::destroy($id);
         return redirect('employee')->with('message', 'Empleado borrada con exito');
+    }
+    
+    public function consultarEmpleadoPorID(Request $request){
+        $consultaID = $request->get("consultaID");
+        $employees = DB::table('employees')
+        ->join('turns', 'employees.turn_id', '=', 'turns.id')
+        ->where('employees.id', '=', $consultaID)
+        ->select('employees.id as id', 'employees.name', 'employees.lastName', 'employees.phone', 'employees.email', 'employees.username', 'turns.turn as turn')
+        ->paginate();
+        return view('employee.index',compact('employees', 'consultaID'));  
     }
 }

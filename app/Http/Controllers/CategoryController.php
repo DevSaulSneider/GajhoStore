@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -12,15 +13,12 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data['categories'] = Category::paginate(5);
-        return view('category.index', $data);
-
-
-        // $category = Category::all();
-
-        // return $category;
+        $filtrarNombre = $request->get('filtrarNombre');
+        $categories = DB::table('categories')->where('name', 'LIKE', '%'.$filtrarNombre.'%')->paginate(5);
+        // $data['categories'] = Category::paginate(5);
+        return view('category.index', compact('categories','filtrarNombre'));
     }
 
 
@@ -117,5 +115,11 @@ class CategoryController extends Controller
     {
         Category::destroy($id);
         return redirect('category')->with('message', 'Categoria borrada con exito');
+    }
+
+    public function consultarCategoriaPorID(Request $request){
+        $consultaID = $request->get("consultaID");
+        $categories = DB::table('categories')->where('id', '=', $consultaID)->paginate();
+        return view('category.index', compact('categories','consultaID'));
     }
 }
