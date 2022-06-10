@@ -120,6 +120,7 @@
         </div>
       </div>
     </nav>
+    @if (Auth::user()->role_id == 1)
     <div class="categories">
       <ul class="container nav">
         <li class="nav-item">
@@ -134,12 +135,21 @@
         <li class="nav-item">
           <a class="nav-link category" href="{{ route('payment-methods.index') }}">{{ __('Metodo de Pago') }}</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link category" href="{{ route('catalogue') }}">{{ __('Catálogo') }}</a>
-        </li>
+      
       </ul>
     </div>
-
+    @else
+    <div class="categories">
+      <ul class="container nav">
+        <li class="nav-item">
+          <a class="nav-link category" href="{{ route('catalogue') }}">{{ __('Catálogo') }}</a>
+        </li>       
+      </ul>
+    </div>
+    @endif
+   
+    
+    @endauth
     <main class="py-4">
       @yield('content')
     </main>
