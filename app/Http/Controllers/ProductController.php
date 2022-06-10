@@ -24,10 +24,10 @@ class ProductController extends Controller
     {
         if(Auth::user()->role_id == 1){
         $products['products'] = Product::paginate(5);
-        }else{
-            
-        }
         return view('product.index', $products)->with('i');
+        }else{
+            return  redirect('/index');
+        }
     }
 
     public function searchById(Request $request)
