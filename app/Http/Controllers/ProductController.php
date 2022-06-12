@@ -22,16 +22,20 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $filtrarNombre = $request->get('filtrarNombre');
-        $products = DB::table('products')
-        ->join('categories', 'products.category_id', '=', 'categories.id')
-        ->join('users', 'products.user_id', '=', 'users.id')
-        ->select('products.id as id', 'categories.name as categoria', 'users.name as user', 'products.name', 'products.description', 'products.quantity', 'products.state', 'products.price', 'products.discount_price', 'products.image')
-        ->where('products.name', 'LIKE', '%'.$filtrarNombre.'%')
-        ->orderBy('id')
-        ->paginate(5);
-        
-        return view('product.index', compact('products'))->with('i');
+        if(Auth::user()->role_id == 1){
+            $filtrarNombre = $request->get('filtrarNombre');
+            $products = DB::table('products')
+            ->join('categories', 'products.category_id', '=', 'categories.id')
+            ->join('users', 'products.user_id', '=', 'users.id')
+            ->select('products.id as id', 'categories.name as categoria', 'users.name as user', 'products.name', 'products.description', 'products.quantity', 'products.state', 'products.price', 'products.discount_price', 'products.image')
+            ->where('products.name', 'LIKE', '%'.$filtrarNombre.'%')
+            ->orderBy('id')
+            ->paginate(5);
+            
+            return view('product.index', compact('products'))->with('i');
+        }else{
+            return redirect('/index');
+        }
     }
 
     public function searchById(Request $request)
@@ -51,8 +55,6 @@ class ProductController extends Controller
         $categories = Category::all();
         return view('catalogue', compact('products', 'categories'));
     }
-
-
     /**
      * Show the form for creating a new resource.
      *
@@ -60,10 +62,13 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $product = new Product();
-
-        $categories = Category::pluck('name', 'id');
-        return view('product.create', compact('product', 'categories'));
+        if(Auth::user()->role_id == 1){
+            $product = new Product();
+            $categories = Category::pluck('name', 'id');
+            return view('product.create', compact('product', 'categories'));
+        }else{
+            return redirect('/index');
+        }
     }
 
     /**
@@ -132,9 +137,13 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $product = Product::find($id);
-        $categories = Category::pluck('name', 'id');
-        return view('product.edit', compact('product', 'categories'));
+        if(Auth::user()->role_id == 1){
+            $product = Product::find($id);
+            $categories = Category::pluck('name', 'id');
+            return view('product.edit', compact('product', 'categories'));
+        }else{
+            return redirect('/index');
+        }
     }
 
     /**

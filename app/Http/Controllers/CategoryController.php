@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Category;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
@@ -15,10 +16,14 @@ class CategoryController extends Controller
      */
     public function index(Request $request)
     {
-        $filtrarNombre = $request->get('filtrarNombre');
-        $categories = DB::table('categories')->where('name', 'LIKE', '%'.$filtrarNombre.'%')->paginate(5);
-        // $data['categories'] = Category::paginate(5);
-        return view('category.index', compact('categories','filtrarNombre'));
+        if(Auth::user()->role_id == 1){
+            $filtrarNombre = $request->get('filtrarNombre');
+            $categories = DB::table('categories')->where('name', 'LIKE', '%'.$filtrarNombre.'%')->paginate(5);
+            // $data['categories'] = Category::paginate(5);
+            return view('category.index', compact('categories','filtrarNombre'));
+        }else{
+            return redirect('/index');
+        }
     }
 
 
@@ -31,7 +36,11 @@ class CategoryController extends Controller
 
     public function create()
     {
-        return view('category.create');
+        if(Auth::user()->role_id == 1){
+            return view('category.create');
+        }else{
+            return redirect('/index');
+        }
     }
 
     public function store(Request $request)
@@ -81,8 +90,12 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $categoryData = Category::findOrFail($id);
-        return view('category.edit', compact('categoryData'));
+        if(Auth::user()->role_id == 1){
+            $categoryData = Category::findOrFail($id);
+            return view('category.edit', compact('categoryData'));
+        }else{
+            return redirect('/index');
+        }
     }
 
     public function update(Request $request, $id)

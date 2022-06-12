@@ -9,6 +9,7 @@ use App\Models\PaymentMethod;
 
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class PaymentMethodController
@@ -23,11 +24,14 @@ class PaymentMethodController extends Controller
      */
     public function index(Request $request)
     {
-        $filtrarNombre = $request->get('filtrarNombre');
-        $paymentMethods = DB::table('payment_methods')->where('name', 'LIKE', '%'.$filtrarNombre.'%')->paginate(5);
-        return view('payment-method.index', compact('paymentMethods'));   
+        if(Auth::user()->role_id == 1){
+            $filtrarNombre = $request->get('filtrarNombre');
+            $paymentMethods = DB::table('payment_methods')->where('name', 'LIKE', '%'.$filtrarNombre.'%')->paginate(5);
+            return view('payment-method.index', compact('paymentMethods'));   
+        }else{
+            return redirect('/index');
+        }
     }
-        
     /**
      * Show the form for creating a new resource.
      *
@@ -35,10 +39,13 @@ class PaymentMethodController extends Controller
      */
     public function create()
     {
-        $paymentMethod = new PaymentMethod();
-        $turns = Turn::pluck('turn', 'id');
-
-        return view('payment-method.create', compact('paymentMethod', 'turns'));
+        if(Auth::user()->role_id == 1){
+            $paymentMethod = new PaymentMethod();
+            $turns = Turn::pluck('turn', 'id');
+            return view('payment-method.create', compact('paymentMethod', 'turns'));
+        }else{
+            return redirect('/index');
+        }
     }
 
     /**
@@ -49,8 +56,6 @@ class PaymentMethodController extends Controller
      */
     public function store(Request $request)
     {
-
-
         $validated = [
             'name'=>'required|alpha|max:30|min:3',
         ];
@@ -67,7 +72,6 @@ class PaymentMethodController extends Controller
         return redirect()->route('payment-methods.index')
             ->with('success', 'Metodoo creado correctamente');
     }
-
     /**
      * Display the specified resource.
      *
@@ -89,9 +93,12 @@ class PaymentMethodController extends Controller
      */
     public function edit($id)
     {
-        $paymentMethod = PaymentMethod::find($id);
-
-        return view('payment-method.edit', compact('paymentMethod'));
+        if(Auth::user()->role_id == 1){
+            $paymentMethod = PaymentMethod::find($id);
+            return view('payment-method.edit', compact('paymentMethod'));
+        }else{
+            return redirect('/index');
+        }
     }
 
     /**

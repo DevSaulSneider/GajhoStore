@@ -6,6 +6,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProvinceController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DistrictController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PaymentMethodController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProductController;
@@ -76,3 +77,6 @@ Route::get('/productdetail/{productId}',[ProductController::class, 'productById'
 Route::get('purchaseDetail',[PurchaseDetailController::class, 'index'])->name('shoppingCart')->middleware('auth');
 Route::post('purchaseDetail',[PurchaseDetailController::class, 'addToCart'])->name('addToCart')->middleware('auth');
 Route::post('deletePurchaseDetail',[PurchaseDetailController::class, 'deleteFromCart'])->name('deleteFromCart')->middleware('auth');
+
+Route::get('/menu/nosotros', [HomeController::class, 'nosotros'])->name('nosotros');
+Route::get('/menu/contacto', [HomeController::class, 'contacto'])->name('contacto');
