@@ -17,11 +17,11 @@ class PaymentMethodController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function index()
-    {
+    {   
         $paymentMethods['paymentMethods'] = PaymentMethod::paginate(5);
-        return view('payment-method.index', $paymentMethods)->with('i');   
-
+        return view('payment-method.index', $paymentMethods)->with('i');
     }
 
     /**
