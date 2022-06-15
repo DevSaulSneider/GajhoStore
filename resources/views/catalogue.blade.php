@@ -39,6 +39,7 @@
                             <h5 class="card-title text-black">{{$product->name}}</h5>
                             <p class="card-text text-black">{{$product->description}}</p>
                             <h3 class="text-primary">S/. {{$product->price}}</h3>
+                            <span class="spanCategoria" idCategoria="{{$product->category_id}}"></span>
                         </div>
                     </div>
                 </a>

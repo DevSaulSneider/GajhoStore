@@ -51,7 +51,6 @@ class ProductController extends Controller
     }
     public function filterByCategory($categoryId)
     {
-        // $products = Product::where('category_id', '=', $categoryId);
         $products = DB::table('products')->where('category_id', '=', $categoryId);
         $products = $products->get();
         $categories = Category::all();
@@ -238,5 +237,16 @@ class ProductController extends Controller
         ->select('products.id as id', 'categories.name as categoria', 'users.name as user', 'products.name', 'products.description', 'products.quantity', 'products.state', 'products.price', 'products.discount_price', 'products.image')
         ->paginate();
         return view('product.index', compact('products'))->with('i');
+    }
+
+    public function listarPrecioEntre(Request $request){
+        // $idCat = $request->get("idCategoria");
+        // return $idCat;
+        return "no";
+        // return $request;
+        // $products = DB::table('products')->where('category_id', '=', $categoryId);
+        // $products = $products->get();
+        // $categories = Category::all();
+        // return view('catalogue', compact('products', 'categories'));
     }
 }
