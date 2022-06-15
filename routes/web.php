@@ -63,6 +63,8 @@ Route::get('/productdetail/{productId}',[ProductController::class, 'productById'
 
 /*RUTAS DETALLE DE COMPRA*/
 Route::get('purchaseDetail',[PurchaseDetailController::class, 'index'])->name('shoppingCart')->middleware('auth');
+Route::get('purchaseDetailJson',[PurchaseDetailController::class, 'indexJson'])->name('shoppingCartJson')->middleware('auth');
 Route::post('purchaseDetail',[PurchaseDetailController::class, 'addToCart'])->name('addToCart')->middleware('auth');
-Route::post('deletePurchaseDetail',[PurchaseDetailController::class, 'deleteFromCart'])->name('deleteFromCart')->middleware('auth');
+Route::put('updatePurchaseDetail',[PurchaseDetailController::class, 'updateCart'])->name('updateCart')->middleware('auth');
+Route::delete('deleteFromPurchaseDetail/{id}',[PurchaseDetailController::class, 'deleteFromCart'])->name('deleteFromCart')->middleware('auth');
 
