@@ -43,11 +43,25 @@ class ProductController extends Controller
         $product['product'] = DB::table('products')->where('id', $productId)->get()->first();
         return view('productDetail', $product);
     }
-
-    public function catalogue()
+    public function filterByCategory($categoryId)
     {
-        $products = Product::all();
+        // $products = Product::where('category_id', '=', $categoryId);
+        $products = DB::table('products')->where('category_id', '=', $categoryId);
+        $products = $products->get();
         $categories = Category::all();
+        return view('catalogue', compact('products', 'categories'));
+    }
+
+    public function catalogue(Request $request)
+    {
+        $categories = Category::all();
+        if(!$request->filtrarPrecio){
+            $products = Product::all();
+        }else{
+            $filtrarPrecio = $request->filtrarPrecio;
+            $products = DB::table('products')
+            ->where('price', '<', $filtrarPrecio)->get();
+        }        
         return view('catalogue', compact('products', 'categories'));
     }
 
