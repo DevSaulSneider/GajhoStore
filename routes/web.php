@@ -6,6 +6,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProvinceController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DistrictController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PaymentMethodController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProductController;
@@ -31,10 +32,10 @@ Route::get('/index', [ProductController::class, 'getMostSelled'])->name('index')
 Auth::routes(['reset' => true]);
 Auth::routes([ 'verify' => true ]);
 
-Route::resource('/category', CategoryController::class)->middleware('auth');
-Route::resource('/employee', EmployeeController::class)->middleware('auth');
+Route::resource('/category', CategoryController::class);
+Route::resource('/employee', EmployeeController::class);
 
-Route::resource('payment-methods', App\Http\Controllers\PaymentMethodController::class)->middleware('auth');
+Route::resource('payment-methods', App\Http\Controllers\PaymentMethodController::class);
 
 Auth::routes();
 
@@ -44,7 +45,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', [CategoryController::class, 'index'])->name('home');
 });
 
-Route::resource('/products', ProductController::class)->middleware('auth');
+Route::resource('/products', ProductController::class);
 
 Route::get('/searchByID', [ProductController::class, 'searchById'])->name('products.searchByID')->middleware('auth');
 
@@ -79,3 +80,5 @@ Route::post('purchaseDetail',[PurchaseDetailController::class, 'addToCart'])->na
 Route::put('updatePurchaseDetail',[PurchaseDetailController::class, 'updateCart'])->name('updateCart')->middleware('auth');
 Route::delete('deleteFromPurchaseDetail/{id}',[PurchaseDetailController::class, 'deleteFromCart'])->name('deleteFromCart')->middleware('auth');
 
+Route::get('/menu/nosotros', [HomeController::class, 'nosotros'])->name('nosotros');
+Route::get('/menu/contacto', [HomeController::class, 'contacto'])->name('contacto');
