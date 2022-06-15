@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PaymentMethod;
-use Illuminate\Http\Request;
 use App\Models\Turn;
+use Illuminate\Http\Request;
+use App\Models\PaymentMethod;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class PaymentMethodController
@@ -17,13 +18,13 @@ class PaymentMethodController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $paymentMethods['paymentMethods'] = PaymentMethod::paginate(5);
-        return view('payment-method.index', $paymentMethods)->with('i');   
-
+        $filtrarNombre = $request->get('filtrarNombre');
+        $paymentMethods = DB::table('payment_methods')->where('name', 'LIKE', '%'.$filtrarNombre.'%')->paginate(5);
+        return view('payment-method.index', compact('paymentMethods'));   
     }
-
+        
     /**
      * Show the form for creating a new resource.
      *
@@ -118,5 +119,11 @@ class PaymentMethodController extends Controller
 
         return redirect()->route('payment-methods.index')
             ->with('success', 'Metodoo borrado correctamente');
+    }
+
+    public function consultarMetodoPagoPorID(Request $request){
+        $consultaID = $request->get('consultaID');
+        $paymentMethods = DB::table('payment_methods')->where('id', '=', $consultaID)->paginate();
+        return view('payment-method.index', compact('paymentMethods','consultaID'));
     }
 }

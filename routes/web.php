@@ -6,7 +6,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProvinceController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DistrictController;
-
+use App\Http\Controllers\PaymentMethodController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PurchaseDetailController;
@@ -28,7 +28,8 @@ Route::get('/', function () {
 
 Route::get('/index', [ProductController::class, 'getMostSelled'])->name('index');
 
-Auth::routes(['reset' => false]);
+Auth::routes(['reset' => true]);
+Auth::routes([ 'verify' => true ]);
 
 Route::resource('/category', CategoryController::class)->middleware('auth');
 Route::resource('/employee', EmployeeController::class)->middleware('auth');
@@ -47,16 +48,26 @@ Route::resource('/products', ProductController::class)->middleware('auth');
 
 Route::get('/searchByID', [ProductController::class, 'searchById'])->name('products.searchByID')->middleware('auth');
 
-
 /* RUTAS DE UBIGEO */
 Route::get('/department', [DepartmentController::class, 'index']);
 Route::post('/provinces', [ProvinceController::class, 'getProvincesByDepartment']);
 Route::post('/districts', [DistrictController::class, 'getDistrictByProvince']);
 
 
+
 /* RUTAS CATALOGO */
 Route::get('/catalogue', [ProductController::class, 'catalogue'])->name('catalogue');
 Route::get('/catalogue/{categoryId}',[ProductController::class, 'filterByCategory'])->name('filterByCategory');
+
+/* CONSULTAR POR ID */
+// Categoria
+Route::get('/consultarCategoriaPorID', [CategoryController::class, 'consultarCategoriaPorID'])->name('category.consultarCategoriaPorID')->middleware('auth');
+// Producto
+Route::get('/consultarProductoPorID', [ProductController::class, 'consultarProductoPorID'])->name('product.consultarProductoPorID')->middleware('auth');
+// Metodo de pago
+Route::get('/consultarMetodoPagoPorID', [PaymentMethodController::class, 'consultarMetodoPagoPorID'])->name('payment-methods.consultarMetodoPagoPorID')->middleware('auth');
+// Empleado
+Route::get('/consultarEmpleadoPorID', [EmployeeController::class, 'consultarEmpleadoPorID'])->name('employee.consultarEmpleadoPorID')->middleware('auth');
 
 /*RUTAS DETALLE PRODUCTO*/
 Route::get('/productdetail/{productId}',[ProductController::class, 'productById'])->name('productById');

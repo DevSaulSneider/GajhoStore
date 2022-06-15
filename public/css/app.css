@@ -21625,3 +21625,13 @@ readers do not read off random characters that represent icons */
 .img3 {
   background-image: url("/image/index_ofertas/img_contacto3.webp");
 }
+
+.register_flex {
+  display: flex;
+  justify-content: center;
+}
+@media (max-width: 1080px) {
+  .register_flex {
+    display: block;
+  }
+}
