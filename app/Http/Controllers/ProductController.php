@@ -220,4 +220,31 @@ class ProductController extends Controller
         ->paginate();
         return view('product.index', compact('products'))->with('i');
     }
+
+    public function filterByCategory($categoryId){
+    
+        $products = DB::table('products')->where('category_id', '=', $categoryId);
+        $products = $products->get();
+        $categories = Category::all();
+        return view('catalogue', compact('products', 'categories'));
+    }
+
+    // public function filtrarPorPrecio(Request $request){
+        // return $request;
+        // $products = DB::table('products')->where('category_id', '=', $categoryId);
+        // $products = $products->get();
+        // $categories = Category::all();
+        // return view('catalogue', compact('products', 'categories'));
+    // }
+
+    public function listarPrecioEntre(Request $request){
+        // $idCat = $request->get("idCategoria");
+        // return $idCat;
+        return "no";
+        // return $request;
+        // $products = DB::table('products')->where('category_id', '=', $categoryId);
+        // $products = $products->get();
+        // $categories = Category::all();
+        // return view('catalogue', compact('products', 'categories'));
+    }
 }

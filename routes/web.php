@@ -54,7 +54,6 @@ Route::post('/provinces', [ProvinceController::class, 'getProvincesByDepartment'
 Route::post('/districts', [DistrictController::class, 'getDistrictByProvince']);
 
 
-
 /* RUTAS CATALOGO */
 Route::get('/catalogue', [ProductController::class, 'catalogue'])->name('catalogue');
 Route::get('/catalogue/{categoryId}',[ProductController::class, 'filterByCategory'])->name('filterByCategory');
@@ -77,3 +76,6 @@ Route::get('purchaseDetail',[PurchaseDetailController::class, 'index'])->name('s
 Route::post('purchaseDetail',[PurchaseDetailController::class, 'addToCart'])->name('addToCart')->middleware('auth');
 Route::post('deletePurchaseDetail',[PurchaseDetailController::class, 'deleteFromCart'])->name('deleteFromCart')->middleware('auth');
 
+/* FILTRAR PRECIOS */
+
+Route::get('/listarPrecioEntre', [ProductController::class, 'listarPrecioEntre'])->name('product.listarPrecioEntre')->middleware('auth');
