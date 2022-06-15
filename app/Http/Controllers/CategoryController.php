@@ -14,16 +14,12 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request, Category $category)
     {
-        if(Auth::user()->role_id == 1){
-            $filtrarNombre = $request->get('filtrarNombre');
-            $categories = DB::table('categories')->where('name', 'LIKE', '%'.$filtrarNombre.'%')->paginate(5);
-            // $data['categories'] = Category::paginate(5);
-            return view('category.index', compact('categories','filtrarNombre'));
-        }else{
-            return redirect('/index');
-        }
+        $this->authorize('category', $category);
+        $filtrarNombre = $request->get('filtrarNombre');
+        $categories = DB::table('categories')->where('name', 'LIKE', '%'.$filtrarNombre.'%')->paginate(5);
+        return view('category.index', compact('categories','filtrarNombre'));
     }
 
 
@@ -34,13 +30,10 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function create()
+    public function create(Category $category)
     {
-        if(Auth::user()->role_id == 1){
-            return view('category.create');
-        }else{
-            return redirect('/index');
-        }
+        $this->authorize('category', $category);
+        return view('category.create');
     }
 
     public function store(Request $request)
@@ -90,12 +83,10 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        if(Auth::user()->role_id == 1){
-            $categoryData = Category::findOrFail($id);
-            return view('category.edit', compact('categoryData'));
-        }else{
-            return redirect('/index');
-        }
+        $category = new Category();
+        $this->authorize('category', $category);
+        $categoryData = Category::findOrFail($id);
+        return view('category.edit', compact('categoryData'));
     }
 
     public function update(Request $request, $id)

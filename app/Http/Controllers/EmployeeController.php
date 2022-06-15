@@ -15,32 +15,26 @@ class EmployeeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+
+    public function index(Request $request, Employee $employee)
     {
-        if(Auth::user()->role_id == 1){
-            $filtrarNombre = $request->get('filtrarNombre');
-            $employees = DB::table('employees')
+        $this->authorize('employee', $employee);
+        $filtrarNombre = $request->get('filtrarNombre');
+        $employees = DB::table('employees')
             ->join('turns', 'employees.turn_id', '=', 'turns.id')
             ->select('employees.id as id', 'employees.name', 'employees.lastName', 'employees.phone', 'employees.email', 'employees.username', 'turns.turn as turn')
             ->where('employees.name', 'LIKE', '%'.$filtrarNombre.'%')
             ->paginate();
-            return view('employee.index',compact('employees', 'filtrarNombre'));  
-       }else{
-            return redirect('/index');
-        }
+        return view('employee.index',compact('employees', 'filtrarNombre'));  
     }
 
-    public function create()
+    public function create(Employee $employee)
     {
-        if(Auth::user()->role_id == 1){
-            $employee = new Employee();
-            $turns = Turn::pluck('turn', 'id');
-            return view('employee.create', compact('employee', 'turns'));
-        }else{
-            return redirect('/index');
-        }
+        $this->authorize('employee', $employee);
+        $employee = new Employee();
+        $turns = Turn::pluck('turn', 'id');
+        return view('employee.create', compact('employee', 'turns'));
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -100,13 +94,12 @@ class EmployeeController extends Controller
 
     public function edit($id)
     {
-        if(Auth::user()->role_id == 1){
+        $employee = new Employee;
+        $this->authorize('employee', $employee);
         $employee = Employee::find($id);
-            $turns = Turn::pluck('turn', 'id');
-            return view('employee.edit', compact('employee', 'turns'));
-        }else{
-            return redirect('/index');
-        }
+        $turns = Turn::pluck('turn', 'id');
+        return view('employee.edit', compact('employee', 'turns'));
+
     }
 
     /**

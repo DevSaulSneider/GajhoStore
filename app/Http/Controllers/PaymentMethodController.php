@@ -6,8 +6,6 @@ use App\Models\Turn;
 
 use Illuminate\Http\Request;
 use App\Models\PaymentMethod;
-
-
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,30 +20,24 @@ class PaymentMethodController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request, PaymentMethod $paymentMethod)
     {
-        if(Auth::user()->role_id == 1){
-            $filtrarNombre = $request->get('filtrarNombre');
-            $paymentMethods = DB::table('payment_methods')->where('name', 'LIKE', '%'.$filtrarNombre.'%')->paginate(5);
-            return view('payment-method.index', compact('paymentMethods'));   
-        }else{
-            return redirect('/index');
-        }
+        $this->authorize('payment', $paymentMethod);
+        $filtrarNombre = $request->get('filtrarNombre');
+        $paymentMethods = DB::table('payment_methods')->where('name', 'LIKE', '%'.$filtrarNombre.'%')->paginate(5);
+        return view('payment-method.index', compact('paymentMethods'));   
     }
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(PaymentMethod $paymentMethod)
     {
-        if(Auth::user()->role_id == 1){
-            $paymentMethod = new PaymentMethod();
-            $turns = Turn::pluck('turn', 'id');
-            return view('payment-method.create', compact('paymentMethod', 'turns'));
-        }else{
-            return redirect('/index');
-        }
+        $this->authorize('payment', $paymentMethod);
+        $paymentMethod = new PaymentMethod();
+        $turns = Turn::pluck('turn', 'id');
+        return view('payment-method.create', compact('paymentMethod', 'turns'));
     }
 
     /**
@@ -93,12 +85,10 @@ class PaymentMethodController extends Controller
      */
     public function edit($id)
     {
-        if(Auth::user()->role_id == 1){
-            $paymentMethod = PaymentMethod::find($id);
-            return view('payment-method.edit', compact('paymentMethod'));
-        }else{
-            return redirect('/index');
-        }
+        $payment = new PaymentMethod();
+        $this->authorize('payment', $payment);
+        $paymentMethod = PaymentMethod::find($id);
+        return view('payment-method.edit', compact('paymentMethod'));
     }
 
     /**

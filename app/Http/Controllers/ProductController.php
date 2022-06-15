@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
+// use Illuminate\Contracts\Auth\Access\Gate;
+
 
 /**
  * Class ProductController
@@ -19,12 +22,13 @@ class ProductController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     * 
      */
-    public function index(Request $request)
-    {
-        if(Auth::user()->role_id == 1){
-            $filtrarNombre = $request->get('filtrarNombre');
-            $products = DB::table('products')
+    public function index(Request $request, Product $product)
+    {   
+        $this->authorize('product', $product);
+        $filtrarNombre = $request->get('filtrarNombre');
+        $products = DB::table('products')
             ->join('categories', 'products.category_id', '=', 'categories.id')
             ->join('users', 'products.user_id', '=', 'users.id')
             ->select('products.id as id', 'categories.name as categoria', 'users.name as user', 'products.name', 'products.description', 'products.quantity', 'products.state', 'products.price', 'products.discount_price', 'products.image')
@@ -32,10 +36,7 @@ class ProductController extends Controller
             ->orderBy('id')
             ->paginate(5);
             
-            return view('product.index', compact('products'))->with('i');
-        }else{
-            return redirect('/index');
-        }
+        return view('product.index', compact('products'))->with('i');
     }
 
     public function searchById(Request $request)
@@ -60,15 +61,11 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Product $product)
     {
-        if(Auth::user()->role_id == 1){
-            $product = new Product();
-            $categories = Category::pluck('name', 'id');
-            return view('product.create', compact('product', 'categories'));
-        }else{
-            return redirect('/index');
-        }
+        $this->authorize('product', $product);
+        $categories = Category::pluck('name', 'id');
+        return view('product.create', compact('product', 'categories'));
     }
 
     /**
@@ -135,15 +132,12 @@ class ProductController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, Product $product)
     {
-        if(Auth::user()->role_id == 1){
-            $product = Product::find($id);
-            $categories = Category::pluck('name', 'id');
-            return view('product.edit', compact('product', 'categories'));
-        }else{
-            return redirect('/index');
-        }
+        $this->authorize('product', $product);
+        $product = Product::find($id);
+        $categories = Category::pluck('name', 'id');
+        return view('product.edit', compact('product', 'categories'));
     }
 
     /**
@@ -215,7 +209,6 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $product = Product::find($id)->delete();
-
         return redirect()->route('products.index')
             ->with('success', 'Producto borrado correctamente');
     }
