@@ -9,8 +9,8 @@
         <div style="width: 40%;">
             <ul id="products" class="list-group list-group-flush"></ul>
         </div>
-        <div style="width: 20%;">
-            <ul class="list-group list-group-flush">
+        <div class="d-flex flex-column"  style="width: 20%;">
+            <ul class="list-group list-group-flush mb-4">
                 <li class="list-group-item fs-5">Resumen del pedido</li>
                 <li class="list-group-item">
                     <div class="d-flex justify-content-between">
@@ -18,6 +18,7 @@
                     </div>
                 </li>
             </ul>
+            <button class="btn btn-primary">Comprar</button>
         </div>
     </div>
 </div>
