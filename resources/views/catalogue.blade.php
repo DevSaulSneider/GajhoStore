@@ -17,15 +17,12 @@
                 @endforeach
             </ul>
             <hr>
-            <h5 style="font-weight: 600;">Precio</h5>
+            <!-- <h5 style="font-weight: 600;">Precio</h5>
             <div class="mx-3">
                 <input type="range" id="rangoPrecio" name="rangoPrecio" class="w-100 col-8 mx-auto d-block" id="range-precio-producto">
 
-                <!-- <div class="d-flex justify-content-between mx-2 mt-1">
-                    <span><small>S/</small><small class="precio-minimo-producto"></small></span>
-                    <span><small>S/</small><small class="precio-maximo-producto"></small></span>
-                </div>                         -->
-            </div>
+                
+            </div> -->
         </div>
         <!-- <div class="catalogue" style="width:100%; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;"> -->
         <div style="width: 100%; margin-left: 20px;">
@@ -48,5 +45,4 @@
     </div>
 </div>
 
-<script src="{{ asset('js/rango.js') }}"></script>
 @endsection
