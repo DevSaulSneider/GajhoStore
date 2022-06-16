@@ -16,13 +16,13 @@ class PurchaseDetailController extends Controller
      */
     public function index()
     {
-        $cartProducts = DB::table('purchase_details')->where('user_id', auth()->id())->get();
+        $cartProducts = DB::table('purchase_details')->join('products', 'products.id', '=', 'product_id')->select('purchase_details.*', 'products.quantity as stock')->where('purchase_details.user_id', auth()->id())->get();
         return view('purchaseDetail', compact('cartProducts'));
     }
 
     public function indexJson()
     {
-        $cartProducts = DB::table('purchase_details')->where('user_id', auth()->id())->get();
+        $cartProducts = DB::table('purchase_details')->join('products', 'products.id', '=', 'product_id')->select('purchase_details.*', 'products.quantity as stock')->where('purchase_details.user_id', auth()->id())->get();
         return response()->json($cartProducts);
     }
 

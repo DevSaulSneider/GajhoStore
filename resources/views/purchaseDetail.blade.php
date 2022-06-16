@@ -31,7 +31,7 @@
                 <div>
                     <h5 id="productName">Nombre</h5>
                     <h5 id="productPrice">Precio</h5>
-                    <input id="productQuantity" data-id="" class="form-control form-control-sm" type="number" value="cantidad" style="width: 70px;" min="1">
+                    <input id="productQuantity" data-id="" class="form-control form-control-sm" type="number" value="cantidad" style="width: 70px;" min="1" max="">
                 </div>
             </div>
             <button id="deleteProduct" data-id="" class="bg-white border-0">
@@ -73,11 +73,13 @@
     }
 
     const printProducts = (data, type) => {
+        console.log(data);
         data.forEach(product => {
             templateProduct.getElementById('productName').textContent = product.name;
             templateProduct.getElementById('productPrice').textContent = 'S/. ' + product.price;
             templateProduct.querySelector('.img-thumbnail').setAttribute('src', 'storage/' + product.image);
             templateProduct.getElementById('productQuantity').setAttribute('value', product.quantity);
+            templateProduct.getElementById('productQuantity').setAttribute('max', product.stock);
             templateProduct.getElementById('productQuantity').dataset.id = product.id;
             templateProduct.getElementById('deleteProduct').dataset.id = product.id;
 
