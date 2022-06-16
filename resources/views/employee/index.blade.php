@@ -80,7 +80,6 @@ Employee
                             <tbody>
                                 @foreach($employees as $employee)
                                 <tr>
-
                                     <td>{{$employee->id}}</td>
                                     <td>{{$employee->name}}</td>
                                     <td>{{$employee->lastName}}</td>
@@ -88,8 +87,6 @@ Employee
                                     <td>{{$employee->email}}</td>
                                     <td>{{$employee->username }}</td>
                                     <td>{{$employee->turn}}</td>
-
-
                                     <td><a href="{{ url('/employee/'.$employee->id.'/edit') }}"
                                             class="btn btn-sm btn-success rounded-pill "><i
                                                 class="fa fa-fw fa-edit"></i> Editar</a></td>

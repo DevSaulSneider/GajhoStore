@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->rememberToken();
+            $table->integer('role_id')->nullable();
 
         });
     }
@@ -28,6 +29,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropRememberToken();
+            $table->integer('role_id');
         });
     }
 };

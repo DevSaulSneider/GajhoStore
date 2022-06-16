@@ -16,6 +16,17 @@
                 </a>
                 @endforeach
             </ul>
+            <form method="GET" action="{{ route('catalogue') }}">
+            @csrf
+                <div class="form-group mb-2">
+                    <label for="filtrarPrecio" class="col-form-label">Filtrar Por Precio</label>
+                         <div class="d-flex">
+                            <span>Max &nbsp</span>
+                             <input onchange="this.form.submit()" type="range" value="300" min="300" max="2500" oninput="this.nextElementSibling.value = this.value" name="filtrarPrecio">
+                             <output>300</output>
+                        </div>
+                </div>
+            </form>
         </div>
         <!-- <div class="catalogue" style="width:100%; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;"> -->
         <div style="width: 100%; margin-left: 20px;">
@@ -28,6 +39,7 @@
                             <h5 class="card-title text-black">{{$product->name}}</h5>
                             <p class="card-text text-black">{{$product->description}}</p>
                             <h3 class="text-primary">S/. {{$product->price}}</h3>
+                            <span class="spanCategoria" idCategoria="{{$product->category_id}}"></span>
                         </div>
                     </div>
                 </a>

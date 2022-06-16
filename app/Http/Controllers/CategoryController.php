@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Category;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
@@ -13,11 +14,11 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request, Category $category)
     {
+        $this->authorize('category', $category);
         $filtrarNombre = $request->get('filtrarNombre');
         $categories = DB::table('categories')->where('name', 'LIKE', '%'.$filtrarNombre.'%')->paginate(5);
-        // $data['categories'] = Category::paginate(5);
         return view('category.index', compact('categories','filtrarNombre'));
     }
 
@@ -29,8 +30,9 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function create()
+    public function create(Category $category)
     {
+        $this->authorize('category', $category);
         return view('category.create');
     }
 
@@ -81,6 +83,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
+        $category = new Category();
+        $this->authorize('category', $category);
         $categoryData = Category::findOrFail($id);
         return view('category.edit', compact('categoryData'));
     }
