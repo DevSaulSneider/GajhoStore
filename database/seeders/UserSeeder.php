@@ -29,6 +29,7 @@ class UserSeeder extends Seeder
                 'district_id' => '1',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
+                'role_id' => 1
             ],
             [
                 'name' => 'Marcos',
@@ -42,6 +43,7 @@ class UserSeeder extends Seeder
                 'district_id' => '2',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
+                'role_id' => 0
             ],
             [
                 'name' => 'Gael',
@@ -55,6 +57,7 @@ class UserSeeder extends Seeder
                 'district_id' => '3',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
+                'role_id' => 0
             ],
             [
                 'name' => 'Ricardo',
@@ -68,6 +71,7 @@ class UserSeeder extends Seeder
                 'district_id' => '4',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
+                'role_id' => 0
             ],
 
 
@@ -84,6 +88,7 @@ class UserSeeder extends Seeder
                 'district_id' => '6',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
+                'role_id' => 0
             ],
             [
                 'name' => 'Fiorella',
@@ -97,6 +102,7 @@ class UserSeeder extends Seeder
                 'district_id' => '8',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
+                'role_id' => 0
             ],
             [
                 'name' => 'Nicole',
@@ -110,6 +116,7 @@ class UserSeeder extends Seeder
                 'district_id' => '3',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
+                'role_id' => 0
             ],
             [
                 'name' => 'Gerardo',
@@ -123,6 +130,7 @@ class UserSeeder extends Seeder
                 'district_id' => '16',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
+                'role_id' => 0
             ],
             [
                 'name' => 'Gregorio',
@@ -136,6 +144,7 @@ class UserSeeder extends Seeder
                 'district_id' => '13',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
+                'role_id' => 0
             ],
             [
                 'name' => 'Raul',
@@ -149,6 +158,7 @@ class UserSeeder extends Seeder
                 'district_id' => '24',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
+                'role_id' => 0
             ],
         ];
 
