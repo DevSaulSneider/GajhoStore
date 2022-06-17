@@ -147,9 +147,10 @@ class ProductController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id, Product $product)
+    public function edit($id)
     {
-        $this->authorize('product', $product);
+        $products = new Product();
+        $this->authorize('product', $products);
         $product = Product::find($id);
         $categories = Category::pluck('name', 'id');
         return view('product.edit', compact('product', 'categories'));

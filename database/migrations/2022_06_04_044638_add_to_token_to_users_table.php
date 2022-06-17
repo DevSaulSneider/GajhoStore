@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->rememberToken();
-            $table->integer('role_id')->nullable();
+            $table->integer('role_id')->default(0);
 
         });
     }
