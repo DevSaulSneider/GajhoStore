@@ -9,7 +9,7 @@
         <div style="width: 40%;">
             <ul id="products" class="list-group list-group-flush"></ul>
         </div>
-        <div class="d-flex flex-column"  style="width: 20%;">
+        <div class="d-flex flex-column" style="width: 20%;">
             <ul class="list-group list-group-flush mb-4">
                 <li class="list-group-item fs-5">Resumen del pedido</li>
                 <li class="list-group-item">
@@ -47,6 +47,8 @@
     const templateProduct = document.getElementById('template-product').content;
     const fragment = document.createDocumentFragment();
 
+    let data;
+
     document.addEventListener('DOMContentLoaded', () => {
         fetchCarrito();
     });
@@ -62,18 +64,14 @@
         updateCarrito();
     });
 
-    let data;
-
     const fetchCarrito = async () => {
         const res = await fetch('/purchaseDetailJson');
         data = await res.json();
         printProducts(data, null);
-
         calculateTotal();
     }
 
     const printProducts = (data, type) => {
-        console.log(data);
         data.forEach(product => {
             templateProduct.getElementById('productName').textContent = product.name;
             templateProduct.getElementById('productPrice').textContent = 'S/. ' + product.price;
@@ -115,22 +113,28 @@
 
     const deleteProduct = async (e) => {
         if (e.target.parentElement.id == 'deleteProduct') {
-            console.log(e.target.parentElement.dataset.id);
             const index = data.findIndex(product => product.id == e.target.parentElement.dataset.id);
             data.splice(index, 1);
             printProducts(data, 'delete');
             calculateTotal();
             await fetch(`deleteFromPurchaseDetail/${e.target.parentElement.dataset.id}`, {
-            method: 'DELETE',
-            headers: {
-                "X-Requested-With": "XMLHttpRequest",
-                "X-CSRF-TOKEN": document.querySelector('input[name="_token"]').value
-            },
-        });
+                method: 'DELETE',
+                headers: {
+                    "X-Requested-With": "XMLHttpRequest",
+                    "X-CSRF-TOKEN": document.querySelector('input[name="_token"]').value
+                },
+            });
         }
     }
 
     const updateCarrito = async () => {
+        data = data.map(prod => {
+            const {
+                stock,
+                ...rest
+            } = prod;
+            return rest;
+        })
         const res = await fetch('updatePurchaseDetail', {
             method: 'PUT',
             headers: {
