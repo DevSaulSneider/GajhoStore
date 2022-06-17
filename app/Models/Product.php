@@ -34,6 +34,7 @@ class Product extends Model
 		'user_id' => 'required',
 		'name' => 'required',
 		'description' => 'required',
+		'information' => 'required',
 		'quantity' => 'required',
 		'state' => 'required',
 		'price' => 'required',
@@ -48,7 +49,7 @@ class Product extends Model
      *
      * @var array
      */
-    protected $fillable = ['category_id','user_id','name','description','quantity','state','price','discount_price','image'];
+    protected $fillable = ['category_id','user_id','name','description','information','quantity','state','price','discount_price','image'];
 
 
     /**

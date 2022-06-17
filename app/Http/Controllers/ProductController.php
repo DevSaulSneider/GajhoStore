@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
+use File;
 // use Illuminate\Contracts\Auth\Access\Gate;
 
 
@@ -16,6 +17,8 @@ use Illuminate\Support\Facades\Storage;
  * Class ProductController
  * @package App\Http\Controllers
  */
+
+
 class ProductController extends Controller
 {
     /**
@@ -122,6 +125,7 @@ class ProductController extends Controller
 
         if ($request->hasFile('image')) {
             $product['image'] = $request->file('image')->store('upload', 'public');
+            File::copy(storage_path().'\app\public\\'.$product['image'], public_path().'\storage\\'.$product['image']);
         }
         Product::insert($product);
         return redirect()->route('products.index')
@@ -200,6 +204,8 @@ class ProductController extends Controller
             $product = Product::findOrFail($id);
             Storage::delete('public/' . $product->image);
             $datosProduct['image'] = $request->file('image')->store('upload', 'public');
+            File::copy(storage_path().'\app\public\\'.$datosProduct['image'], public_path().'\storage\\'.$datosProduct['image']);
+
         }
         Product::where('id', '=', $id)->update($datosProduct);
 
