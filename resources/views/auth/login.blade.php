@@ -37,7 +37,7 @@
                 </div>
 
                 <p class="text-right mb-4">
-                    ¿Todavía no tiene una cuenta? <a href="register.php" class="text-dark text-decoration-none"><b>Registrar</b></a> 
+                    ¿Todavía no tiene una cuenta? <a href="{{ route('register') }}" class="text-dark text-decoration-none"><b>Registrar</b></a> 
                 </p>
 
                 <div class="d-flex justify-content-between align-items-center">

@@ -20,6 +20,11 @@
             {!! $errors->first('description', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group mb-3">
+            {{ Form::label('informacion') }}
+            {{ Form::text('information', $product->information, ['class' => 'form-control' . ($errors->has('information') ? ' is-invalid' : ''), 'placeholder' => 'Ingrese la información', 'rows' => '4']) }}
+            {!! $errors->first('information', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
+        <div class="form-group mb-3">
             {{ Form::label('cantidad') }}
             {{ Form::number('quantity', $product->quantity, ['class' => 'form-control' . ($errors->has('quantity') ? ' is-invalid' : ''), 'placeholder' => 'Ingrese una cantidad']) }}
             {!! $errors->first('quantity', '<div class="invalid-feedback">:message</div>') !!}

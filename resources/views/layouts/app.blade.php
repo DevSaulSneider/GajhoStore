@@ -37,16 +37,16 @@
         </ul>
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a href="about.php" class="nav-link">Acerca de</a>
+            <a href="{{route('nosotros')}}" class="nav-link">Acerca de</a>
           </li>
           <li class="nav-item">
-            <a href="contact.php" class="nav-link">Contacto</a>
+            <a href="{{route('contacto')}}" class="nav-link">Contacto</a>
           </li>
           <li class="nav-item">
-            <a href="center.php" class="nav-link">Centro de ayuda</a>
+            <a href="#" class="nav-link">Centro de ayuda</a>
           </li>
           <li class="nav-item">
-            <a href="" class="nav-link disabled">Llámenos 123-456-7890</a>
+            <a href="#" class="nav-link disabled">Llámenos 123-456-7890</a>
           </li>
         </ul>
         <div>

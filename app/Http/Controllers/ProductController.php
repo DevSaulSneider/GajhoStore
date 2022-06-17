@@ -212,8 +212,9 @@ class ProductController extends Controller
 
     public function getMostSelled()
     {
-        $data['mostSelled'] = Product::paginate(5);
-        return view('index', $data);
+        $offer =  DB::table('products')->orderBy('discount_price')->paginate(5);
+        $mostSelled = Product::paginate(5);
+        return view('index', compact('mostSelled','offer'));
     }
 
     /**

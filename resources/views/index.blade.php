@@ -84,8 +84,7 @@
 
                 <div class="card" style="width: 18rem;">
                     <a href="{{route('productById', ['productId' => $product->id])}}">
-                        <img class="card-img-top cover" src="{{ asset('storage').'/'.$product->image }}"
-                            alt="Card image cap" height="200px">
+                        <img class="card-img-top cover" src="{{ asset('storage').'/'.$product->image }}" alt="Card image cap" height="200px">
                     </a>
                     <div class="card-body">
                         <h5 class="card-title">{{$product->name}}</h5>
@@ -96,6 +95,29 @@
                 @endforeach
             </div>
             <button class="btn btn-primary my-4"> Ver todo </button>
+        </div>
+        <div>
+            <div class="p-4 bg-white text-center">
+                <h1>Precios mas bajos</h1>
+                <div class="d-flex justify-content-between">
+                    @foreach($offer as $p)
+
+                    <div class="card" style="width: 18rem;">
+                        <a href="{{route('productById', ['productId' => $p->id])}}">
+                            <img class="card-img-top cover" src="{{ asset('storage').'/'.$p->image }}" alt="Card image cap" height="200px">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">{{$p->name}}</h5>
+                            <p class="card-text w-100 overflow-hidden" style="max-height:60px;text-overflow: ellipsis;-webkit-line-clamp: 2;-webkit-box-orient: vertical;display: -webkit-box;">
+                                {{$p->description}}
+                            </p>
+                            <h3 class="text-primary">S/. {{$p->price}}</h3>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+                <button class="btn btn-primary my-4"> Ver todo </button>
+            </div>
         </div>
     </div>
 
@@ -164,21 +186,22 @@
     </div>
 </div>
 
+
 @endsection
 
 <style>
-    body::-webkit-scrollbar{
+    body::-webkit-scrollbar {
         width: 10px;
     }
 
-    body::-webkit-scrollbar-thumb{
+    body::-webkit-scrollbar-thumb {
         border-radius: 50px;
         border-style: solid;
         background: #741efe;
     }
 
     .cover {
-        object-fit: cover ;
+        object-fit: cover;
     }
 
     .boxcarac {
@@ -209,7 +232,7 @@
         width: 70px;
     }
 
-    #info { 
+    #info {
         display: inline-flex;
         height: 3em;
         width: 120px;
