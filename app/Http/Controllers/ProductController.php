@@ -2,27 +2,44 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
+use File;
+// use Illuminate\Contracts\Auth\Access\Gate;
+
 
 /**
  * Class ProductController
  * @package App\Http\Controllers
  */
+
+
 class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     * 
      */
-    public function index()
-    {
-        $products['products'] = Product::paginate(5);
-        return view('product.index', $products)->with('i');
+    public function index(Request $request, Product $product)
+    {   
+        $this->authorize('product', $product);
+        $filtrarNombre = $request->get('filtrarNombre');
+        $products = DB::table('products')
+            ->join('categories', 'products.category_id', '=', 'categories.id')
+            ->join('users', 'products.user_id', '=', 'users.id')
+            ->select('products.id as id', 'categories.name as categoria', 'users.name as user', 'products.name', 'products.description', 'products.quantity', 'products.state', 'products.price', 'products.discount_price', 'products.image')
+            ->where('products.name', 'LIKE', '%'.$filtrarNombre.'%')
+            ->orderBy('id')
+            ->paginate(5);
+            
+        return view('product.index', compact('products'))->with('i');
     }
 
     public function searchById(Request $request)
@@ -31,19 +48,28 @@ class ProductController extends Controller
         return view('product.index', $products);
     }
 
-    public function catalogue()
+    public function productById($productId) {
+        $product['product'] = DB::table('products')->where('id', $productId)->get()->first();
+        return view('productDetail', $product);
+    }
+    public function filterByCategory($categoryId)
     {
-        $products = Product::all();
+        $products = DB::table('products')->where('category_id', '=', $categoryId);
+        $products = $products->get();
         $categories = Category::all();
         return view('catalogue', compact('products', 'categories'));
     }
 
-    public function filterByCategory($categoryId)
+    public function catalogue(Request $request)
     {
-        // $products = Product::where('category_id', '=', $categoryId);
-        $products = DB::table('products')->where('category_id', '=', $categoryId);
-        $products = $products->get();
         $categories = Category::all();
+        if(!$request->filtrarPrecio){
+            $products = Product::all();
+        }else{
+            $filtrarPrecio = $request->filtrarPrecio;
+            $products = DB::table('products')
+            ->where('price', '<', $filtrarPrecio)->get();
+        }        
         return view('catalogue', compact('products', 'categories'));
     }
 
@@ -53,10 +79,9 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Product $product)
     {
-        $product = new Product();
-
+        $this->authorize('product', $product);
         $categories = Category::pluck('name', 'id');
         return view('product.create', compact('product', 'categories'));
     }
@@ -72,7 +97,6 @@ class ProductController extends Controller
 
         $campos = [
             'category_id' => 'required|int|max:100',
-
             'name' => 'required|string|max:100',
             'description' => 'required|string|max:100',
             'quantity' => 'required|int|max:100',
@@ -101,6 +125,7 @@ class ProductController extends Controller
 
         if ($request->hasFile('image')) {
             $product['image'] = $request->file('image')->store('upload', 'public');
+            File::copy(storage_path().'\app\public\\'.$product['image'], public_path().'\storage\\'.$product['image']);
         }
         Product::insert($product);
         return redirect()->route('products.index')
@@ -128,6 +153,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
+        $products = new Product();
+        $this->authorize('product', $products);
         $product = Product::find($id);
         $categories = Category::pluck('name', 'id');
         return view('product.edit', compact('product', 'categories'));
@@ -177,6 +204,8 @@ class ProductController extends Controller
             $product = Product::findOrFail($id);
             Storage::delete('public/' . $product->image);
             $datosProduct['image'] = $request->file('image')->store('upload', 'public');
+            File::copy(storage_path().'\app\public\\'.$datosProduct['image'], public_path().'\storage\\'.$datosProduct['image']);
+
         }
         Product::where('id', '=', $id)->update($datosProduct);
 
@@ -190,8 +219,9 @@ class ProductController extends Controller
 
     public function getMostSelled()
     {
-        $data['mostSelled'] = Product::paginate(5);
-        return view('index', $data);
+        $offer =  DB::table('products')->orderBy('discount_price')->paginate(5);
+        $mostSelled = Product::paginate(5);
+        return view('index', compact('mostSelled','offer'));
     }
 
     /**
@@ -202,8 +232,29 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $product = Product::find($id)->delete();
-
         return redirect()->route('products.index')
             ->with('success', 'Producto borrado correctamente');
+    }
+
+    public function consultarProductoPorID(Request $request){
+        $consultaID = $request->get("consultaID");
+        $products = DB::table('products')
+        ->join('categories', 'products.category_id', '=', 'categories.id')
+        ->join('users', 'products.user_id', '=', 'users.id')
+        ->where('products.id', '=', $consultaID)
+        ->select('products.id as id', 'categories.name as categoria', 'users.name as user', 'products.name', 'products.description', 'products.quantity', 'products.state', 'products.price', 'products.discount_price', 'products.image')
+        ->paginate();
+        return view('product.index', compact('products'))->with('i');
+    }
+
+    public function listarPrecioEntre(Request $request){
+        // $idCat = $request->get("idCategoria");
+        // return $idCat;
+        return "no";
+        // return $request;
+        // $products = DB::table('products')->where('category_id', '=', $categoryId);
+        // $products = $products->get();
+        // $categories = Category::all();
+        // return view('catalogue', compact('products', 'categories'));
     }
 }

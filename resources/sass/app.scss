@@ -2,7 +2,8 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
 // Variables
-@import 'variables';
+@import 'base/mixins';
+@import 'base/variables';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
@@ -12,4 +13,6 @@
 @import "~@fortawesome/fontawesome-free/scss/regular";
 @import "~@fortawesome/fontawesome-free/scss/solid";
 @import "~@fortawesome/fontawesome-free/scss/brands";
-@import 'estilos';
+@import 'layout/estilos';
+@import 'layout/register';
+@import 'layout/nosotros';

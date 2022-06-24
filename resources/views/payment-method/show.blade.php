@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.app')
 
 @section('template_title')
     {{ $paymentMethod->name ?? 'Show Payment Method' }}

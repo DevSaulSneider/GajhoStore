@@ -25,34 +25,35 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-        <div class="navbar-brand"><i class="fa-solid fa-cube"></i> Envío gratis para pedidos superiores a S/1200</div>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            </ul>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a href="about.php" class="nav-link">Acerca de</a>
-                </li>
-                <li class="nav-item">
-                    <a href="contact.php" class="nav-link">Contacto</a>
-                </li>
-                <li class="nav-item">
-                    <a href="center.php" class="nav-link">Centro de ayuda</a>
-                </li>
-                <li class="nav-item">
-                    <a href="" class="nav-link disabled">Llámenos 123-456-7890</a>
-                </li>
-            </ul>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <div class="navbar-brand"><i class="fa-solid fa-cube"></i> Envío gratis para pedidos superiores a S/. 500</div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a href="{{route('nosotros')}}" class="nav-link">Acerca de</a>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('contacto')}}" class="nav-link">Contacto</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Centro de ayuda</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link disabled">Llámenos 123-456-7890</a>
+          </li>
+        </ul>
         <div>
-    </div>
-</nav>
+        </div>
+  </nav>
 
- 
+
   <div id="app">
     <nav class="navbar navbar-expand-md navbar-light bg-light parent my-4">
       <div class="container">
@@ -68,11 +69,13 @@
         <div class="searchbar parent">
           <form class="d-flex">
             <input class="form-control rounded-pill" type="search" placeholder="Buscar" aria-label="Search">
-            <button class="child btn btn-outline-success button-rounded-right button-color" type="submit">Buscar</button>
+            <button class="child btn btn-outline-success button-rounded-right button-color"
+              type="submit">Buscar</button>
           </form>
         </div>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
           <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -94,7 +97,9 @@
             @endif
             @else
             <li class="nav-item dropdown">
-              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+
+              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false" v-pre>
                 <i class="fa-solid fa-circle-user fa-xl"></i> &nbsp; {{ Auth::user()->name }}
               </a>
 
@@ -109,11 +114,19 @@
                 </form>
               </div>
             </li>
+            <li class="nav-item mt-2 ms-2">
+              <a class="nav-link" href="{{ route('shoppingCart') }}">
+                <i class="fa-solid fa-cart-shopping fa-lg"></i>
+              </a>
+            </li>
             @endguest
           </ul>
         </div>
       </div>
     </nav>
+    @auth
+
+    @if (Auth::user()->role_id == 1)
     <div class="categories">
       <ul class="container nav">
         <li class="nav-item">
@@ -130,6 +143,36 @@
         </li>
       </ul>
     </div>
+    @elseif (Auth::user()->role_id == 0)
+    <div class="categories">
+      <ul class="container nav">
+        <li class="nav-item">
+          <a class="nav-link category" href="{{ route('catalogue') }}">{{ __('Catálogo') }}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link category" href="{{ route('nosotros') }}">{{ __('Sobre Nosotros') }}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link category" href="{{ route('contacto') }}">{{ __('Contactanos') }}</a>
+        </li>
+      </ul>
+    </div>
+    @endauth
+    @else
+    <div class="categories">
+      <ul class="container nav">
+        <li class="nav-item">
+          <a class="nav-link category" href="{{ route('catalogue') }}">{{ __('Catálogo') }}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link category" href="{{ route('nosotros') }}">{{ __('Sobre Nosotros') }}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link category" href="{{ route('contacto') }}">{{ __('Contactanos') }}</a>
+        </li>
+      </ul>
+    </div>
+    @endif
 
     <main class="py-4">
       @yield('content')
@@ -193,6 +236,7 @@
       </div>
     </div>
   </div>
+  @stack('script')
 </body>
 
 </html>
@@ -258,7 +302,8 @@
     text-decoration: none;
     color: black;
   }
-/* 
+
+  /* 
   @media screen and (max-width: 768px) {
     .content {
       flex-direction: column;

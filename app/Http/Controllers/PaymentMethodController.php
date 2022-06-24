@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PaymentMethod;
-use Illuminate\Http\Request;
 use App\Models\Turn;
+
+use Illuminate\Http\Request;
+use App\Models\PaymentMethod;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class PaymentMethodController
@@ -18,22 +21,23 @@ class PaymentMethodController extends Controller
      * @return \Illuminate\Http\Response
      */
     
-    public function index()
-    {   
-        $paymentMethods['paymentMethods'] = PaymentMethod::paginate(5);
-        return view('payment-method.index', $paymentMethods)->with('i');
+    public function index(Request $request, PaymentMethod $paymentMethod)
+    {
+        $this->authorize('payment', $paymentMethod);
+        $filtrarNombre = $request->get('filtrarNombre');
+        $paymentMethods = DB::table('payment_methods')->where('name', 'LIKE', '%'.$filtrarNombre.'%')->paginate(5);
+        return view('payment-method.index', compact('paymentMethods'));   
     }
-
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(PaymentMethod $paymentMethod)
     {
+        $this->authorize('payment', $paymentMethod);
         $paymentMethod = new PaymentMethod();
         $turns = Turn::pluck('turn', 'id');
-
         return view('payment-method.create', compact('paymentMethod', 'turns'));
     }
 
@@ -45,8 +49,6 @@ class PaymentMethodController extends Controller
      */
     public function store(Request $request)
     {
-
-
         $validated = [
             'name'=>'required|alpha|max:30|min:3',
         ];
@@ -63,7 +65,6 @@ class PaymentMethodController extends Controller
         return redirect()->route('payment-methods.index')
             ->with('success', 'Metodoo creado correctamente');
     }
-
     /**
      * Display the specified resource.
      *
@@ -85,8 +86,9 @@ class PaymentMethodController extends Controller
      */
     public function edit($id)
     {
+        $payment = new PaymentMethod();
+        $this->authorize('payment', $payment);
         $paymentMethod = PaymentMethod::find($id);
-
         return view('payment-method.edit', compact('paymentMethod'));
     }
 
@@ -118,5 +120,11 @@ class PaymentMethodController extends Controller
 
         return redirect()->route('payment-methods.index')
             ->with('success', 'Metodoo borrado correctamente');
+    }
+
+    public function consultarMetodoPagoPorID(Request $request){
+        $consultaID = $request->get('consultaID');
+        $paymentMethods = DB::table('payment_methods')->where('id', '=', $consultaID)->paginate();
+        return view('payment-method.index', compact('paymentMethods','consultaID'));
     }
 }

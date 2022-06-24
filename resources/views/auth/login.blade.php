@@ -13,7 +13,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" style="height:40px;"><i class="fa-solid fa-user text-muted"></i></span>
                     </div>
-                    <input id="username" type="text" class="form-control shadow-none @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus placeholder="Ingrese su usuario">
+                    <input id="username" type="text" class="form-control shadow-none @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" autocomplete="username" autofocus placeholder="Ingrese su usuario">
 
                     @error('username')
                         <span class="invalid-feedback ps-5" role="alert">
@@ -26,7 +26,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" style="height:40px;"><i class="fa-solid fa-unlock text-muted"></i></span>
                     </div>
-                    <input id="password" type="password" class="form-control shadow-none position-relative pr-4 @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Ingrese su clave">
+                    <input id="password" type="password" class="form-control shadow-none position-relative pr-4 @error('password') is-invalid @enderror" name="password" autocomplete="current-password" placeholder="Ingrese su clave">
                     <span style="top:6px;right:10px;z-index:50;cursor:pointer" class="position-absolute"><i class="fa-solid fa-eye-slash text-muted"></i></span>
 
                     @error('password')
@@ -37,12 +37,12 @@
                 </div>
 
                 <p class="text-right mb-4">
-                    ¿Todavía no tiene una cuenta? <a href="register.php" class="text-dark text-decoration-none"><b>Registrar</b></a> 
+                    ¿Todavía no tiene una cuenta? <a href="{{ route('register') }}" class="text-dark text-decoration-none"><b>Registrar</b></a> 
                 </p>
 
                 <div class="d-flex justify-content-between align-items-center">
                     <button tyle="submit" class="btn btn-primary">Iniciar sesión</button>
-                    <a href="#" class="text-dark">¿Olvidaste tu contraseña?</a>
+                    <a href="./password/reset" class="text-dark">¿Olvidaste tu contraseña?</a>
                 </div>
 
                 <!-- <div class="botones row mb-3">
