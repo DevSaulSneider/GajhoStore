@@ -71,6 +71,8 @@ Route::get('/consultarEmpleadoPorID', [EmployeeController::class, 'consultarEmpl
 
 /*RUTAS DETALLE PRODUCTO*/
 Route::get('/productdetail/{productId}',[ProductController::class, 'productById'])->name('productById');
+Route::get('/product/historial', [ProductController::class, 'historialVentas'])->name('historial');
+
 
 /*RUTAS DETALLE DE COMPRA*/
 Route::get('purchaseDetail',[PurchaseDetailController::class, 'index'])->name('shoppingCart')->middleware('auth');
