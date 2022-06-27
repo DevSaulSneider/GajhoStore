@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\Category;
+use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -76,7 +77,8 @@ class HomeController extends Controller
             'price' => $request->price,
             'discount_price' => $request->discount_price,
             'image' => $request->image,
-            'user_id' => auth()->user()->id
+            'user_id' => auth()->user()->id,
+            'created_at'  => Carbon::now()          
         ];
         if ($request->hasFile('image')) {
             $product['image'] = $request->file('image')->store('upload', 'public');
