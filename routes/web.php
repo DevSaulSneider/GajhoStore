@@ -85,3 +85,5 @@ Route::get('/menu/contacto', [HomeController::class, 'contacto'])->name('contact
 
 // MIS COMPRAS
 Route::get('/misCompras', [UserController::class, 'misCompras'])->name('misCompras')->middleware('auth');
+Route::get('create-product', [HomeController::class, 'register'])->name('create.product');
+Route::post('create-product', [HomeController::class, 'store'])->name('product.store')->middleware('auth');

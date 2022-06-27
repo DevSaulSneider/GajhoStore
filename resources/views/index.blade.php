@@ -3,7 +3,6 @@
 @section('content')
 
 <div class="container">
-
     <div>
         <!-- Div imagenes  Piero -->
         <section class="imagen-contacto">
