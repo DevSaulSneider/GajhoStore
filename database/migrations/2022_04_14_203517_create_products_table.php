@@ -23,12 +23,12 @@ return new class extends Migration
             $table->integer('quantity');
             $table->char('state',1);
             $table->float('price');
-            $table->float('discount_price');
+            $table->float('discount_price')->nullable();
             $table->string('image');
             $table->integer('amount_sales')->nullable();
             $table->timestamps();
             $table->text('information');
-
+            $table->string('status')->default('publicado');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete("cascade");
             $table->foreign('user_id')->references('id')->on('users')->onDelete("cascade");
         });
@@ -42,5 +42,6 @@ return new class extends Migration
     public function down()
     {
         //
+        Schema::dropIfExists('products');
     }
 };

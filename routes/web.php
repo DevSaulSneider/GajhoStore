@@ -81,3 +81,5 @@ Route::delete('deleteFromPurchaseDetail/{id}',[PurchaseDetailController::class, 
 
 Route::get('/menu/nosotros', [HomeController::class, 'nosotros'])->name('nosotros');
 Route::get('/menu/contacto', [HomeController::class, 'contacto'])->name('contacto');
+Route::get('create-product', [HomeController::class, 'register'])->name('create.product');
+Route::post('create-product', [HomeController::class, 'store'])->name('product.store')->middleware('auth');

@@ -14,6 +14,7 @@
         max-width: 120rem;
         margin: 0 auto;
 
+
         p {
             font-size: 1rem;
             color: #fff;
@@ -66,3 +67,7 @@
     background-image: url('/image/index_ofertas/img_contacto3.webp');
 }
 
+.create{
+    display: flex;
+    justify-content: flex-end;
+}
