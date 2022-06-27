@@ -11,6 +11,7 @@ use App\Http\Controllers\PaymentMethodController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PurchaseDetailController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,3 +82,6 @@ Route::delete('deleteFromPurchaseDetail/{id}',[PurchaseDetailController::class, 
 
 Route::get('/menu/nosotros', [HomeController::class, 'nosotros'])->name('nosotros');
 Route::get('/menu/contacto', [HomeController::class, 'contacto'])->name('contacto');
+
+// MIS COMPRAS
+Route::get('/misCompras', [UserController::class, 'misCompras'])->name('misCompras')->middleware('auth');

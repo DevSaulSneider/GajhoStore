@@ -108,7 +108,7 @@
                                                      document.getElementById('logout-form').submit();">
                   {{ __('Cerrar sesion') }}
                 </a>
-
+                <a class="dropdown-item" href="{{ route('misCompras') }}">Mis Compras</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                   @csrf
                 </form>

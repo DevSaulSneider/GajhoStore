@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Auth;
+use Illuminate\Support\Facades\DB;
+use App\Models\Purchase;
+use App\Models\PurchaseDetail;
+
 
 class UserController extends Controller
 {
@@ -80,5 +85,19 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    
+    public function misCompras(){
+        $userID = auth()->id();
+        // $compras = DB::table('purchases')->where('user_id', '=', $userID);
+        $detalleCompra = DB::table('purchase_details')
+        ->join('products','purchase_details.product_id','products.id')
+        ->select('purchase_details.*', 'purchase_details.quantity as quantity_product', 'products.id as id_product')
+        ->where('purchase_details.user_id', '=', $userID)->get();
+
+        $misCompras = auth()->user();
+        // return response()->json($detalleCompra);
+        return view('misCompras', compact('detalleCompra'));
     }
 }
