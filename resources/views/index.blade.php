@@ -3,9 +3,6 @@
 @section('content')
 
 <div class="container">
-    <div class="create">
-        <a href="{{ route('create.product')}}">Pública ahora</a>
-    </div>
     <div>
         <!-- Div imagenes  Piero -->
         <section class="imagen-contacto">
