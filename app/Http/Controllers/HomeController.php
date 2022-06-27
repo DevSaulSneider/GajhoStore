@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\Category;
-use Faker\Core\File;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use File;
 
 class HomeController extends Controller
 {
@@ -80,6 +80,7 @@ class HomeController extends Controller
         ];
         if ($request->hasFile('image')) {
             $product['image'] = $request->file('image')->store('upload', 'public');
+            File::copy(storage_path().'\app\public\\'.$product['image'], public_path().'\storage\\'.$product['image']);
         }
 
         Product::insert($product);
