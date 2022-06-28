@@ -112,7 +112,7 @@
                   {{ __('Historial de ventas') }}
                 </a>
 
-                <a class="dropdown-item" href="">
+                <a class="dropdown-item" href="{{ route('create.product') }}">
                   {{ __('Publicar mi producto') }}
                 </a>
 
