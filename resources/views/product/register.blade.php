@@ -53,7 +53,6 @@
             <label for="state">Estado:</label>
             <select name="state" id="state">
                 <option value="" disabled selected @error('state') @enderror value="{{ old('state' )}}">-- Seleccione --</option>
-                <option value="N">Nuevo</option>
                 <option value="S">Usado</option>
                 <option value="R">Reparado</option>
             </select>
