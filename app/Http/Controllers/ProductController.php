@@ -257,4 +257,9 @@ class ProductController extends Controller
         // $categories = Category::all();
         // return view('catalogue', compact('products', 'categories'));
     }
+
+    public function historialVentas(){
+        $products = Product::where('user_id', '=', auth()->id())->get();
+        return view('product.historialVentas', compact('products'));
+    }
 }

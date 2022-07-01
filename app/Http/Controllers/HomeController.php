@@ -86,6 +86,6 @@ class HomeController extends Controller
         }
 
         Product::insert($product);
-        return redirect()->route('index');
+        return redirect()->route('historial');
     }
 }
