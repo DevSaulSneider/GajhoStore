@@ -81,3 +81,6 @@ Route::delete('deleteFromPurchaseDetail/{id}',[PurchaseDetailController::class, 
 
 Route::get('/menu/nosotros', [HomeController::class, 'nosotros'])->name('nosotros');
 Route::get('/menu/contacto', [HomeController::class, 'contacto'])->name('contacto');
+
+/*RUTAS DE COMPRA*/
+Route::get('finishPurchase', [PurchaseDetailController::class, 'finishPurchase'])->name('finishPurchase');
