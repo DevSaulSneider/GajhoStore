@@ -8,7 +8,7 @@ Product
     <div class="d-flex">
         <!-- <div class="sidebar" style="background-color: white; width: 15rem;"> -->
         <div class="p-4" style="background-color: white; min-width:250px;">
-            <h3>Historial de ventas</h3>
+            <h3>Mis Publicaciones</h3>
         </div>
     </div>
     <div class="card-body mt-4">
@@ -22,6 +22,7 @@ Product
                         <th>Fecha de publicado</th>
                         <th>Precio</th>
                         <th>Precio descuento</th>
+                        <th>Estado</th>
                         <th>Estatus</th>
                     </tr>
                 </thead>
@@ -36,6 +37,7 @@ Product
                         <td>{{$product->created_at}}</td>
                         <td>S/{{ $product->price }}</td>
                         <td>S/{{ $product->discount_price }}</td>
+                        <td>{{ $product->state }}</td>
                         <td>{{ $product->status }}</td>
                     </tr>
                     @endforeach

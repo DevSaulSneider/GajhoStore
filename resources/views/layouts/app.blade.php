@@ -109,7 +109,7 @@
                   {{ __('Cerrar sesion') }}
                 </a>
                  <a class="dropdown-item" href="{{ route('historial') }}">
-                  {{ __('Historial de ventas') }}
+                  {{ __('Mis Publicaciones') }}
                 </a>
 
                 <a class="dropdown-item" href="{{ route('create.product') }}">
