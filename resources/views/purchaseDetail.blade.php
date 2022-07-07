@@ -18,8 +18,12 @@
                     </div>
                 </li>
             </ul>
-            <a href="{{ route('finish-purchase') }}" class="btn btn-primary">Comprar</a>
-        </div>
+            <form method="get" action="{{route('finishPurchase')}}">
+                @csrf
+                <input type="hidden" id="total2" name="total2"></input>
+                <button class="btn btn-primary" type="submit">Comprar</button>
+            </form>
+         </div>
     </div>
 </div>
 
@@ -109,6 +113,7 @@
             return accu + product.subtotal
         }, 0);
         document.getElementById('total').textContent = 'S/. ' + total;
+        document.getElementById('total2').value=total;
     }
 
     const deleteProduct = async (e) => {

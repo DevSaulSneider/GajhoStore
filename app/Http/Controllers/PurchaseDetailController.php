@@ -6,6 +6,7 @@ use App\Models\PurchaseDetail;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\PaymentMethod;
 
 class PurchaseDetailController extends Controller
 {
@@ -143,5 +144,10 @@ class PurchaseDetailController extends Controller
     public function destroy(PurchaseDetail $purchaseDetail)
     {
         //
+    }
+    public function finishPurchase(Request $request){
+        $total = $request->total2;
+        $methods = PaymentMethod::all();
+        return view("finishPurchase", compact("methods", "total"));
     }
 }

@@ -20,6 +20,7 @@ class PaymentMethodController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function index(Request $request, PaymentMethod $paymentMethod)
     {
         $this->authorize('payment', $paymentMethod);

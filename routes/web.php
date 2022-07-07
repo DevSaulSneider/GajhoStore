@@ -92,6 +92,10 @@ Route::get('finish-purchase', [PurchaseController::class, 'toBuy'])->name('finis
 Route::get('/menu/nosotros', [HomeController::class, 'nosotros'])->name('nosotros');
 Route::get('/menu/contacto', [HomeController::class, 'contacto'])->name('contacto');
 
+
+/*RUTAS DE COMPRA*/
+Route::get('finishPurchase', [PurchaseDetailController::class, 'finishPurchase'])->name('finishPurchase');
+
 // MIS COMPRAS
 Route::get('/misCompras', [UserController::class, 'misCompras'])->name('misCompras')->middleware('auth');
 Route::get('create-product', [HomeController::class, 'register'])->name('create.product');
