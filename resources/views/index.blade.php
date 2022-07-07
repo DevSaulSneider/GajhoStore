@@ -79,7 +79,7 @@
         <div class="p-4 bg-white text-center">
             <h1>Lo mas vendido</h1>
             <div class="d-flex justify-content-between">
-                @foreach($mostSelled->sortByDesc('amount_sales') as $product)
+                @foreach($mostSelled->sortByDesc('sold') as $product)
 
                 <div class="card" style="width: 18rem;">
                     <a href="{{route('productById', ['productId' => $product->id])}}">

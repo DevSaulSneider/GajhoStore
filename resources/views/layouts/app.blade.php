@@ -108,12 +108,17 @@
                                                      document.getElementById('logout-form').submit();">
                   {{ __('Cerrar sesion') }}
                 </a>
+
+                 <a class="dropdown-item" href="{{ route('myprofile') }}">
+                  {{ __('Mi perfil') }}
+                </a>
+
                  <a class="dropdown-item" href="{{ route('historial') }}">
-                  {{ __('Historial de ventas') }}
+                  {{ __('Mis publicaciones') }}
                 </a>
 
                 <a class="dropdown-item" href="{{ route('create.product') }}">
-                  {{ __('Publicar mi producto') }}
+                  {{ __('Publicar producto') }}
                 </a>
 
                 <a class="dropdown-item" href="{{ route('misCompras') }}">Mis Compras</a>
