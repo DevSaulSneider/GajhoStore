@@ -262,4 +262,64 @@ class ProductController extends Controller
         $products = Product::where('user_id', '=', auth()->id())->get();
         return view('product.historialVentas', compact('products'));
     }
+
+    public function updateProducto(Request $request)
+    {
+
+        $campos = [
+            'category_id' => 'required|int|max:100',
+            'name' => 'required|string|max:100',
+            'description' => 'required|string|max:100',
+            'quantity' => 'required|int|max:100',
+            'state' => 'required|string|max:100',
+            'price' => 'required|int|max:1000000000|',
+            'discount_price' => 'required|int|max:1000000000|',
+
+        ];
+        $mensaje = [
+            'required' => 'El :attribute es obligatorio',
+            'discount_price.required' => 'El precio descuento es requerido',
+            'price.required' => 'El precio es obligatorio',
+            'state.required' => 'El estado de producto es obligatorio',
+            'quactity.required' => 'La cantidad es obligatoria',
+            'description.required' => 'La descripcion es obligatoria',
+            'name.required' => 'El nombre del producto es obligatorio',
+
+            'category_id.required' => 'La categoria es obligatoria'
+        ];
+
+        if ($request->hasFile('image')) {
+            $campos = ['image' => 'required|max:10000|mimes:jpeg,png,jpg'];
+            $mensaje = ['image.required' => 'La imagen es requerida'];
+        } 
+
+        $this->validate($request, $campos, $mensaje);
+        $datosProduct =  request()->except(['_token', '_method']);
+
+        if ($request->hasFile('image')) {
+            $product = Product::findOrFail($request->id);
+            Storage::delete('public/' . $product->image);
+            $datosProduct['image'] = $request->file('image')->store('upload', 'public');
+            File::copy(storage_path().'\app\public\\'.$datosProduct['image'], public_path().'\storage\\'.$datosProduct['image']);
+
+        }
+        Product::where('id', '=', $request->id)->update($datosProduct);
+
+        $product = Product::findOrFail($request->id);
+        $product->update($request->all());
+        $products=DB::table('products')->where('user_id',auth()->id());
+
+        return view('product.historialVentas', compact('products'));
+    }
+
+    public function editProducto(Request $request)
+    {
+        $products = new Product();
+        $product = Product::find($request->get('id'));
+        $category=DB::table('categories')->get();
+        return view('product.editPublicaciones', compact('product', 'category'));
+
+    }
+
+
 }
