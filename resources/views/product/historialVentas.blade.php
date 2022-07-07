@@ -25,6 +25,7 @@ Product
                         <th>Publicado</th>
                         <th>Vendido</th>
                         <th>Estatus</th>
+                        <th>Opciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -45,7 +46,7 @@ Product
                             <form action="{{ route('editarPublicaciones') }}" method="GET">
                                 @csrf
                                 <input type="hidden" value="{{ $product->id }}" name="id">
-                                <button type="submit"></button>
+                                <button type="submit" class="btn btn-outline-primary"> <i class="fa-solid fa-pen-to-square fa-lg"></i> </button>
                             </form>
                         </td>
                     </tr>

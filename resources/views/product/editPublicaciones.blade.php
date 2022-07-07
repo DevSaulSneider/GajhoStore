@@ -42,9 +42,8 @@
                     <p class="">{{ $message }}</p>
                 @enderror
             </div>
-
-            <label for="quantity">Cantidad:</label>
-            <input type="number" name="quantity" id="quantity" placeholder="Cantidad" @error('quantity') @enderror value="{{$product->quantity}}">
+            <label for="quantity">Agregar Unidades (Stock actual: {{$product->quantity}}):</label>
+            <input type="number" name="quantity" id="quantity" placeholder="Cantidad" @error('quantity') @enderror value="0">
             <div class="error">
             @error('quantity')
                 <p class="">{{ $message }}</p>
@@ -83,8 +82,8 @@
             <input type="number" name="discount_price" id="discount_price" placeholder="Precio descuento" value="{{ $product->discount_price}}">
 
             <label for="image">Imagen: </label>
-            <input type="file" name="image" id="image" accept=".gif,.jpg,.jpeg,.png" @error('image') @enderror value="{{ $product->image}}">
-            <img class="img-thumbnail img-fluid" src="{{ asset('storage').'/'.$product->image}}" alt="" style="width:300px;height:300px;margin:auto;object-fit:contain">
+            <input type="file" name="image" id="image" accept=".gif,.jpg,.jpeg,.png" @error('image') @enderror>
+            <img class="img-thumbnail img-fluid" id="imgPrev" src="{{ asset('storage').'/'.$product->image}}" alt="" style="width:300px;height:300px;margin:auto;object-fit:contain">
             <div class="error">
             @error('image')
                 <p class="">{{ $message }}</p>
@@ -118,5 +117,23 @@
     </form>
 
 </main>
+
+<script>
+    const inputFile = document.querySelector("#image");
+    const generarImg = document.querySelector("#imgPrev");
+
+        inputFile.addEventListener("change", ()=>{
+            const dataFile = inputFile.files;
+
+            for(const file of dataFile){
+                const reader = new FileReader();
+                reader.addEventListener("load", (event)=>{
+                    generarImg.src = event.target.result
+                })
+                reader.readAsDataURL(file);
+            }
+        })
+
+</script>
 
 @endsection

@@ -126,22 +126,22 @@
 
             <div class="columna">
                 <div class="circular--landscape">
-                    <a href="#"><img src="{{URL::asset('image/img-category/laptop.jpg')}}"></a>
+                    <a href="{{route('filterByCategory', 4)}}"><img src="{{URL::asset('image/img-category/laptop.jpg')}}"></a>
                 </div>
             </div>
             <div class="columna">
                 <div class="circular--landscape">
-                    <a href="#"><img src="{{URL::asset('image/img-category/celular.jpg')}}"></a>
+                    <a href="{{route('filterByCategory', 9)}}"><img src="{{URL::asset('image/img-category/celular.jpg')}}"></a>
                 </div>
             </div>
             <div class="columna">
                 <div class="circular--landscape">
-                    <a href="#"><img src="{{URL::asset('image/img-category/drone.jpg')}}"></a>
+                    <a href="{{route('filterByCategory', 6)}}"><img src="{{URL::asset('image/img-category/drone.jpg')}}"></a>
                 </div>
             </div>
             <div class="columna">
                 <div class="circular--landscape">
-                    <a href="#"><img src="{{URL::asset('image/img-category/tablet.jpg')}}"></a>
+                    <a href="{{route('filterByCategory', 5)}}"><img src="{{URL::asset('image/img-category/tablet.jpg')}}"></a>
                 </div>
             </div>
 
@@ -156,22 +156,22 @@
 
             <div class="columna">
                 <div class="circular--landscape">
-                    <a href="#"><img src="{{URL::asset('image/img-category/televisor.jpg')}}"></a>
+                    <a href="{{route('filterByCategory', 10)}}"><img src="{{URL::asset('image/img-category/televisor.jpg')}}"></a>
                 </div>
             </div>
             <div class="columna">
                 <div class="circular--landscape">
-                    <a href="#"><img src="{{URL::asset('image/img-category/reloj.jpg')}}"></a>
+                    <a href="{{route('filterByCategory', 11)}}"><img src="{{URL::asset('image/img-category/reloj.jpg')}}"></a>
                 </div>
             </div>
             <div class="columna">
                 <div class="circular--landscape">
-                    <a href="#"><img src="{{URL::asset('image/img-category/parlante.jpg')}}"></a>
+                    <a href="{{route('filterByCategory', 8)}}"><img src="{{URL::asset('image/img-category/parlante.jpg')}}"></a>
                 </div>
             </div>
             <div class="columna">
                 <div class="circular--landscape">
-                    <a href="#"><img src="{{URL::asset('image/img-category/audifonos.jpg')}}"></a>
+                    <a href="{{route('filterByCategory', 7)}}"><img src="{{URL::asset('image/img-category/audifonos.jpg')}}"></a>
                 </div>
             </div>
 

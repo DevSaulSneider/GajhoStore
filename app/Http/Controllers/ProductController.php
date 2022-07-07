@@ -271,7 +271,6 @@ class ProductController extends Controller
 
     public function updateProducto(Request $request)
     {
-
         $campos = [
             'category_id' => 'required|int|max:100',
             'name' => 'required|string|max:100',
@@ -287,7 +286,7 @@ class ProductController extends Controller
             'discount_price.required' => 'El precio descuento es requerido',
             'price.required' => 'El precio es obligatorio',
             'state.required' => 'El estado de producto es obligatorio',
-            'quactity.required' => 'La cantidad es obligatoria',
+            'quantity.required' => 'La cantidad es obligatoria',
             'description.required' => 'La descripcion es obligatoria',
             'name.required' => 'El nombre del producto es obligatorio',
 
@@ -301,27 +300,33 @@ class ProductController extends Controller
 
         $this->validate($request, $campos, $mensaje);
         $datosProduct =  request()->except(['_token', '_method']);
+        
+        $product = Product::findOrFail($request->id);
+        $datosProduct["published"] = $product->published + $datosProduct['quantity'];
+        $datosProduct["status"] = ($product->sold == $datosProduct["published"]) ? "Vendido" : "Publicado";
+        unset($datosProduct['quantity']);
 
         if ($request->hasFile('image')) {
-            $product = Product::findOrFail($request->id);
+            
             Storage::delete('public/' . $product->image);
             $datosProduct['image'] = $request->file('image')->store('upload', 'public');
             File::copy(storage_path().'\app\public\\'.$datosProduct['image'], public_path().'\storage\\'.$datosProduct['image']);
-
+            // dd($datosProduct);
         }
+        
+        // dd($datosProduct);
+        
         Product::where('id', '=', $request->id)->update($datosProduct);
 
-        $product = Product::findOrFail($request->id);
-        $product->update($request->all());
-        $products=DB::table('products')->where('user_id',auth()->id());
+        // $products=DB::table('products')->where('user_id',auth()->id())->get();
 
-        return view('product.historialVentas', compact('products'));
+        return redirect()->route('historial');
     }
 
     public function editProducto(Request $request)
     {
         $products = new Product();
-        $product = Product::find($request->get('id'));
+        $product = Product::find($request->id);
         $category=DB::table('categories')->get();
         return view('product.editPublicaciones', compact('product', 'category'));
 

@@ -43,7 +43,7 @@ class PurchaseDetailController extends Controller
 
         $cartProduct = DB::table('purchase_details')->where(['user_id' => auth()->id(), 'product_id' => $product->id])->first();
 
-        if (DB::table('purchase_details')->where(['user_id' => auth()->id(), 'product_id' => $product->id])->exists()) {
+        if (DB::table('purchase_details')->where(['user_id' => auth()->id(), 'product_id' => $product->id, 'purchase_id' => null])->exists()) {
             $newQuantity = $cartProduct->quantity + $request->quantity;
             $newSubtotal = $newQuantity * $cartProduct->price;
             DB::table('purchase_details')->where(['user_id' => auth()->id(), 'product_id' => $product->id])->limit(1)->update(['quantity' => $newQuantity, 'subtotal' => $newSubtotal]);
@@ -58,7 +58,7 @@ class PurchaseDetailController extends Controller
             $detail->price = $product->price;
             $detail->quantity = $request->quantity;
             $detail->subtotal = $product->price * $request->quantity;
-
+            // dd($detail);
             $detail->save();
         }
 
