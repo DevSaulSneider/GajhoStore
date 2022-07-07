@@ -74,6 +74,8 @@ Route::get('/consultarEmpleadoPorID', [EmployeeController::class, 'consultarEmpl
 /*RUTAS DETALLE PRODUCTO*/
 Route::get('/productdetail/{productId}',[ProductController::class, 'productById'])->name('productById');
 Route::get('/product/historial', [ProductController::class, 'historialVentas'])->name('historial');
+Route::get('/product/publicaciones', [ProductController::class, 'editProducto'])->name('editarPublicaciones');
+Route::post('/product/edit-product', [ProductController::class, 'updateProducto'])->name(('editarProduct'));
 
 
 /*RUTAS DETALLE DE COMPRA*/

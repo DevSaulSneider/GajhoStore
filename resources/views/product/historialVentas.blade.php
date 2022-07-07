@@ -41,6 +41,13 @@ Product
                         <td>{{ $product->published }} Und.</td>
                         <td>{{ $product->sold }} Und.</td>
                         <td>{{ $product->status }}</td>
+                        <td>
+                            <form action="{{ route('editarPublicaciones') }}" method="GET">
+                                @csrf
+                                <input type="hidden" value="{{ $product->id }}" name="id">
+                                <button type="submit"></button>
+                            </form>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
