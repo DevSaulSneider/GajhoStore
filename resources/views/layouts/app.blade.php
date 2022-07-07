@@ -114,7 +114,7 @@
                 </a>
 
                  <a class="dropdown-item" href="{{ route('historial') }}">
-                  {{ __('Mis publicaciones') }}
+                  {{ __('Mis Publicaciones') }}
                 </a>
 
                 <a class="dropdown-item" href="{{ route('create.product') }}">

@@ -7,11 +7,11 @@ Product
 <div class="container">
     <div class="d-flex">
         <!-- <div class="sidebar" style="background-color: white; width: 15rem;"> -->
-        <div class="p-4" style="min-width:250px;">
-            <h2>Mis publicaciones</h2>
+        <div class="p-4">
+            <h3>Mis Publicaciones</h3>
         </div>
     </div>
-    <div class="card-body mt-4">
+    <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered">
                 <thead class="thead">
@@ -24,7 +24,7 @@ Product
                         <th>Precio descuento</th>
                         <th>Publicado</th>
                         <th>Vendido</th>
-                        <th>Estatus</th>
+                        <th>Estado</th>
                         <th>Opciones</th>
                     </tr>
                 </thead>
