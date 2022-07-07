@@ -19,7 +19,6 @@ return new class extends Migration
             $table->foreignId('payment_method_id')->constrained()->nullable();
             $table->float('total')->nullable();
             $table->date('payment_date')->nullable();
-            $table->date('delivery_date')->nullable();
             $table->timestamps();
         });
     }

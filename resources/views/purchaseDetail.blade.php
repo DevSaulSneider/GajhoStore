@@ -18,7 +18,7 @@
                     </div>
                 </li>
             </ul>
-            <button class="btn btn-primary">Comprar</button>
+            <a href="{{ route('finish-purchase') }}" class="btn btn-primary">Comprar</a>
         </div>
     </div>
 </div>

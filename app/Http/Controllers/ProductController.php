@@ -28,17 +28,17 @@ class ProductController extends Controller
      * 
      */
     public function index(Request $request, Product $product)
-    {   
+    {
         $this->authorize('product', $product);
         $filtrarNombre = $request->get('filtrarNombre');
         $products = DB::table('products')
             ->join('categories', 'products.category_id', '=', 'categories.id')
             ->join('users', 'products.user_id', '=', 'users.id')
             ->select('products.id as id', 'categories.name as categoria', 'users.name as user', 'products.name', 'products.description', 'products.quantity', 'products.state', 'products.price', 'products.discount_price', 'products.image')
-            ->where('products.name', 'LIKE', '%'.$filtrarNombre.'%')
+            ->where('products.name', 'LIKE', '%' . $filtrarNombre . '%')
             ->orderBy('id')
             ->paginate(5);
-            
+
         return view('product.index', compact('products'))->with('i');
     }
 
@@ -48,13 +48,14 @@ class ProductController extends Controller
         return view('product.index', $products);
     }
 
-    public function productById($productId) {
+    public function productById($productId)
+    {
         $product['product'] = DB::table('products')->where('id', $productId)->get()->first();
         return view('productDetail', $product);
     }
     public function filterByCategory($categoryId)
     {
-        $products = DB::table('products')->where('category_id', '=', $categoryId);
+        $products = DB::table('products')->where([['category_id', '=', $categoryId], ['quantity', '>', '0']]);
         $products = $products->get();
         $categories = Category::all();
         return view('catalogue', compact('products', 'categories'));
@@ -63,13 +64,13 @@ class ProductController extends Controller
     public function catalogue(Request $request)
     {
         $categories = Category::all();
-        if(!$request->filtrarPrecio){
-            $products = Product::all();
-        }else{
+        if (!$request->filtrarPrecio) {
+            $products = Product::where('quantity', '>', '0')->get();
+        } else {
             $filtrarPrecio = $request->filtrarPrecio;
             $products = DB::table('products')
-            ->where('price', '<', $filtrarPrecio)->get();
-        }        
+                ->where([['price', '<', $filtrarPrecio], ['quantity', '>', '0']])->get();
+        }
         return view('catalogue', compact('products', 'categories'));
     }
 
@@ -111,7 +112,7 @@ class ProductController extends Controller
             'discount_price.required' => 'El precio descuento es requerido',
             'price.required' => 'El precio es obligatorio',
             'state.required' => 'El estado de producto es obligatorio',
-            'quactity.required' => 'La cantidad es obligatoria',
+            'quantity.required' => 'La cantidad es obligatoria',
             'description.required' => 'La descripcion es obligatoria',
             'name.required' => 'El nombre del producto es obligatorio',
             'category_id.required' => 'La categoria es obligatoria',
@@ -121,11 +122,11 @@ class ProductController extends Controller
 
         $this->validate($request, $campos, $mensaje);
 
-        $product = request()->except('_token');
+        $product = request()->except(['_token', 'quantity']);
 
         if ($request->hasFile('image')) {
             $product['image'] = $request->file('image')->store('upload', 'public');
-            File::copy(storage_path().'\app\public\\'.$product['image'], public_path().'\storage\\'.$product['image']);
+            File::copy(storage_path() . '\app\public\\' . $product['image'], public_path() . '\storage\\' . $product['image']);
         }
         Product::insert($product);
         return redirect()->route('products.index')
@@ -204,8 +205,7 @@ class ProductController extends Controller
             $product = Product::findOrFail($id);
             Storage::delete('public/' . $product->image);
             $datosProduct['image'] = $request->file('image')->store('upload', 'public');
-            File::copy(storage_path().'\app\public\\'.$datosProduct['image'], public_path().'\storage\\'.$datosProduct['image']);
-
+            File::copy(storage_path() . '\app\public\\' . $datosProduct['image'], public_path() . '\storage\\' . $datosProduct['image']);
         }
         Product::where('id', '=', $id)->update($datosProduct);
 
@@ -219,9 +219,12 @@ class ProductController extends Controller
 
     public function getMostSelled()
     {
-        $offer =  DB::table('products')->orderBy('discount_price')->paginate(5);
-        $mostSelled = Product::paginate(5);
-        return view('index', compact('mostSelled','offer'));
+        $offer =  DB::table('products')
+            ->where('quantity', '>', '0')
+            ->orderBy('discount_price')
+            ->paginate(5);
+        $mostSelled = Product::where('quantity', '>', '0')->paginate(5);
+        return view('index', compact('mostSelled', 'offer'));
     }
 
     /**
@@ -236,18 +239,20 @@ class ProductController extends Controller
             ->with('success', 'Producto borrado correctamente');
     }
 
-    public function consultarProductoPorID(Request $request){
+    public function consultarProductoPorID(Request $request)
+    {
         $consultaID = $request->get("consultaID");
         $products = DB::table('products')
-        ->join('categories', 'products.category_id', '=', 'categories.id')
-        ->join('users', 'products.user_id', '=', 'users.id')
-        ->where('products.id', '=', $consultaID)
-        ->select('products.id as id', 'categories.name as categoria', 'users.name as user', 'products.name', 'products.description', 'products.quantity', 'products.state', 'products.price', 'products.discount_price', 'products.image')
-        ->paginate();
+            ->join('categories', 'products.category_id', '=', 'categories.id')
+            ->join('users', 'products.user_id', '=', 'users.id')
+            ->where('products.id', '=', $consultaID)
+            ->select('products.id as id', 'categories.name as categoria', 'users.name as user', 'products.name', 'products.description', 'products.quantity', 'products.state', 'products.price', 'products.discount_price', 'products.image')
+            ->paginate();
         return view('product.index', compact('products'))->with('i');
     }
 
-    public function listarPrecioEntre(Request $request){
+    public function listarPrecioEntre(Request $request)
+    {
         // $idCat = $request->get("idCategoria");
         // return $idCat;
         return "no";
@@ -258,8 +263,74 @@ class ProductController extends Controller
         // return view('catalogue', compact('products', 'categories'));
     }
 
-    public function historialVentas(){
+    public function historialVentas()
+    {
         $products = Product::where('user_id', '=', auth()->id())->get();
         return view('product.historialVentas', compact('products'));
     }
+
+    public function updateProducto(Request $request)
+    {
+        $campos = [
+            'category_id' => 'required|int|max:100',
+            'name' => 'required|string|max:100',
+            'description' => 'required|string|max:100',
+            'quantity' => 'required|int|max:100',
+            'state' => 'required|string|max:100',
+            'price' => 'required|int|max:1000000000|',
+            'discount_price' => 'required|int|max:1000000000|',
+
+        ];
+        $mensaje = [
+            'required' => 'El :attribute es obligatorio',
+            'discount_price.required' => 'El precio descuento es requerido',
+            'price.required' => 'El precio es obligatorio',
+            'state.required' => 'El estado de producto es obligatorio',
+            'quantity.required' => 'La cantidad es obligatoria',
+            'description.required' => 'La descripcion es obligatoria',
+            'name.required' => 'El nombre del producto es obligatorio',
+
+            'category_id.required' => 'La categoria es obligatoria'
+        ];
+
+        if ($request->hasFile('image')) {
+            $campos = ['image' => 'required|max:10000|mimes:jpeg,png,jpg'];
+            $mensaje = ['image.required' => 'La imagen es requerida'];
+        } 
+
+        $this->validate($request, $campos, $mensaje);
+        $datosProduct =  request()->except(['_token', '_method']);
+        
+        $product = Product::findOrFail($request->id);
+        $datosProduct["published"] = $product->published + $datosProduct['quantity'];
+        $datosProduct["status"] = ($product->sold == $datosProduct["published"]) ? "Vendido" : "Publicado";
+        unset($datosProduct['quantity']);
+
+        if ($request->hasFile('image')) {
+            
+            Storage::delete('public/' . $product->image);
+            $datosProduct['image'] = $request->file('image')->store('upload', 'public');
+            File::copy(storage_path().'\app\public\\'.$datosProduct['image'], public_path().'\storage\\'.$datosProduct['image']);
+            // dd($datosProduct);
+        }
+        
+        // dd($datosProduct);
+        
+        Product::where('id', '=', $request->id)->update($datosProduct);
+
+        // $products=DB::table('products')->where('user_id',auth()->id())->get();
+
+        return redirect()->route('historial');
+    }
+
+    public function editProducto(Request $request)
+    {
+        $products = new Product();
+        $product = Product::find($request->id);
+        $category=DB::table('categories')->get();
+        return view('product.editPublicaciones', compact('product', 'category'));
+
+    }
+
+
 }

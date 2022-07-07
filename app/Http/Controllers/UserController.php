@@ -11,6 +11,14 @@ use App\Models\PurchaseDetail;
 
 class UserController extends Controller
 {
+    public function myprofile()
+    {
+        $userData = DB::table('users')->find(auth()->id());
+        return view('myProfile', compact('userData'));
+    }
+
+
+
     /**
      * Display a listing of the resource.
      *
