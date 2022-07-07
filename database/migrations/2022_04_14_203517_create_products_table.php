@@ -20,15 +20,16 @@ return new class extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->string('name');
             $table->string('description');
-            $table->integer('quantity');
+            $table->integer('quantity')->virtualAs('published - sold');
             $table->char('state',1);
             $table->float('price');
-            $table->float('discount_price');
+            $table->float('discount_price')->nullable();
             $table->string('image');
-            $table->integer('amount_sales')->nullable();
             $table->timestamps();
             $table->text('information');
-
+            $table->integer('published');
+            $table->integer('sold')->default(0);
+            $table->string('status')->default('Publicado');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete("cascade");
             $table->foreign('user_id')->references('id')->on('users')->onDelete("cascade");
         });
@@ -42,5 +43,6 @@ return new class extends Migration
     public function down()
     {
         //
+        Schema::dropIfExists('products');
     }
 };

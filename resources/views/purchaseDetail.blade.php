@@ -23,7 +23,7 @@
                 <input type="hidden" id="total2" name="total2"></input>
                 <button class="btn btn-primary" type="submit">Comprar</button>
             </form>
-            </div>
+         </div>
     </div>
 </div>
 

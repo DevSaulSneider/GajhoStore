@@ -160,6 +160,20 @@ class UserSeeder extends Seeder
                 'updated_at' => Carbon::now(),
                 'role_id' => 0
             ],
+            [
+                'name' => 'Jhordan',
+                'lastName' => 'Alarcon',
+                'phone' => '928205295',
+                'address' => 'Jr. los jazmines 123',
+                'reference' => 'metropolitano',
+                'username' => 'jhordan',
+                'email' => 'jhordan@gmail.com',
+                'password' => bcrypt('12345678'),
+                'district_id' => '25',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+                'role_id' => 0
+            ],
         ];
 
         DB::table('users')->insert($data);

@@ -14,7 +14,6 @@ class Purchase extends Model
         'payment_method_id',
         'total',
         'payment_date',
-        'delivery_date',
     ];
 
     public function users() {

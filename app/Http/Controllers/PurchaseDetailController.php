@@ -17,28 +17,37 @@ class PurchaseDetailController extends Controller
      */
     public function index()
     {
-        $cartProducts = DB::table('purchase_details')->join('products', 'products.id', '=', 'product_id')->select('purchase_details.*', 'products.quantity as stock')->where('purchase_details.user_id', auth()->id())->get();
+        $cartProducts = DB::table('purchase_details')
+            ->join('products', 'products.id', '=', 'product_id')
+            ->select('purchase_details.*', 'products.quantity as stock')
+            ->where([['purchase_details.user_id', auth()->id()], ['purchase_details.purchase_id', '=', null]])
+            ->get();
         return view('purchaseDetail', compact('cartProducts'));
     }
 
     public function indexJson()
     {
-        $cartProducts = DB::table('purchase_details')->join('products', 'products.id', '=', 'product_id')->select('purchase_details.*', 'products.quantity as stock')->where('purchase_details.user_id', auth()->id())->get();
+        $cartProducts = DB::table('purchase_details')
+        ->join('products', 'products.id', '=', 'product_id')
+        ->select('purchase_details.*', 'products.quantity as stock')
+        ->where([['purchase_details.user_id', auth()->id()], ['purchase_details.purchase_id', '=', null]])
+        ->get();
         return response()->json($cartProducts);
     }
 
-    public function addToCart(Request $request) {
+    public function addToCart(Request $request)
+    {
 
         $product = DB::table('products')->where('id', $request->productId)->get()->first();
 
         $detail = new PurchaseDetail();
 
-        $cartProduct = DB::table('purchase_details')->where(['user_id'=> auth()->id(), 'product_id' => $product->id])->first();
-        
-        if (DB::table('purchase_details')->where(['user_id'=> auth()->id(), 'product_id' => $product->id])->exists()) {
+        $cartProduct = DB::table('purchase_details')->where(['user_id' => auth()->id(), 'product_id' => $product->id])->first();
+
+        if (DB::table('purchase_details')->where(['user_id' => auth()->id(), 'product_id' => $product->id, 'purchase_id' => null])->exists()) {
             $newQuantity = $cartProduct->quantity + $request->quantity;
             $newSubtotal = $newQuantity * $cartProduct->price;
-            DB::table('purchase_details')->where(['user_id'=> auth()->id(), 'product_id' => $product->id])->limit(1)->update(['quantity' => $newQuantity, 'subtotal' => $newSubtotal]);
+            DB::table('purchase_details')->where(['user_id' => auth()->id(), 'product_id' => $product->id])->limit(1)->update(['quantity' => $newQuantity, 'subtotal' => $newSubtotal]);
             // $cartProduct->quantity += $request->quantity;
             // DB::table('purchase_details')->where('id', $cartProduct->id)->update($cartProduct);
         } else {
@@ -50,23 +59,22 @@ class PurchaseDetailController extends Controller
             $detail->price = $product->price;
             $detail->quantity = $request->quantity;
             $detail->subtotal = $product->price * $request->quantity;
-            
+            // dd($detail);
             $detail->save();
-    
         }
-        
+
         $cartProducts = DB::table('purchase_details')->where('user_id', auth()->id())->get();
         // return view('purchaseDetail', compact('cartProducts'));
         return redirect()->route('shoppingCart')->with(compact('cartProducts'));
-        
-        
     }
 
-    public function deleteFromCart(Request $request) {
+    public function deleteFromCart(Request $request)
+    {
         DB::table('purchase_details')->where('id', $request->id)->delete();
     }
 
-    public function updateCart(Request $request) {
+    public function updateCart(Request $request)
+    {
         dump($request->toArray());
         $res = DB::table('purchase_details')->upsert($request->toArray(), ['id']);
         return $res;
