@@ -19,7 +19,7 @@
                     </select>
                     <input id="codigo" class="d-none" style="margin-left: 54px;  width: 320px;" type="text" placeholder="Ingrese su código" />
                     <div id="phone" class="ms-5">
-                        <h5>Pagar al: 999999999</h5>
+                        <h5 class="fw-bolder text-primary">Pagar al: 999999999</h5>
                     </div>
                 </div>
             </div>

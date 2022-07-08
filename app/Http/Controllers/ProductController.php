@@ -95,7 +95,6 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
         $campos = [
             'category_id' => 'required|int|max:100',
             'name' => 'required|string|max:100',

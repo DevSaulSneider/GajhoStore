@@ -17,6 +17,23 @@ class UserController extends Controller
         return view('myProfile', compact('userData'));
     }
 
+    public function updateProfile(Request $request)
+    {
+        // dd($request);
+        $updateUser =  request()->except(['_token', '_method', 'province', 'department']);
+        // $updateUser = DB::table('users')->find(auth()->id());
+        // $updateUser->address = $request->address;
+        // $updateUser->reference = $request->reference;
+        // $updateUser->phone = $request->phone;
+        // $updateUser->name = $request->name;
+        // $updateUser->district_id = $request->district_id;
+
+        DB::table('users')->where('id', auth()->id())->update($updateUser);
+
+        $userData = DB::table('users')->find(auth()->id());
+        return view('myProfile', compact('userData'));
+    }
+
 
 
     /**
@@ -95,14 +112,15 @@ class UserController extends Controller
         //
     }
 
-    
-    public function misCompras(){
+
+    public function misCompras()
+    {
         $userID = auth()->id();
         // $compras = DB::table('purchases')->where('user_id', '=', $userID);
         $detalleCompra = DB::table('purchase_details')
-        ->join('products','purchase_details.product_id','products.id')
-        ->select('purchase_details.*', 'purchase_details.quantity as quantity_product', 'products.id as id_product')
-        ->where('purchase_details.user_id', '=', $userID)->get();
+            ->join('products', 'purchase_details.product_id', 'products.id')
+            ->select('purchase_details.*', 'purchase_details.quantity as quantity_product', 'products.id as id_product')
+            ->where('purchase_details.user_id', '=', $userID)->get();
 
         $misCompras = auth()->user();
         // return response()->json($detalleCompra);

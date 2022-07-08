@@ -86,6 +86,12 @@ class HomeController extends Controller
             'user_id' => auth()->user()->id,
             'created_at'  => Carbon::now()          
         ];
+
+        $product["published"] = $request->quantity;
+        $product["sold"] = 0;
+        $product["status"] = ($product['sold'] == $product["published"]) ? "Vendido" : "Publicado";
+        unset($product['quantity']);
+
         if ($request->hasFile('image')) {
             $product['image'] = $request->file('image')->store('upload', 'public');
             File::copy(storage_path().'\app\public\\'.$product['image'], public_path().'\storage\\'.$product['image']);

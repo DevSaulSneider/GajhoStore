@@ -104,4 +104,4 @@ Route::post('create-product', [HomeController::class, 'store'])->name('product.s
 
 // MI PERFIL
 Route::get('myprofile', [UserController::class, 'myprofile'])->name('myprofile')->middleware('auth');
-
+Route::post('updateProfile', [UserController::class, 'updateProfile'])->name('updateProfile')->middleware('auth');
