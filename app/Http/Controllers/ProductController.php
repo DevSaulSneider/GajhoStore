@@ -95,7 +95,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-
+        // dd($request);
         $campos = [
             'category_id' => 'required|int|max:100',
             'name' => 'required|string|max:100',
@@ -123,6 +123,9 @@ class ProductController extends Controller
         $this->validate($request, $campos, $mensaje);
 
         $product = request()->except(['_token', 'quantity']);
+        $product["published"] = $request->quantity;
+        $product["sold"] = 0;
+        $product["status"] = ($product['sold'] == $product["published"]) ? "Vendido" : "Publicado";
 
         if ($request->hasFile('image')) {
             $product['image'] = $request->file('image')->store('upload', 'public');
@@ -200,6 +203,10 @@ class ProductController extends Controller
 
         $this->validate($request, $campos, $mensaje);
         $datosProduct =  request()->except(['_token', '_method']);
+
+        $datosProduct["published"] = $request->published + $datosProduct['quantity'];
+        $datosProduct["status"] = ($request->sold == $datosProduct["published"]) ? "Vendido" : "Publicado";
+        unset($datosProduct['quantity']);
 
         if ($request->hasFile('image')) {
             $product = Product::findOrFail($id);
@@ -311,15 +318,9 @@ class ProductController extends Controller
             Storage::delete('public/' . $product->image);
             $datosProduct['image'] = $request->file('image')->store('upload', 'public');
             File::copy(storage_path().'\app\public\\'.$datosProduct['image'], public_path().'\storage\\'.$datosProduct['image']);
-            // dd($datosProduct);
         }
         
-        // dd($datosProduct);
-        
         Product::where('id', '=', $request->id)->update($datosProduct);
-
-        // $products=DB::table('products')->where('user_id',auth()->id())->get();
-
         return redirect()->route('historial');
     }
 

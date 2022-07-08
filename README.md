@@ -38,7 +38,7 @@ Linkear imagenes del storage: php artisan storage:link
 Pasos despues de bajar cambios:
 
 1) npm install
-2) compose install
+2) composer install
 3) Refrescar bd (php artisan migrate:fresh --seed)
 
 4) SOLO SI RECIEN SE CLONA EL PROYECTO: php artisan storage:link

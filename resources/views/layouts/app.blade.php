@@ -43,7 +43,7 @@
             <a href="{{route('contacto')}}" class="nav-link">Contacto</a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">Centro de ayuda</a>
+            <a href="{{route('ayuda')}}" class="nav-link">Centro de ayuda</a>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link disabled">Llámenos 123-456-7890</a>
@@ -208,7 +208,7 @@
             <h3>Tienda</h3>
             <ul>
               <li><a href="#">Comprar todo</a></li>
-              <li><a href="#">Computadoras</a></li>
+              <li><a href="{{route('filterByCategory', 4)}}">Computadoras</a></li>
               <li><a href="#">Tablets</a></li>
               <li><a href="#">Drones y cámaras</a></li>
               <li><a href="#">Audio</a></li>

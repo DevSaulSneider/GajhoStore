@@ -91,6 +91,7 @@ Route::get('finish-purchase', [PurchaseController::class, 'toBuy'])->name('finis
 
 Route::get('/menu/nosotros', [HomeController::class, 'nosotros'])->name('nosotros');
 Route::get('/menu/contacto', [HomeController::class, 'contacto'])->name('contacto');
+Route::get('/menu/ayuda', [HomeController::class, 'ayuda'])->name('ayuda');
 
 
 /*RUTAS DE COMPRA*/

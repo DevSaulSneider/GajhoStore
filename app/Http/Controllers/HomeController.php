@@ -37,6 +37,12 @@ class HomeController extends Controller
     {
         return view('menu.contacto' );
     }
+
+    public function ayuda()
+    {
+        return view('menu.helpCenter' );
+    }
+
     public function register()
     {
         $category = Category::all();

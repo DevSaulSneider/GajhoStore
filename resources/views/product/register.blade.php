@@ -83,6 +83,7 @@
 
             <label for="image">Imagen: </label>
             <input type="file" name="image" id="image" accept=".gif,.jpg,.jpeg,.png" @error('image') @enderror value="{{ old('image' )}}">
+            <img class="d-none img-thumbnail img-fluid" id="imgPrev" alt="" style="width:300px;height:300px;margin:auto;object-fit:contain">
             <div class="error">
             @error('image')
                 <p class="">{{ $message }}</p>
@@ -116,5 +117,24 @@
     </form>
 
 </main>
+
+<script>
+    const inputFile = document.querySelector("#image");
+    const generarImg = document.querySelector("#imgPrev");
+
+        inputFile.addEventListener("change", ()=>{
+            const dataFile = inputFile.files;
+
+            for(const file of dataFile){
+                const reader = new FileReader();
+                reader.addEventListener("load", (event)=>{
+                    generarImg.src = event.target.result
+                    generarImg.setAttribute('class','img-thumbnail img-fluid')
+                })
+                reader.readAsDataURL(file);
+            }
+        })
+
+</script>
 
 @endsection
