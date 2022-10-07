@@ -332,5 +332,13 @@ class ProductController extends Controller
 
     }
 
+    public function filtrarProductosPorNombre(Request $request)
+    {
+        $value = $request->get("txtBuscarProducto");
+        $categories = Category::all();
+        $products = DB::table('products')
+        ->where('name', 'LIKE', "%".$value ."%")->get();
 
+        return view('catalogue', compact('products', 'categories'));
+    }
 }

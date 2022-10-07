@@ -85,7 +85,9 @@
                     </a>
                     <div class="card-body">
                         <h5 class="card-title">{{$product->name}}</h5>
-                        <p class="card-text">{{$product->description}}</p>
+                        <p class="card-text w-100 overflow-hidden" style="max-height:60px;text-overflow: ellipsis;-webkit-line-clamp: 2;-webkit-box-orient: vertical;display: -webkit-box;">
+                                {{$product->description}}
+                            </p>
                         <h3 class="text-primary">S/. {{$product->price}}</h3>
                     </div>
                 </div>

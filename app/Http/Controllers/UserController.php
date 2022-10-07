@@ -120,6 +120,7 @@ class UserController extends Controller
         $detalleCompra = DB::table('purchase_details')
             ->join('products', 'purchase_details.product_id', 'products.id')
             ->select('purchase_details.*', 'purchase_details.quantity as quantity_product', 'products.id as id_product')
+            ->where('purchase_details.purchase_id', '!=', null)
             ->where('purchase_details.user_id', '=', $userID)->get();
 
         $misCompras = auth()->user();

@@ -30,6 +30,13 @@
         </div>
         <!-- <div class="catalogue" style="width:100%; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;"> -->
         <div style="width: 100%; margin-left: 20px;">
+
+            @if (count($products)<=0)
+                <div class="container my-5">
+                    <h1 class="text-center h1"><i class="fa-solid fa-circle-exclamation"></i> No se encontraron datos</h1>
+                </div>
+            @endif
+
             <div style="display: grid;grid-template-columns: repeat(auto-fill,minmax(230px, 1fr));grid-gap: 1rem;">
                 @foreach($products as $product)
                 <a class="text-decoration-none" href="{{route('productById', ['productId' => $product->id])}}">

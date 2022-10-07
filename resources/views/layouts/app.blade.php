@@ -67,8 +67,8 @@
         </div>
 
         <div class="searchbar parent">
-          <form class="d-flex">
-            <input class="form-control rounded-pill" type="search" placeholder="Buscar" aria-label="Search">
+          <form action="{{ route('filtrarProductosPorNombre') }}" class="d-flex">
+            <input class="form-control rounded-pill" type="search" placeholder="Buscar" aria-label="Search"  name="txtBuscarProducto" id="txtBuscarProducto">
             <button class="child btn btn-outline-success button-rounded-right button-color"
               type="submit">Buscar</button>
           </form>
