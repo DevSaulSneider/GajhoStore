@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Spectral&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="{{URL::asset('/image/logo-elite.png')}}"></link>
+    <link rel="icon" type="image/png" href="{{URL::asset('/image/logo.png')}}"></link>
     <title>Bienvenido</title>
 </head>
 
@@ -19,7 +19,7 @@
     <div class="container">
         <video src="{{URL::asset('/video//mujer-comprando.mp4')}}" muted loop autoplay></video>
         <div class="centralBox">
-            <h1 class="title">Bienvenido a EliteStore</h1>
+            <h1 class="title">Bienvenido a GajhoStore</h1>
             <a class="button" href="{{ url('/index') }}">Ingresar</a>
         </div>
     </div>

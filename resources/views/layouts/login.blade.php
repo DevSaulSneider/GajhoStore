@@ -8,9 +8,9 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <link rel="icon" type="image/png" href="{{URL::asset('/image/logo-elite.png')}}"></link>
+  <link rel="icon" type="image/png" href="{{URL::asset('/image/logo.png')}}"></link>
 
-  <title>Elite</title>
+  <title>GajhoStore</title>
 
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}" defer></script>

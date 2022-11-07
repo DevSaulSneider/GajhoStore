@@ -8,10 +8,10 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <link rel="icon" type="image/png" href="{{URL::asset('/image/logo-elite.png')}}">
-  </link>
+  <!-- <link rel="icon" type="image/png" href="{{URL::asset('/image/logo.png')}}">
+  </link> -->
 
-  <title>Elite</title>
+  <title>GajhoStorEe</title>
 
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}" defer></script>
@@ -59,10 +59,10 @@
       <div class="container">
         <div class="navbar-nav">
           <a href="{{ url('/index') }}">
-            <img src="{{URL::asset('/image/logo-elite.png')}}" alt="logo" class="me-2">
+            <!-- <img src="{{URL::asset('/image/logo.png')}}" alt="logo" class="me-2"> -->
           </a>
           <a class="navbar-brand fs-1" href="{{ url('/index') }}">
-            Elite
+            GajhoStore
           </a>
         </div>
 
@@ -236,7 +236,7 @@
             </ul>
           </div>
         </div>
-        <div>
+        <!-- <div>
           <h5 class="text-center">Aceptamos los Siguientes métodos de pago</h5>
           <div class="d-flex justify-content-center my-4">
             <img class="mx-3" src="{{URL::asset('/image/payment_methods/yape-logo.png')}}" alt="">
@@ -246,7 +246,7 @@
             <img class="mx-3" src="{{URL::asset('/image/payment_methods/mastercard-logo.png')}}" alt="">
           </div>
           <h6 class="text-center my-4">© Derechos reservados por Elite SAC.</h6>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>

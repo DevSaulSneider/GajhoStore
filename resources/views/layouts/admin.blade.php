@@ -8,10 +8,10 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <link rel="icon" type="image/png" href="{{URL::asset('/image/logo-elite.png')}}">
+  <link rel="icon" type="image/png" href="{{URL::asset('/image/logo.png')}}">
   </link>
 
-  <title>Elite</title>
+  <title>GajhoStore</title>
 
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}" defer></script>
@@ -30,10 +30,10 @@
       <div class="container">
         <div class="navbar-nav">
           <a href="{{ url('/index') }}">
-            <img src="{{URL::asset('/image/logo-elite.png')}}" alt="logo" class="me-2">
+            <img src="{{URL::asset('/image/logo.png')}}" alt="logo" class="me-2">
           </a>
           <a class="navbar-brand fs-1" href="{{ url('/index') }}">
-            Elite
+            GajhoStore
           </a>
         </div>
 
