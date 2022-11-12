@@ -52,8 +52,8 @@
 <div class="container">
 
 
-    <div class="text-center border border-dark border-3 bg-white p-4" id="contenido">
-        <!-- Caracteristicas del servicio  Romano -->
+    <!-- <div class="text-center border border-dark border-3 bg-white p-4" id="contenido">
+         Caracteristicas del servicio  Romano 
         <div class="d-flex flex-column align-items-center justify-content-center" style="max-width: 250px;">
             <img width="80px" src="{{URL::asset('/image/moto.png')}}">
             <p class="">Recogida en la acera</p>
@@ -70,7 +70,7 @@
             <img width="80px" src="{{URL::asset('/image/tiempo.png')}}">
             <p class="">Disponibilidad 24/7</p>
         </div>
-    </div>
+    </div> -->
 
     <div>
         <!-- Los mas vendidos  Marcos -->
