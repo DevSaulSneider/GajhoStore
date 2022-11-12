@@ -8,9 +8,9 @@
         <section class="imagen-contacto">
             <div class="contenedor">
                 <h1 class="h1black text-light">Precios increíbles en todos tus artículos favoritos</h1>
-                <p class="h1black">Obtenga más por menos en marcas seleccionadas
+                <!-- <p class="h1black">Obtenga más por menos en marcas seleccionadas -->
                 </p>
-                <a href="/catalogue" class="boton-amarillo">Ver Catálogo</a>
+                <a href="/catalogue" class="boton-amarillo btn btn-primary border border-2 border-dark">Ver Catálogo</a>
             </div>
         </section>
 
@@ -23,10 +23,10 @@
                         </h1>
                         <h1> 30% de</h1>
                         <h1>descuento</h1>
-                        <p>Marcas de teléfonos inteligentes
+                        <!-- <p>Marcas de teléfonos inteligentes
                         </p>
-                        <p>seleccionadas</p>
-                        <a href="#" class="boton-amarillo">Comprar Ahora</a>
+                        <p>seleccionadas</p> -->
+                        <a href="#" class="btn btn-primary border border-2 border-dark">Comprar Ahora</a>
                     </div>
                 </section>
             </div>
@@ -34,12 +34,12 @@
                 <section class="imagen-contacto img3 derecha">
                     <div class="contenedor contenido-centrado1">
                         <p>Recien llegado</p>
-                        <h1>Lleva tu</h1>
-                        <h1>sonido</h1>
+                        <h1>Lleva los mejores</h1>
+                        <h1>calzados</h1>
                         <h1>a cualquier parte</h1>
-                        <p>Las mejores marcas de auriculares
+                        <p>Las mejores marcas en zapatos
                         </p>
-                        <a href="#" class="boton-amarillo">Comprar Ahora</a>
+                        <a href="#" class="btn btn-primary border border-2 border-dark my-2">Comprar Ahora</a>
                     </div>
                 </section>
             </div>

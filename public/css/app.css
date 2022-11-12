@@ -21603,7 +21603,7 @@ readers do not read off random characters that represent icons */
   border: none;
   display: block;
   flex: 0 0 100%;
-  background-color: rgb(116, 30, 254);
+  /* background-color: rgb(116, 30, 254); */
   width: auto;
   display: inline-block;
 }
@@ -21620,11 +21620,11 @@ readers do not read off random characters that represent icons */
 }
 
 .img2 {
-  background-image: url("/image/index_ofertas/img_contacto2.webp");
+  background-image: url("/image/index_ofertas/img_banner_left.jpeg");
 }
 
 .img3 {
-  background-image: url("/image/index_ofertas/img_contacto3.webp");
+  background-image: url("/image/index_ofertas/img_banner_right.jpeg");
 }
 
 .create {
