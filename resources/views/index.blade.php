@@ -7,7 +7,7 @@
         <!-- Div imagenes  Piero -->
         <section class="imagen-contacto">
             <div class="contenedor">
-                <h1 class="h1black">Precios increíbles en todos tus artículos favoritos</h1>
+                <h1 class="h1black text-light">Precios increíbles en todos tus artículos favoritos</h1>
                 <p class="h1black">Obtenga más por menos en marcas seleccionadas
                 </p>
                 <a href="/catalogue" class="boton-amarillo">Ver Catálogo</a>

@@ -18,17 +18,17 @@ class CategorySeeder extends Seeder
     {
         $data = [
             [
-                'name'=>'Accesorios',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ],
-            [
                 'name'=>'Joyeria',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
                 'name'=>'Prendas',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'name'=>'Accesorios',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],

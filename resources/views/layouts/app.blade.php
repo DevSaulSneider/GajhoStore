@@ -8,8 +8,8 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <!-- <link rel="icon" type="image/png" href="{{URL::asset('/image/logo.png')}}">
-  </link> -->
+  <link rel="icon" type="image/png" href="{{URL::asset('/image/logo_bg.png')}}">
+  </link>
 
   <title>GajhoStorEe</title>
 
@@ -27,7 +27,7 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <div class="navbar-brand"><i class="fa-solid fa-cube"></i> Envío gratis para pedidos superiores a S/. 500</div>
+      <!-- <div class="navbar-brand"><i class="fa-solid fa-cube"></i> Envío gratis para pedidos superiores a S/. 500</div> -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -45,9 +45,9 @@
           <li class="nav-item">
             <a href="{{route('ayuda')}}" class="nav-link">Centro de ayuda</a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="#" class="nav-link disabled">Llámenos 123-456-7890</a>
-          </li>
+          </li> -->
         </ul>
         <div>
         </div>
@@ -57,22 +57,22 @@
   <div id="app">
     <nav class="navbar navbar-expand-md navbar-light bg-light parent my-4">
       <div class="container">
-        <div class="navbar-nav">
+        <div class="navbar-nav d-flex align-items-center">
           <a href="{{ url('/index') }}">
-            <!-- <img src="{{URL::asset('/image/logo.png')}}" alt="logo" class="me-2"> -->
+            <img style="width:115px;height:115px" src="{{URL::asset('/image/logo.png')}}" alt="logo" class="me-2">
           </a>
           <a class="navbar-brand fs-1" href="{{ url('/index') }}">
             GajhoStore
           </a>
         </div>
 
-        <div class="searchbar parent">
+        <!-- <div class="searchbar parent">
           <form action="{{ route('filtrarProductosPorNombre') }}" class="d-flex">
             <input class="form-control rounded-pill" type="search" placeholder="Buscar" aria-label="Search"  name="txtBuscarProducto" id="txtBuscarProducto">
             <button class="child btn btn-outline-success button-rounded-right button-color"
               type="submit">Buscar</button>
           </form>
-        </div>
+        </div> -->
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
