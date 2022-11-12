@@ -17,21 +17,14 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('category_id')->unsigned();
-            $table->bigInteger('user_id')->unsigned();
             $table->string('name');
             $table->string('description');
-            $table->integer('quantity')->virtualAs('published - sold');
-            $table->char('state',1);
+            $table->integer('quantity');
             $table->float('price');
             $table->float('discount_price')->nullable();
             $table->string('image');
             $table->timestamps();
-            $table->text('information');
-            $table->integer('published');
-            $table->integer('sold')->default(0);
-            $table->string('status')->default('Publicado');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete("cascade");
-            $table->foreign('user_id')->references('id')->on('users')->onDelete("cascade");
         });
     }
 

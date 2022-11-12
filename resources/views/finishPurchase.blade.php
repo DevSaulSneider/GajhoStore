@@ -12,15 +12,15 @@
                     <li id="label" class="d-none" style="margin-left: 262px;">Código de cuenta</li>
                 </div>
                 <div class="d-inline d-flex w-100" style="margin-left: 310px;">
-                    <select class="form-control w-25" onchange="alterOptions(this)">
+                    <select class="form-control w-25" onchange="alterOptions(this.value)">
                         @foreach($methods as $method)
                         <option value="{{$method->name}}">{{$method->name}}</option>
                         @endforeach
                     </select>
                     <input id="codigo" class="d-none" style="margin-left: 54px;  width: 320px;" type="text" placeholder="Ingrese su código" />
-                    <div id="phone" class="ms-5">
+                    <!-- <div id="phone" class="ms-5">
                         <h5 class="fw-bolder text-primary">Pagar al: 999999999</h5>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <br>
@@ -35,7 +35,7 @@
                 </div>
             </div>
             <br>
-            <div>
+            <!-- <div>
                 <div style="margin-left: 310px;">
                     <li class="d-inline">Departamento</li>
                     <li class="d-inline" style="margin-left: 278px;">Provincia</li>
@@ -63,7 +63,7 @@
                     </div>
                     <input class="form-control d-inline" style="margin-left: 58px; width:315px;" type="text" placeholder="Ingrese su dirección" />
                 </div>
-            </div>
+            </div> -->
             <br>
             <div>
                 <div style="margin-left: 310px;">
@@ -84,18 +84,18 @@
     </div>
 </div>
 <script>
+    window.onload=() => {
+        alterOptions('Visa');
+    }
     const alterOptions = (selected) => {
-        if (selected.value === 'Plin' || selected.value === 'Yape' || selected.value === 'Agora') {
-            document.getElementById('cvv').setAttribute('class', 'd-none')
-            document.getElementById('codigo').setAttribute('class', 'd-none')
-            document.getElementById('label').setAttribute('class', 'd-none')
-            document.getElementById('phone').setAttribute('class', 'd-inline ms-5')
-        } else {
+        if (selected === 'Visa' || selected === 'Mastercard') {
+            
             document.getElementById('cvv').setAttribute('class', '')
             document.getElementById('codigo').setAttribute('class', 'form-control')
             document.getElementById('label').setAttribute('class', 'd-inline')
             document.getElementById('phone').setAttribute('class', 'd-none')
         }
+        
     }
 
     const csrfToken = document.head.querySelector("[name~=csrf-token][content]").content;

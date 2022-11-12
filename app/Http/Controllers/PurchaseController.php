@@ -26,9 +26,8 @@ class PurchaseController extends Controller
 
         $cartItems->get()->each(function ($item) {
             $prod = DB::table('products')->where('id', $item->product_id);
-            $sold = $prod->first()->sold + $item->quantity;
-            $status = ($prod->first()->quantity - $item->quantity > 0) ? "Publicado" : "Vendido";
-            DB::table('products')->where('id', $item->product_id)->update(["sold" => $sold, "status" => $status]);
+            
+            DB::table('products')->where('id', $item->product_id);
         });
 
         DB::table('purchase_details')

@@ -49,7 +49,7 @@ class Product extends Model
      *
      * @var array
      */
-    protected $fillable = ['category_id','user_id','name','description','information','quantity','state','price','discount_price','image', 'published', 'sold', 'status'];
+    protected $fillable = ['category_id','name','description','quantity', 'price','discount_price','image'];
 
 
     /**
@@ -71,10 +71,10 @@ class Product extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function user()
-    {
-        return $this->belongsTo(User::class,'user_id');
-    }
+    // public function user()
+    // {
+    //     return $this->belongsTo(User::class,'user_id');
+    // }
     
 
 }

@@ -12,9 +12,7 @@
             <p class="lh-1">Id: {{$product->id}}</p>
 
             <p class="fs-5 text-success">S/<span>{{$product->price}}</span></p>
-            <p class="lh-1 fw-bold fs-5 text-primary">
-                {{($product->state == 'S') ? 'Segunda mano' : 'Reparado'}}
-            </p>
+            
             <p class="lh-1 fw-bold fs-6 text-black">
                 Stock: {{$product->quantity}}
             </p>
@@ -32,9 +30,7 @@
                             Información
                         </button>
                     </h2>
-                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">{{$product->information}}</div>
-                    </div>
+                    
                 </div>
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="flush-headingTwo">
@@ -44,7 +40,7 @@
                     </h2>
                     <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
-                            Elite sac. es una tienda conocida por los bajos precios que ofrece en todo tipo de productos, 
+                            GajhoStore sac. es una tienda conocida por los bajos precios que ofrece en todo tipo de productos, 
                             en su mayoría. Podemos comprar desde teléfonos móviles hasta bolígrafos baratos, pero es posible que hayas hecho una compra que quieras devolver porque es errónea, no te gusta, 
                             está roto, no funciona. ¿Se puede? ¿Cómo son las devoluciones y qué requisitos hay?
                             Es posible que te pierdas un poco entre las opciones que tienes ya que al ser productos baratos puede que pienses que no tienes derechos o que no te van a hacer caso, 
@@ -71,7 +67,6 @@
                         <div class="accordion-body">
                             <p>1. Tendrás la entrega de pedido entre 3 y 5 días.</p>
                             <p>2. Todos tus paquetes están asegurados.</p>
-                            <p>3. El envio sera gratis para pedidos superiores a S/1200.</p>
                         </div>
                     </div>
                 </div>

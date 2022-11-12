@@ -17,21 +17,21 @@ class PaymentMethodSeeder extends Seeder
     public function run()
     {
         $data = [
-            [
-                'name'=>'Yape',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ],
-            [
-                'name'=>'Plin',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ],
-            [
-                'name'=>'Agora',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ],
+            // [
+            //     'name'=>'Yape',
+            //     'created_at' => Carbon::now(),
+            //     'updated_at' => Carbon::now(),
+            // ],
+            // [
+            //     'name'=>'Plin',
+            //     'created_at' => Carbon::now(),
+            //     'updated_at' => Carbon::now(),
+            // ],
+            // [
+            //     'name'=>'Agora',
+            //     'created_at' => Carbon::now(),
+            //     'updated_at' => Carbon::now(),
+            // ],
             [
                 'name'=>'Visa',
                 'created_at' => Carbon::now(),
