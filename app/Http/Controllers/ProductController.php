@@ -66,12 +66,20 @@ class ProductController extends Controller
         $categories = Category::all();
         if (!$request->filtrarPrecio) {
             $products = Product::where('quantity', '>', '0')->get();
+            return view('catalogue', compact('products', 'categories'));
         } else {
             $filtrarPrecio = $request->filtrarPrecio;
+            // $products = DB::table('products')
+            //     ->where([['price', '<', $filtrarPrecio], ['quantity', '>', '0']])->get();
             $products = DB::table('products')
-                ->where([['price', '<', $filtrarPrecio], ['quantity', '>', '0']])->get();
+                ->where('price', '<', $filtrarPrecio)
+                // ->where('price', '>', )
+                ->get();
+                // return response()->json("si");
+                // return response()->json($products);
+                return view('catalogue', compact('products', 'categories'));
         }
-        return view('catalogue', compact('products', 'categories'));
+        
     }
 
 
