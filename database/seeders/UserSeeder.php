@@ -52,7 +52,7 @@ class UserSeeder extends Seeder
                 'address' => 'Jr. Los Admins 123',
                 'reference' => 'No se',
                 'username' => 'gael',
-                'email' => 'gael@gmail.com',
+                'email' => 'gaelinho76@gmail.com',
                 'password' => bcrypt('12345678'),
                 'district_id' => '3',
                 'created_at' => Carbon::now(),

@@ -73,11 +73,9 @@ Product
                                 <tr>
                                     <th>Código</th>
                                     <th>Categoría</th>
-                                    <th>Usuario</th>
                                     <th>Producto</th>
                                     <th>Descripcion</th>
                                     <th>Cantidad</th>
-                                    <th>Estado</th>
                                     <th>Precio</th>
                                     <th>Prec. Descuento</th>
                                     <th>Imagen</th>
@@ -88,7 +86,6 @@ Product
                                 <tr>
                                     <td>{{ $product->id }}</td>
                                     <td>{{ $product->categoria }}</td>
-                                    <td>{{ $product->user}}</td>
                                     <td>{{ $product->name }}</td>
                                     <td>
                                         <span class="d-inline-block text-truncate" style="max-width: 150px;">
@@ -96,8 +93,6 @@ Product
                                         </span>
                                     </td>
                                     <td>{{ $product->quantity }}</td>
-                                    <td>
-                                        {{ ($product->state) == 'R' ? 'Reparado' : 'Segunda mano'}}</td>
                                     <td>S/{{ $product->price }}</td>
                                     <td>S/{{ $product->discount_price }}</td>
                                     <td style="width:60px;height:60px">

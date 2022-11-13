@@ -31,12 +31,9 @@ class Product extends Model
     
     static $rules = [
 		'category_id' => 'required',
-		'user_id' => 'required',
 		'name' => 'required',
 		'description' => 'required',
-		'information' => 'required',
 		'quantity' => 'required',
-		'state' => 'required',
 		'price' => 'required',
 		'discount_price' => 'required',
 		'image' => 'required',

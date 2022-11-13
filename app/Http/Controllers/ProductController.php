@@ -33,8 +33,7 @@ class ProductController extends Controller
         $filtrarNombre = $request->get('filtrarNombre');
         $products = DB::table('products')
             ->join('categories', 'products.category_id', '=', 'categories.id')
-            ->join('users', 'products.user_id', '=', 'users.id')
-            ->select('products.id as id', 'categories.name as categoria', 'users.name as user', 'products.name', 'products.description', 'products.quantity', 'products.state', 'products.price', 'products.discount_price', 'products.image')
+            ->select('products.id as id', 'categories.name as categoria', 'products.name', 'products.description', 'products.quantity', 'products.price', 'products.discount_price', 'products.image')
             ->where('products.name', 'LIKE', '%' . $filtrarNombre . '%')
             ->orderBy('id')
             ->paginate(5);
