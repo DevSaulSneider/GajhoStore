@@ -75,13 +75,13 @@
     <div>
         <!-- Los mas vendidos  Marcos -->
         <div class="p-4 bg-white text-center">
-            <h1>Lo mas vendido</h1>
+            <h1>Algunos de nuestros productos</h1>
             <div class="d-flex justify-content-between">
                 @foreach($mostSelled->sortByDesc('sold') as $product)
 
                 <div class="card" style="width: 18rem;">
                     <a href="{{route('productById', ['productId' => $product->id])}}">
-                        <img class="card-img-top cover" src="{{ asset('storage').'/'.$product->image }}" alt="Card image cap" height="200px">
+                        <img class="card-img-top"  src="{{ asset('storage').'/'.$product->image }}" alt="Card image cap" height="200px">
                     </a>
                     <div class="card-body">
                         <h5 class="card-title">{{$product->name}}</h5>
@@ -126,12 +126,12 @@
 
             <div class="mx-auto">
                 <div class="circular--landscape">
-                    <a href="{{route('filterByCategory', 1)}}"><img style="object-fit:cover" src="{{URL::asset('image/img-category/20221010121.png')}}"></a>
+                    <a href="{{route('filterByCategory', 1)}}"><img style="width:100%;height:100%" src="{{URL::asset('image/img-category/20221010121.png')}}"></a>
                 </div>
             </div>
             <div class="mx-auto">
                 <div class="circular--landscape">
-                    <a href="{{route('filterByCategory', 1)}}"><img src="{{URL::asset('image/img-category/20221010135.png')}}"></a>
+                    <a href="{{route('filterByCategory', 1)}}"><img style="width:100%;height:100%" src="{{URL::asset('image/img-category/20221010135.png')}}"></a>
                 </div>
             </div>
             <div class="mx-auto">

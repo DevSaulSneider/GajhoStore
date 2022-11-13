@@ -14,7 +14,6 @@ Actualizar Producto
             <div class="card card-default">
                 <div class="card-header">
                     <span class="card-title">Actualizar Producto</span>
-                    
                 </div>
                         
                 <div class="card-body">
@@ -23,14 +22,10 @@ Actualizar Producto
                         @csrf
 
                         @include('product.form')
-                        
-                           
-
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
 </section>
 @endsection

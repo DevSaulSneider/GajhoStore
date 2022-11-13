@@ -39,9 +39,9 @@
           <li class="nav-item active">
             <a href="{{route('nosotros')}}" class="nav-link">Acerca de</a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="{{route('contacto')}}" class="nav-link">Contacto</a>
-          </li>
+          </li> -->
           <li class="nav-item">
             <a href="{{route('ayuda')}}" class="nav-link">Centro de ayuda</a>
           </li>
@@ -113,13 +113,13 @@
                   {{ __('Mi perfil') }}
                 </a>
 
-                 <a class="dropdown-item" href="{{ route('historial') }}">
+                 <!-- <a class="dropdown-item" href="{{ route('historial') }}">
                   {{ __('Mis Publicaciones') }}
-                </a>
+                </a> -->
 
-                <a class="dropdown-item" href="{{ route('create.product') }}">
+                <!-- <a class="dropdown-item" href="{{ route('create.product') }}">
                   {{ __('Publicar producto') }}
-                </a>
+                </a> -->
 
                 <a class="dropdown-item" href="{{ route('misCompras') }}">Mis Compras</a>
 
@@ -166,9 +166,9 @@
         <li class="nav-item">
           <a class="nav-link category" href="{{ route('nosotros') }}">{{ __('Sobre Nosotros') }}</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link category" href="{{ route('contacto') }}">{{ __('Contactanos') }}</a>
-        </li>
+        </li> -->
       </ul>
     </div>
     @endauth
@@ -181,9 +181,9 @@
         <li class="nav-item">
           <a class="nav-link category" href="{{ route('nosotros') }}">{{ __('Sobre Nosotros') }}</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link category" href="{{ route('contacto') }}">{{ __('Contactanos') }}</a>
-        </li>
+        </li> -->
       </ul>
     </div>
     @endif
@@ -198,16 +198,16 @@
             <h3>Ubicacion de la tienda</h3>
             <p class="mb-4">Av. Tacna #542 Cercado de Lima, Perú</p>
             <div class="d-flex justify-content-evenly">
-              <a href="#" class="text-dark"><i class="fa-brands fa-facebook-f fa-xl"></i></a>
-              <a href="#" class="text-dark"><i class="fa-brands fa-instagram fa-xl"></i></a>
-              <a href="#" class="text-dark"><i class="fa-brands fa-twitter fa-xl"></i></a>
-              <a href="#" class="text-dark"><i class="fa-brands fa-youtube fa-xl"></i></a>
+              <a target="_blank" href="https://es-la.facebook.com/" class="text-dark"><i class="fa-brands fa-facebook-f fa-xl"></i></a>
+              <a target="_blank" href="https://www.instagram.com/" class="text-dark"><i class="fa-brands fa-instagram fa-xl"></i></a>
+              <a target="_blank" href="https://twitter.com/login" class="text-dark"><i class="fa-brands fa-twitter fa-xl"></i></a>
+              <a target="_blank" href="https://www.youtube.com/" class="text-dark"><i class="fa-brands fa-youtube fa-xl"></i></a>
             </div>
           </div>
           <div>
             <h3>Tienda</h3>
             <ul>
-              <li><a href="#">Comprar todo</a></li>
+              <!-- <li><a href="#">Comprar todo</a></li>
               <li><a href="{{route('filterByCategory', 4)}}">Computadoras</a></li>
               <li><a href="#">Tablets</a></li>
               <li><a href="#">Drones y cámaras</a></li>
@@ -215,24 +215,28 @@
               <li><a href="#">Móvil</a></li>
               <li><a href="#">Televisores</a></li>
               <li><a href="#">Tecnología portátil</a></li>
-              <li><a href="#">Oferta</a></li>
+              <li><a href="#">Oferta</a></li> -->
+              <li><a href="#">Comprar todo</a></li>
+              <li><a href="{{route('filterByCategory', 3)}}">Accesorios</a></li>
+              <li><a href="{{route('filterByCategory', 1)}}">Joyeria</a></li>
+              <li><a href="{{route('filterByCategory', 2)}}">Prendas</a></li>
             </ul>
           </div>
           <div>
             <h3>Atencion al cliente</h3>
             <ul>
-              <li><a href="#">Contáctenos</a></li>
-              <li><a href="#">Centro de ayuda</a></li>
-              <li><a href="#">Sobre nosotros</a></li>
+              <!-- <li><a href="#">Contáctenos</a></li> -->
+              <li><a href="{{route('ayuda')}}">Centro de ayuda</a></li>
+              <li><a href="{{route('nosotros')}}">Sobre nosotros</a></li>
             </ul>
           </div>
           <div>
             <h3>Politica</h3>
             <ul>
-              <li><a href="#">Envio y devoluciones</a></li>
-              <li><a href="#">Términos y condiciones</a></li>
-              <li><a href="#">Métodos de pago</a></li>
-              <li><a href="#">Preguntas más frecuentes</a></li>
+              <li><span class="d-inline-block">Envio y devoluciones</span></li>
+              <li><span class="d-inline-block">Términos y condiciones</span></li>
+              <li><span class="d-inline-block">Métodos de pago</span></li>
+              <li><span class="d-inline-block">Preguntas más frecuentes</span></li>
             </ul>
           </div>
         </div>
