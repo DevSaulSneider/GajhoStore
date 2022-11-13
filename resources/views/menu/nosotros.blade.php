@@ -12,9 +12,9 @@
                 <div class="texto-nosotros">
                     <blockquote class="text-center">Años de Experiencia</blockquote>
         
-                    <p> Elite SAC es una empresa fundada en 1995 por Benito Antonio Martínez Ocasio. Cuenta con un local principal ubicado en la Av. Tacna 542 - Cercado de Lima. Además de sucursales en Arequipa, Huancayo, Trujillo y Chiclayo. La empresa se dedica a la venta de artículos de segunda mano. Ofrece una amplia selección en moda, electrónicos, vehículos, teléfonos, muebles para el hogar entre otros.</p>
+                    <p> GajhoStore SAC es una empresa fundada en 1995 por Benito Antonio Martínez Ocasio. Cuenta con un local principal ubicado en la Av. Tacna 542 - Cercado de Lima. Además de sucursales en Arequipa, Huancayo, Trujillo y Chiclayo. La empresa se dedica a la venta de artículos de segunda mano. Ofrece una amplia selección en moda, electrónicos, vehículos, teléfonos, muebles para el hogar entre otros.</p>
         
-                    <p> Hoy por hoy, ELITE sigue siendo reconocida y admirada por su capacidad de superar los embates del tiempo como ninguna otra compañía.</p>
+                    <p> Hoy por hoy, GAJHOSTORE sigue siendo reconocida y admirada por su capacidad de superar los embates del tiempo como ninguna otra compañía.</p>
                 </div>
             </div>
         </main>

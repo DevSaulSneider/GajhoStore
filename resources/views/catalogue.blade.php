@@ -16,14 +16,16 @@
                 </a>
                 @endforeach
             </ul>
-            <form method="GET" action="{{ route('catalogue') }}">
+            <!-- <form method="GET" action="{{ route('catalogue') }}" id="formPrice"> -->
+            <form method="GET" action="{{ route('catalogue') }}" id="formPrice">
             @csrf
                 <div class="form-group mb-2">
                     <label for="filtrarPrecio" class="col-form-label">Filtrar Por Precio</label>
                          <div class="d-flex">
                             <span>Max &nbsp</span>
-                             <input onchange="this.form.submit()" type="range" value="300" min="300" max="2500" oninput="this.nextElementSibling.value = this.value" name="filtrarPrecio">
-                             <output>300</output>
+                             <!-- <input onchange="this.form.submit()" type="range" value="300" min="300" max="2500" oninput="this.nextElementSibling.value = this.value" name="filtrarPrecio"> -->
+                             <input id="input_price" onchange="this.form.submit()" type="range" value="10" min="10" max="400" oninput="this.nextElementSibling.value = this.value" name="filtrarPrecio">
+                             <output>400</output>
                         </div>
                 </div>
             </form>
@@ -37,7 +39,7 @@
                 </div>
             @endif
 
-            <div style="display: grid;grid-template-columns: repeat(auto-fill,minmax(230px, 1fr));grid-gap: 1rem;">
+            <div class="contain__" style="display: grid;grid-template-columns: repeat(auto-fill,minmax(230px, 1fr));grid-gap: 1rem;">
                 @foreach($products as $product)
                 <a class="text-decoration-none" href="{{route('productById', ['productId' => $product->id])}}">
                     <div class="card border border-light" style="width: 14rem;">
@@ -55,5 +57,5 @@
         </div>
     </div>
 </div>
-
 @endsection
+

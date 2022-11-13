@@ -33,8 +33,7 @@ class ProductController extends Controller
         $filtrarNombre = $request->get('filtrarNombre');
         $products = DB::table('products')
             ->join('categories', 'products.category_id', '=', 'categories.id')
-            ->join('users', 'products.user_id', '=', 'users.id')
-            ->select('products.id as id', 'categories.name as categoria', 'users.name as user', 'products.name', 'products.description', 'products.quantity', 'products.state', 'products.price', 'products.discount_price', 'products.image')
+            ->select('products.id as id', 'categories.name as categoria', 'products.name', 'products.description', 'products.quantity', 'products.price', 'products.discount_price', 'products.image')
             ->where('products.name', 'LIKE', '%' . $filtrarNombre . '%')
             ->orderBy('id')
             ->paginate(5);
@@ -66,12 +65,20 @@ class ProductController extends Controller
         $categories = Category::all();
         if (!$request->filtrarPrecio) {
             $products = Product::where('quantity', '>', '0')->get();
+            return view('catalogue', compact('products', 'categories'));
         } else {
             $filtrarPrecio = $request->filtrarPrecio;
+            // $products = DB::table('products')
+            //     ->where([['price', '<', $filtrarPrecio], ['quantity', '>', '0']])->get();
             $products = DB::table('products')
-                ->where([['price', '<', $filtrarPrecio], ['quantity', '>', '0']])->get();
+                ->where('price', '<', $filtrarPrecio)
+                // ->where('price', '>', )
+                ->get();
+                // return response()->json("si");
+                // return response()->json($products);
+                return view('catalogue', compact('products', 'categories'));
         }
-        return view('catalogue', compact('products', 'categories'));
+        
     }
 
 
