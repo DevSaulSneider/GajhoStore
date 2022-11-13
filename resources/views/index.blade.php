@@ -26,7 +26,7 @@
                         <!-- <p>Marcas de teléfonos inteligentes
                         </p>
                         <p>seleccionadas</p> -->
-                        <a href="#" class="btn btn-primary border border-2 border-dark">Comprar Ahora</a>
+                        <a href="/catalogue" class="btn btn-primary border border-2 border-dark">Comprar Ahora</a>
                     </div>
                 </section>
             </div>
@@ -39,7 +39,7 @@
                         <h1>a cualquier parte</h1>
                         <p>Las mejores marcas en zapatos
                         </p>
-                        <a href="#" class="btn btn-primary border border-2 border-dark my-2">Comprar Ahora</a>
+                        <a href="/catalogue" class="btn btn-primary border border-2 border-dark my-2">Comprar Ahora</a>
                     </div>
                 </section>
             </div>
