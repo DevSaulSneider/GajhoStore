@@ -93,7 +93,7 @@
                 </div>
                 @endforeach
             </div>
-            <button class="btn btn-primary my-4"> Ver todo </button>
+            <!-- <button class="btn btn-primary my-4"> Ver todo </button> -->
         </div>
         <div>
             <div class="p-4 bg-white text-center">
@@ -115,7 +115,7 @@
                     </div>
                     @endforeach
                 </div>
-                <button class="btn btn-primary my-4"> Ver todo </button>
+                <!-- <button class="btn btn-primary my-4"> Ver todo </button> -->
             </div>
         </div>
     </div>
@@ -126,61 +126,61 @@
 
             <div class="mx-auto">
                 <div class="circular--landscape">
-                    <a href="{{route('filterByCategory', 4)}}"><img src="{{URL::asset('image/img-category/laptop.jpg')}}"></a>
+                    <a href="{{route('filterByCategory', 1)}}"><img style="object-fit:cover" src="{{URL::asset('image/img-category/20221010121.png')}}"></a>
                 </div>
             </div>
             <div class="mx-auto">
                 <div class="circular--landscape">
-                    <a href="{{route('filterByCategory', 9)}}"><img src="{{URL::asset('image/img-category/celular.jpg')}}"></a>
+                    <a href="{{route('filterByCategory', 1)}}"><img src="{{URL::asset('image/img-category/20221010135.png')}}"></a>
                 </div>
             </div>
             <div class="mx-auto">
                 <div class="circular--landscape">
-                    <a href="{{route('filterByCategory', 6)}}"><img src="{{URL::asset('image/img-category/drone.jpg')}}"></a>
+                    <a href="{{route('filterByCategory', 3)}}"><img src="{{URL::asset('image/img-category/anillo2.jpg')}}"></a>
                 </div>
             </div>
             <div class="mx-auto">
                 <div class="circular--landscape">
-                    <a href="{{route('filterByCategory', 5)}}"><img src="{{URL::asset('image/img-category/tablet.jpg')}}"></a>
+                    <a href="{{route('filterByCategory', 3)}}"><img src="{{URL::asset('image/img-category/billetera4.jpg')}}"></a>
                 </div>
             </div>
 
         </div>
         <div class="fila text-center mt-3">
-            <div class="columna"><label for=""><b>Computers</b></label></div>
-            <div class="columna"><label for=""><b>Mobile</b></label></div>
-            <div class="columna"><label for=""><b>Drones & Cameras</b></label></div>
-            <div class="columna"><label for=""><b>Tablets</b></label></div>
+            <div class="columna"><label for=""><b>Collares</b></label></div>
+            <div class="columna"><label for=""><b>Pendientes</b></label></div>
+            <div class="columna"><label for=""><b>Anillos </b></label></div>
+            <div class="columna"><label for=""><b>Billeteras</b></label></div>
         </div> <br><br>
         <div class="d-flex">
 
             <div class="mx-auto">
                 <div class="circular--landscape">
-                    <a href="{{route('filterByCategory', 10)}}"><img src="{{URL::asset('image/img-category/televisor.jpg')}}"></a>
+                    <a href="{{route('filterByCategory', 3)}}"><img style="object-fit:contain" src="{{URL::asset('image/img-category/lentes2.jpg')}}"></a>
                 </div>
             </div>
             <div class="mx-auto">
                 <div class="circular--landscape">
-                    <a href="{{route('filterByCategory', 11)}}"><img src="{{URL::asset('image/img-category/reloj.jpg')}}"></a>
+                    <a href="{{route('filterByCategory', 3)}}"><img src="{{URL::asset('image/img-category/monedero2.jpg')}}"></a>
                 </div>
             </div>
             <div class="mx-auto">
                 <div class="circular--landscape">
-                    <a href="{{route('filterByCategory', 8)}}"><img src="{{URL::asset('image/img-category/parlante.jpg')}}"></a>
+                    <a href="{{route('filterByCategory',2)}}"><img src="{{URL::asset('image/img-category/polera1.png')}}"></a>
                 </div>
             </div>
             <div class="mx-auto">
                 <div class="circular--landscape">
-                    <a href="{{route('filterByCategory', 7)}}"><img src="{{URL::asset('image/img-category/audifonos.jpg')}}"></a>
+                    <a href="{{route('filterByCategory', 2)}}"><img class="border border-danger" src="{{URL::asset('image/img-category/short.png')}}"></a>
                 </div>
             </div>
 
         </div>
         <div class="fila text-center mt-3">
-            <div class="columna"><label for=""><b>T.V & Home Cinema</b></label></div>
-            <div class="columna"><label for=""><b>Werable Tech</b></label></div>
-            <div class="columna"><label for=""><b>Speakers</b></label></div>
-            <div class="columna"><label for=""><b>Headphones</b></label></div>
+            <div class="columna"><label for=""><b>Lentes</b></label></div>
+            <div class="columna"><label for=""><b>Monederos</b></label></div>
+            <div class="columna"><label for=""><b>Poleras</b></label></div>
+            <div class="columna"><label for=""><b>Shorts</b></label></div>
         </div>
     </div>
 </div>

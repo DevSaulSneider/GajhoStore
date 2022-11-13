@@ -13,6 +13,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\PurchaseDetailController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\MailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -108,3 +109,5 @@ Route::post('updateProfile', [UserController::class, 'updateProfile'])->name('up
 
 // FILTRAR PRODUCTOS POR NOMBRE
 Route::get('/filtrarProductosPorNombre', [ProductController::class, 'filtrarProductosPorNombre'])->name('filtrarProductosPorNombre');
+
+Route::get('/send-email', [MailController::class, 'sendEmail']);
