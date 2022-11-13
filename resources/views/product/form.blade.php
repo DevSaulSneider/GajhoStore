@@ -5,10 +5,10 @@
             {{ Form::select('category_id', $categories, $product->category_id, ['class' => 'form-control' . ($errors->has('category_id') ? ' is-invalid' : ''), 'placeholder' => '--Seleccione categoría--']) }}
             {!! $errors->first('category_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-        <div class="form-group">
+        <!-- <div class="form-group">
             <input id="user_id" name="user_id" type="hidden" value="{{ $id = Auth::user()->id; }}">
         
-        </div>
+        </div> -->
         <div class="form-group mb-3">
             {{ Form::label('Nombre de producto') }}
             {{ Form::text('name', $product->name, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => 'Ingrese nombre del producto']) }}
@@ -19,21 +19,21 @@
             {{ Form::text('description', $product->description, ['class' => 'form-control' . ($errors->has('description') ? ' is-invalid' : ''), 'placeholder' => 'Ingrese una descripción']) }}
             {!! $errors->first('description', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-        <div class="form-group mb-3">
+        <!-- <div class="form-group mb-3">
             {{ Form::label('informacion') }}
             {{ Form::text('information', $product->information, ['class' => 'form-control' . ($errors->has('information') ? ' is-invalid' : ''), 'placeholder' => 'Ingrese la información', 'rows' => '4']) }}
             {!! $errors->first('information', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
+        </div> -->
         <div class="form-group mb-3">
             {{ Form::label('cantidad') }}
             {{ Form::number('quantity', $product->quantity, ['class' => 'form-control' . ($errors->has('quantity') ? ' is-invalid' : ''), 'placeholder' => 'Ingrese una cantidad']) }}
             {!! $errors->first('quantity', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-        <div class="form-group mb-3">
+        <!-- <div class="form-group mb-3">
             {{ Form::label('estado de producto') }}
             {{ Form::select('state', array('R' => 'Reparado', 'S' => 'Segunda mano'), $product->state,  ['class' => 'form-control' . ($errors->has('state') ? ' is-invalid' : ''), 'placeholder' => '--Seleccione estado--']) }}
             {!! $errors->first('state', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
+        </div> -->
         <div class="form-group mb-3">
             {{ Form::label('precio') }}
             {{ Form::number('price', $product->price, ['class' => 'form-control' . ($errors->has('price') ? ' is-invalid' : ''), 'placeholder' => 'Ingrese el precio']) }}

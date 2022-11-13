@@ -38,7 +38,7 @@ class ProductController extends Controller
             ->orderBy('id')
             ->paginate(5);
 
-        return view('product.index', compact('products'))->with('i');
+        return view('product.index', compact('products'));
     }
 
     public function searchById(Request $request)
@@ -102,36 +102,37 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+
         $campos = [
             'category_id' => 'required|int|max:100',
             'name' => 'required|string|max:100',
             'description' => 'required|string|max:100',
             'quantity' => 'required|int|max:100',
-            'state' => 'required|string|max:100',
+            // 'state' => 'required|string|max:100',
             'price' => 'required|int|max:1000000000|',
             'discount_price' => 'required|int|max:1000000000|',
             'image' => 'required|max:10000|mimes:jpeg,png,jpg'
         ];
         $mensaje = [
-            'required' => 'El :attribute es obligatorio',
-            'image.required' => 'La imagen es requerida',
-            'discount_price.required' => 'El precio descuento es requerido',
-            'price.required' => 'El precio es obligatorio',
-            'state.required' => 'El estado de producto es obligatorio',
-            'quantity.required' => 'La cantidad es obligatoria',
-            'description.required' => 'La descripcion es obligatoria',
-            'name.required' => 'El nombre del producto es obligatorio',
             'category_id.required' => 'La categoria es obligatoria',
+            'required' => 'El :attribute es obligatorio',
+            'name.required' => 'El nombre del producto es obligatorio',
+            'description.required' => 'La descripcion es obligatoria',
+            'quantity.required' => 'La cantidad es obligatoria',
+            'price.required' => 'El precio es obligatorio',
+            'discount_price.required' => 'El precio descuento es requerido',
+            // 'state.required' => 'El estado de producto es obligatorio',
+            'image.required' => 'La imagen es requerida',
             'image.required' => 'La imagen es requerida',
             'image.mimes' => 'Solo formato jpg,png y jpeg'
         ];
 
+        // $product->image = $request->turn;
+        // return response()->json($product);
+
         $this->validate($request, $campos, $mensaje);
 
-        $product = request()->except(['_token', 'quantity']);
-        $product["published"] = $request->quantity;
-        $product["sold"] = 0;
-        $product["status"] = ($product['sold'] == $product["published"]) ? "Vendido" : "Publicado";
+        $product = request()->except('_token');
 
         if ($request->hasFile('image')) {
             $product['image'] = $request->file('image')->store('upload', 'public');
@@ -164,7 +165,7 @@ class ProductController extends Controller
     public function edit($id)
     {
         $products = new Product();
-        $this->authorize('product', $products);
+        // $this->authorize('product', $products);
         $product = Product::find($id);
         $categories = Category::pluck('name', 'id');
         return view('product.edit', compact('product', 'categories'));
@@ -185,7 +186,7 @@ class ProductController extends Controller
             'name' => 'required|string|max:100',
             'description' => 'required|string|max:100',
             'quantity' => 'required|int|max:100',
-            'state' => 'required|string|max:100',
+            // 'state' => 'required|string|max:100',
             'price' => 'required|int|max:1000000000|',
             'discount_price' => 'required|int|max:1000000000|',
 
@@ -194,7 +195,7 @@ class ProductController extends Controller
             'required' => 'El :attribute es obligatorio',
             'discount_price.required' => 'El precio descuento es requerido',
             'price.required' => 'El precio es obligatorio',
-            'state.required' => 'El estado de producto es obligatorio',
+            // 'state.required' => 'El estado de producto es obligatorio',
             'quactity.required' => 'La cantidad es obligatoria',
             'description.required' => 'La descripcion es obligatoria',
             'name.required' => 'El nombre del producto es obligatorio',
@@ -210,8 +211,8 @@ class ProductController extends Controller
         $this->validate($request, $campos, $mensaje);
         $datosProduct =  request()->except(['_token', '_method']);
 
-        $datosProduct["published"] = $request->published + $datosProduct['quantity'];
-        $datosProduct["status"] = ($request->sold == $datosProduct["published"]) ? "Vendido" : "Publicado";
+        // $datosProduct["published"] = $request->published + $datosProduct['quantity'];
+        // $datosProduct["status"] = ($request->sold == $datosProduct["published"]) ? "Vendido" : "Publicado";
         unset($datosProduct['quantity']);
 
         if ($request->hasFile('image')) {
@@ -225,7 +226,6 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         // $product->update($request->all());
 
-
         return redirect()->route('products.index')
             ->with('success', 'Producto actualizado correctamente');
     }
@@ -234,7 +234,7 @@ class ProductController extends Controller
     {
         $offer =  DB::table('products')
             ->where('quantity', '>', '0')
-            ->orderBy('discount_price')
+            ->orderBy('price')
             ->paginate(5);
         $mostSelled = Product::where('quantity', '>', '0')->paginate(5);
         return view('index', compact('mostSelled', 'offer'));
@@ -257,9 +257,9 @@ class ProductController extends Controller
         $consultaID = $request->get("consultaID");
         $products = DB::table('products')
             ->join('categories', 'products.category_id', '=', 'categories.id')
-            ->join('users', 'products.user_id', '=', 'users.id')
+            // ->join('users', 'products.user_id', '=', 'users.id')
             ->where('products.id', '=', $consultaID)
-            ->select('products.id as id', 'categories.name as categoria', 'users.name as user', 'products.name', 'products.description', 'products.quantity', 'products.state', 'products.price', 'products.discount_price', 'products.image')
+            ->select('products.id as id', 'categories.name as categoria', 'products.name', 'products.description', 'products.quantity', 'products.price', 'products.discount_price', 'products.image')
             ->paginate();
         return view('product.index', compact('products'))->with('i');
     }

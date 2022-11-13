@@ -30,11 +30,13 @@
                         <div>
                             <div class="form-group">
                                 <strong>Categoria:</strong>
-                                {{ $product->category_id }}
-                            </div>
-                            <div class="form-group">
-                                <strong>Usuario:</strong>
-                                {{$product->user->name }}
+                                <?php if($product->category_id == 1){
+                                    echo "Joyeria";
+                                }else if($product->category_id == 2){
+                                    echo "Prendas";
+                                }else if($product->category_id == 3){
+                                    echo "Accesorios";
+                                } ?>
                             </div>
                             <div class="form-group">
                                 <strong>Producto:</strong>
@@ -46,26 +48,18 @@
                             </div>
                             <div class="form-group">
                                 <strong>Cantidad:</strong>
-                                {{ $product->quantity }}
-                            </div>
-                            <div class="form-group">
-                                <strong>Estado:</strong>
-                                {{ $product->state }}
+                                {{ $product->quantity }} u.
                             </div>
                             <div class="form-group">
                                 <strong>Precio:</strong>
-                                {{ $product->price }}
+                                S/. {{ $product->price }}
                             </div>
                             <div class="form-group">
                                 <strong>Precio Descuento:</strong>
-                                {{ $product->discount_price }}
+                                S/. {{ $product->discount_price }}
                             </div>
                         </div>
                     </div>
-
-
-
-
                 </div>
             </div>
         </div>

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->bigInteger('category_id')->unsigned();
             $table->string('name');
             $table->string('description');
-            $table->integer('quantity');
+            $table->integer('quantity')->default(0);
             $table->float('price');
             $table->float('discount_price')->nullable();
             $table->string('image');

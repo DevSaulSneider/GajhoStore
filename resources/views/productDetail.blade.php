@@ -11,7 +11,8 @@
             <p class="lh-1 fw-bold">{{$product->description}}</p>
             <p class="lh-1">Id: {{$product->id}}</p>
 
-            <p class="fs-5 text-success">S/<span>{{$product->price}}</span></p>
+            <p class="fs-5"><span class="text-danger text-decoration-line-through">S/. {{$product->price}}</span> &nbsp; <span class="text-success fw-bold fs-5">S/. {{$product->discount_price}}</span</p>
+            <!-- <p class="fs-5 text-success">S/></p> -->
             
             <p class="lh-1 fw-bold fs-6 text-black">
                 Stock: {{$product->quantity}}
@@ -24,14 +25,6 @@
                 <button class="btn btn-primary ms-2" type="submit"> Añadir al carrito </button>
             </form>
             <div class="accordion accordion-flush mt-4" id="accordionFlushExample">
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingOne">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                            Información
-                        </button>
-                    </h2>
-                    
-                </div>
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="flush-headingTwo">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
